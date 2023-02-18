@@ -1,0 +1,29 @@
+.Container-dark {
+  background-color: #000;
+}
+
+.Container-light {
+  background-color: rgb(216, 216, 216);
+}
+
+/* style for all active buttons */
+
+/* site primary color hsl(169, 82%, 60%) */
+
+/* .activeBtn {
+  color: hsl(169, 82%, 60%) !important;
+} */
+
+
+
+
+.css-1a1fmpi-MuiInputBase-root-MuiInput-root:after{
+  border-bottom: 1px solid hsl(169, 82%, 60%) !important;
+}
+
+.about {
+  min-height:100vh;
+  background:linear-gradient(0deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.7)), url(./images/bg1.jpg);
+ 
+  background-size:cover;
+}
