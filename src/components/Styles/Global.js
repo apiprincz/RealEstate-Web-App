@@ -17,6 +17,9 @@ body {
   font-family: 'Quicksand', sans-serif;
   overflow-x: hidden;
 }
+a {
+  text-decoration:none
+}
 
 // theme buttons color
 .light {

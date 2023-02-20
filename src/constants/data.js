@@ -7,32 +7,55 @@ export const propertyData = [
   {
     id: "1",
     title: "2 Bedroom flat",
+    didNo:"e0eo21",
     price: 1000000,
-    rooms: "2 bedroom",
-    room: "2",
-    bathroom: "2",
-    kitchen: "2",
-    master: true,
-    ensuite: true,
-    waterHeater: true,
-    inviteOffers: false,
-    area: "4300 sq.ft",
-    location: "lagos,nigeria",
-    address: "No 12, Ikate Street, Command bus-stop",
-    files: Flat,
+    priceTicker:"month",
+    propertyFeatures:[
+      {
+        room: 2,
+        bathroom: 2,
+        kitchen: 2,
+        area:200,
+        master: true,
+        ensuite: true,
+        swimmingPool:true
+      }
+
+    ],
+    propertyAmenities:[
+      "Water Heater", "Air Condition", "Gym", "Microwave", "Laundry", "Parking", "Power Plant", "Water Front"
+
+    ],
+    location: "Lagos",
+    address: "No 12, Ikate Street, Command bus-stop, Lagos",
+    country:'Nigeria',
+    files: [{
+      
+secure_url:
+"https://res.cloudinary.com/dkontlptv/image/upload/v1665326004/fno9kboqdoh4tphgibx8.jpg",
+cloudinary_id:
+"fno9kboqdoh4tphgibx8"
+    },
+    {
+      
+secure_url:
+"https://res.cloudinary.com/dkontlptv/image/upload/v1665349155/sr0rgl0dqz5ofqkhgxt4.jpg",
+cloudinary_id:
+"sr0rgl0dqz5ofqkhgxt4"
+    },
+  
+  ],
     listing: "rent",
-    type: "apartment",
-    status: "buynow",
-    currency: ["NGN"],
-    assignedRealtor: [
+    propertyType: "apartments",
+    currency: "NGN",
+    realtor: [
       { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
     ],
-    percentageCut: 10,
     verifiedOwner: [
       { id: "1", name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
     ],
     createdAt: "2022-06-06T22:57:19.024+00:00",
-    saleEndsOn: "2022-06-08T22:57:19.024+00:00",
+
     viewerCount: [
       { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
       { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
@@ -47,7 +70,7 @@ export const propertyData = [
     ownerHistory: [
       { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
     ],
-    saleHistory: [
+    dealHistory: [
       {
         dateOfSale: "2022-09-13T08:57:19.024+00:00",
         to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
@@ -67,224 +90,65 @@ export const propertyData = [
         currency: "US$",
       },
     ],
-    offerHistory: [
-      {
-        dateOfOffer: "2022-08-17T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
+ 
   },
   {
     id: "2",
-    title: "3 Bedroom flat",
-    price: 850000,
-    rooms: "3 bedroom",
-    room: "3",
-    bathroom: "3",
-    description:
-      "This stylish residence is nestled on a large level block in a desirably tranquil cul-de-sac location. The house comes complete with two living rooms, a welcoming kitchen/dining area, two bathrooms, four bedrooms, a study, and a laundry, and retains the value of peaceful living while being conveniently close to shops, school and transport.",
-    kitchen: "2",
-    master: true,
-    ensuite: true,
-    waterHeater: true,
-    inviteOffers: true,
-    area: "2567 sq.ft",
-    location: "ibadan,nigeria",
-    files: Flat2,
-    listing: "sale",
-    type: "apartment",
-    assignedRealtor: [
-      { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    percentageCut: 10,
-    verifiedOwner: [
-      { id: "1", name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    address: "No 10, Bodija Road, Command bus-stop",
-    status: "buynow",
-    currency: ["US$"],
-    viewerCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-    ],
-    favoriteCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-    ],
-    propertyAmenities: [
-      "wi-Fi",
-      "airconditioning",
-      "prepaid meter",
-      "washer",
-      "balcony",
-      "gardens",
-      "hardwood floor",
-      "walk-in-closets",
-      "swimming pool",
-      "guest quarters",
-      "CCTV",
-      "parking garage",
-      "fitness center",
-    ],
-    localAmenities: [
-      "gated community",
-      "Beach Access",
-      "great Schools",
-      "spa",
-      "good road network",
-      "viewing center",
-      "restaurants",
-      "food and supply market",
-      "mall",
-      "gym center",
-    ],
-    createdAt: "2022-06-29T22:57:19.024+00:00",
-    saleEndsOn: "2022-08-29T08:57:19.024+00:00",
-    ownerHistory: [
-      { name: "Anon", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    saleHistory: [
+    title: "3 Plot of Land",
+    didNo:"50eo21",
+    price: 1000000,
+    priceTicker:"",
+    propertyFeatures:[
       {
-        dateOfSale: "2022-07-20T08:57:19.024+00:00",
-        to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-      {
-        dateOfSale: "2022-08-13T08:57:19.024+00:00",
-        to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-      {
-        dateOfSale: "2022-10-13T08:57:19.024+00:00",
-        to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
-    offerHistory: [
-      {
-        dateOfOffer: "2022-08-10T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-      {
-        dateOfOffer: "2022-08-10T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-      {
-        dateOfOffer: "2022-08-10T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-      {
-        dateOfOffer: "2022-08-10T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-      {
-        dateOfOffer: "2022-08-10T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-      {
-        dateOfOffer: "2022-08-10T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-      {
-        dateOfOffer: "2022-08-10T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-      {
-        dateOfOffer: "2022-08-10T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
-  },
-  {
-    id: "3",
-    title: "1 Bedroom flat",
-    price: 150000,
-    location: "lagos,nigeria",
-    address: "No 9, Ikeja Street, Costain bus-stop",
-    files: Lekki,
-    rooms: "1 bedroom",
-    room: "1",
-    bathroom: "1",
-    kitchen: "1",
-    master: false,
-    ensuite: false,
-    inviteOffers: true,
-    area: "1000 sq.ft",
-    listing: "sale",
-    assignedRealtor: [
-      { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    percentageCut: 10,
-    verifiedOwner: [
-      { id: "1", name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    type: "apartment",
-    status: "auction",
-    viewerCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-    ],
-    favoriteCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-    ],
+      
+        area:200,
+      
+      }
 
-    currency: ["US$", "NGN"],
-    createdAt: "2022-07-04T22:57:19.024+00:00",
-    saleEndsOn: "2022-07-10T08:57:19.024+00:00",
-    ownerHistory: [
-      { name: "Anyi", phone: "0980890090", email: "dummy@gmail.com" },
     ],
-    saleHistory: [
+    description:'The site of an arable land for farming',
+    propertyAmenities:[
+
+    ],
+    location: "Lagos",
+    address: "No 12, Ikate Street, Command bus-stop, Lagos",
+    country:'Nigeria',
+    files: [ {
+      
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665349155/sr0rgl0dqz5ofqkhgxt4.jpg",
+      cloudinary_id:
+      "sr0rgl0dqz5ofqkhgxt4"
+          }],
+    listing: "sale",
+    propertyType: "Land",
+    currency: "NGN",
+    realtor: [
+      { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
+    ],
+    verifiedOwner: [
+      { id: "1", name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
+    ],
+    createdAt: "2022-06-06T22:57:19.024+00:00",
+
+    viewerCount: [
+      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
+      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
+      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
+      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
+    ],
+    favoriteCount: [
+      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
+      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
+      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
+    ],
+    ownerHistory: [
+      { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
+    ],
+    dealHistory: [
       {
-        dateOfSale: "2022-06-10T08:57:19.024+00:00",
+        dateOfSale: "2022-09-13T08:57:19.024+00:00",
         to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-      {
-        dateOfSale: "2022-07-10T08:57:19.024+00:00",
-        to: "ade",
         amount: "5000000",
         currency: "US$",
       },
@@ -295,47 +159,58 @@ export const propertyData = [
         currency: "US$",
       },
       {
-        dateOfSale: "2022-11-16T08:57:19.024+00:00",
+        dateOfSale: "2022-12-13T08:57:19.024+00:00",
         to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
         amount: "5000000",
         currency: "US$",
       },
     ],
-    offerHistory: [
-      {
-        dateOfOffer: "2022-06-16T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
+ 
   },
   {
-    id: "4",
-    title: "2 Plot of Land ",
-    price: 1100000,
-    location: "lagos,nigeria",
-    address: "No 12, Market Street, Idumota bus-stop",
-    files: Land,
-    rooms: "",
-    listing: "sale",
-    type: "land",
-    inviteOffers: true,
-    status: "buynow",
-    assignedRealtor: [
+    id: "3",
+    title: "3 Bedroom flat",
+    price: 1000000,
+    didNo:"ioe324",
+    priceTicker:"year",
+    propertyFeatures:[
+      {
+        room: 2,
+        bathroom: 2,
+        kitchen: 2,
+        area:200,
+        master: false,
+        ensuite: true,
+        swimmingPool:false
+      }
+
+    ],
+    propertyAmenities:[
+      "Water Heater", "Air Condition", "Gym", "Microwave", "Laundry", "Parking", "Power Plant", "Water Front"
+
+    ],
+    location: "Lagos",
+    address: "No 12, Ikate Street, Command bus-stop, Lagos",
+    country:'Nigeria',
+    files: [ {
+      
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665349155/sr0rgl0dqz5ofqkhgxt4.jpg",
+      cloudinary_id:
+      "sr0rgl0dqz5ofqkhgxt4"
+          }],
+    listing: "rent",
+    propertyType: "apartments",
+    currency: "NGN",
+    realtor: [
       { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
     ],
-    percentageCut: 10,
     verifiedOwner: [
       { id: "1", name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
     ],
+    createdAt: "2022-06-06T22:57:19.024+00:00",
+
     viewerCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
       { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
       { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
       { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
@@ -345,57 +220,76 @@ export const propertyData = [
       { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
       { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
       { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
     ],
-    currency: ["NGN"],
-    createdAt: "2022-06-20T22:57:19.024+00:00",
-    saleEndsOn: "2022-06-25T08:57:19.024+00:00",
     ownerHistory: [
-      { name: "Dtwo", phone: "0980890090", email: "dummy@gmail.com" },
+      { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
     ],
-    saleHistory: [
+    dealHistory: [
       {
-        dateOfSale: "2022-06-16T08:57:19.024+00:00",
+        dateOfSale: "2022-09-13T08:57:19.024+00:00",
+        to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
+        amount: "5000000",
+        currency: "US$",
+      },
+      {
+        dateOfSale: "2022-11-13T08:57:19.024+00:00",
+        to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
+        amount: "5000000",
+        currency: "US$",
+      },
+      {
+        dateOfSale: "2022-12-13T08:57:19.024+00:00",
         to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
         amount: "5000000",
         currency: "US$",
       },
     ],
-    offerHistory: [
-      {
-        dateOfOffer: "2022-06-14T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
+ 
   },
   {
-    id: "4",
-    title: "2 Plot of Land ",
-    price: 1100000,
-    location: "lagos,nigeria",
-    address: "No 12, Market Street, Idumota bus-stop",
-    files: Land,
-    rooms: "",
-    listing: "sale",
-    type: "land",
-    inviteOffers: true,
-    status: "buynow",
-    assignedRealtor: [
+    id: "3",
+    title: "3 Bedroom flat",
+    price: 1000000,
+    didNo:"ioe324",
+    priceTicker:"year",
+    propertyFeatures:[
+      {
+        room: 2,
+        bathroom: 2,
+        kitchen: 2,
+        area:200,
+        master: false,
+        ensuite: true,
+        swimmingPool:false
+      }
+
+    ],
+    propertyAmenities:[
+      "Water Heater", "Air Condition", "Gym", "Microwave", "Laundry", "Parking", "Power Plant", "Water Front"
+
+    ],
+    location: "Lagos",
+    address: "No 12, Ikate Street, Command bus-stop, Lagos",
+    country:'Nigeria',
+    files: [ {
+      
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665349155/sr0rgl0dqz5ofqkhgxt4.jpg",
+      cloudinary_id:
+      "sr0rgl0dqz5ofqkhgxt4"
+          }],
+    listing: "rent",
+    propertyType: "apartments",
+    currency: "NGN",
+    realtor: [
       { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
     ],
-    percentageCut: 10,
     verifiedOwner: [
       { id: "1", name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
     ],
+    createdAt: "2022-06-06T22:57:19.024+00:00",
+
     viewerCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
       { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
       { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
       { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
@@ -405,332 +299,186 @@ export const propertyData = [
       { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
       { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
       { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
     ],
-    currency: ["NGN"],
-    createdAt: "2022-06-20T22:57:19.024+00:00",
-    saleEndsOn: "2022-06-25T08:57:19.024+00:00",
     ownerHistory: [
-      { name: "Dtwo", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    saleHistory: [
-      {
-        dateOfSale: "2022-06-16T08:57:19.024+00:00",
-        to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
-    offerHistory: [
-      {
-        dateOfOffer: "2022-06-14T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
-  },
-  {
-    id: "4",
-    title: "2 Plot of Land ",
-    price: 1100000,
-    location: "lagos,nigeria",
-    address: "No 12, Market Street, Idumota bus-stop",
-    files: Land,
-    rooms: "",
-    listing: "sale",
-    type: "land",
-    inviteOffers: true,
-    status: "buynow",
-    assignedRealtor: [
       { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
     ],
-    percentageCut: 10,
-    verifiedOwner: [
-      { id: "1", name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    viewerCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-    ],
-    favoriteCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-    ],
-    currency: ["NGN"],
-    createdAt: "2022-06-20T22:57:19.024+00:00",
-    saleEndsOn: "2022-06-25T08:57:19.024+00:00",
-    ownerHistory: [
-      { name: "Dtwo", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    saleHistory: [
+    dealHistory: [
       {
-        dateOfSale: "2022-06-16T08:57:19.024+00:00",
+        dateOfSale: "2022-09-13T08:57:19.024+00:00",
+        to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
+        amount: "5000000",
+        currency: "US$",
+      },
+      {
+        dateOfSale: "2022-11-13T08:57:19.024+00:00",
+        to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
+        amount: "5000000",
+        currency: "US$",
+      },
+      {
+        dateOfSale: "2022-12-13T08:57:19.024+00:00",
         to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
         amount: "5000000",
         currency: "US$",
       },
     ],
-    offerHistory: [
-      {
-        dateOfOffer: "2022-06-14T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
+ 
   },
-  {
-    id: "4",
-    title: "2 Plot of Land ",
-    price: 1100000,
-    location: "lagos,nigeria",
-    address: "No 12, Market Street, Idumota bus-stop",
-    files: Land,
-    rooms: "",
-    listing: "sale",
-    type: "land",
-    inviteOffers: true,
-    status: "buynow",
-    assignedRealtor: [
-      { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    percentageCut: 10,
-    verifiedOwner: [
-      { id: "1", name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    viewerCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-    ],
-    favoriteCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-    ],
-    currency: ["NGN"],
-    createdAt: "2022-06-20T22:57:19.024+00:00",
-    saleEndsOn: "2022-06-25T08:57:19.024+00:00",
-    ownerHistory: [
-      { name: "Dtwo", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    saleHistory: [
-      {
-        dateOfSale: "2022-06-16T08:57:19.024+00:00",
-        to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
-    offerHistory: [
-      {
-        dateOfOffer: "2022-06-14T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
-  },
-  {
-    id: "4",
-    title: "2 Plot of Land ",
-    price: 1100000,
-    location: "lagos,nigeria",
-    address: "No 12, Market Street, Idumota bus-stop",
-    files: Land,
-    rooms: "",
-    listing: "sale",
-    type: "land",
-    inviteOffers: true,
-    status: "buynow",
-    assignedRealtor: [
-      { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    percentageCut: 10,
-    verifiedOwner: [
-      { id: "1", name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    viewerCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-    ],
-    favoriteCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-    ],
-    currency: ["NGN"],
-    createdAt: "2022-06-20T22:57:19.024+00:00",
-    saleEndsOn: "2022-06-25T08:57:19.024+00:00",
-    ownerHistory: [
-      { name: "Dtwo", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    saleHistory: [
-      {
-        dateOfSale: "2022-06-16T08:57:19.024+00:00",
-        to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
-    offerHistory: [
-      {
-        dateOfOffer: "2022-06-14T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
-  },
-  {
-    id: "4",
-    title: "2 Plot of Land ",
-    price: 1100000,
-    location: "lagos,nigeria",
-    address: "No 12, Market Street, Idumota bus-stop",
-    files: Land,
-    rooms: "",
-    listing: "sale",
-    type: "land",
-    inviteOffers: true,
-    status: "buynow",
-    assignedRealtor: [
-      { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    percentageCut: 10,
-    verifiedOwner: [
-      { id: "1", name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    viewerCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-    ],
-    favoriteCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-    ],
-    currency: ["NGN"],
-    createdAt: "2022-06-20T22:57:19.024+00:00",
-    saleEndsOn: "2022-06-25T08:57:19.024+00:00",
-    ownerHistory: [
-      { name: "Dtwo", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    saleHistory: [
-      {
-        dateOfSale: "2022-06-16T08:57:19.024+00:00",
-        to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
-    offerHistory: [
-      {
-        dateOfOffer: "2022-06-14T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
-  },
-  {
-    id: "4",
-    title: "2 Plot of Land ",
-    price: 1100000,
-    location: "lagos,nigeria",
-    address: "No 12, Market Street, Idumota bus-stop",
-    files: Land,
-    rooms: "",
-    listing: "sale",
-    type: "land",
-    inviteOffers: true,
-    status: "buynow",
-    assignedRealtor: [
-      { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    percentageCut: 10,
-    verifiedOwner: [
-      { id: "1", name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    viewerCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-    ],
-    favoriteCount: [
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
-    ],
-    currency: ["NGN"],
-    createdAt: "2022-06-20T22:57:19.024+00:00",
-    saleEndsOn: "2022-06-25T08:57:19.024+00:00",
-    ownerHistory: [
-      { name: "Dtwo", phone: "0980890090", email: "dummy@gmail.com" },
-    ],
-    saleHistory: [
-      {
-        dateOfSale: "2022-06-16T08:57:19.024+00:00",
-        to: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
-    offerHistory: [
-      {
-        dateOfOffer: "2022-06-14T08:57:19.024+00:00",
-        by: { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
-        amount: "5000000",
-        currency: "US$",
-      },
-    ],
-  },
+ 
 ];
+
+export const propertyTypes = [
+  {
+    id: "1",
+    propertyType: "apartments",
+    propertyCount:20
+  },
+  {
+    id: "2",
+    propertyType: "land",
+    propertyCount:20
+  },
+  {
+    id: "3",
+    propertyType: "office",
+    propertyCount:20
+  },
+  {
+    id: "4",
+    propertyType: "shop",
+    propertyCount:20
+  },
+]
+export const neighborhoodData = [
+  {
+    id: "1",
+    location: "Ago Palace",
+    propertyCount:20,
+    files: [{
+      
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665326004/fno9kboqdoh4tphgibx8.jpg",
+      cloudinary_id:
+      "fno9kboqdoh4tphgibx8"
+          },
+          {
+            
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665349155/sr0rgl0dqz5ofqkhgxt4.jpg",
+      cloudinary_id:
+      "sr0rgl0dqz5ofqkhgxt4"
+          },
+        
+        ],
+    proximity:{
+      days:0,
+      hours:1,
+      minutes:20,
+    }
+  },
+  {
+    id: "2",
+    location: "Ikeja",
+    files: [
+      
+
+          {
+            
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665349155/sr0rgl0dqz5ofqkhgxt4.jpg",
+      cloudinary_id:
+      "sr0rgl0dqz5ofqkhgxt4"
+          },
+        
+        ],
+    propertyCount:20,
+    proximity:{
+      days:0,
+      hours:0,
+      minutes:30,
+    }
+  },
+  {
+    id: "3",
+    location: "Yaba",
+    propertyCount:30,
+    files: [{
+      
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665326004/fno9kboqdoh4tphgibx8.jpg",
+      cloudinary_id:
+      "fno9kboqdoh4tphgibx8"
+          },
+          {
+            
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665349155/sr0rgl0dqz5ofqkhgxt4.jpg",
+      cloudinary_id:
+      "sr0rgl0dqz5ofqkhgxt4"
+          },
+        
+        ],
+    proximity:{
+      days:0,
+      hours:0,
+      minutes:23,
+    }
+  },
+  {
+    id: "4",
+    location: "Oshodi",
+    propertyCount:13,
+    files: [{
+      
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665326004/fno9kboqdoh4tphgibx8.jpg",
+      cloudinary_id:
+      "fno9kboqdoh4tphgibx8"
+          },
+          {
+            
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665349155/sr0rgl0dqz5ofqkhgxt4.jpg",
+      cloudinary_id:
+      "sr0rgl0dqz5ofqkhgxt4"
+          },
+        
+        ],
+    proximity:{
+      days:0,
+      hours:0,
+      minutes:45,
+    }
+  },
+  {
+    id: "5",
+    location: "Isolo",
+    propertyCount:25,
+    files: [{
+      
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665326004/fno9kboqdoh4tphgibx8.jpg",
+      cloudinary_id:
+      "fno9kboqdoh4tphgibx8"
+          },
+          {
+            
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665349155/sr0rgl0dqz5ofqkhgxt4.jpg",
+      cloudinary_id:
+      "sr0rgl0dqz5ofqkhgxt4"
+          },
+        
+        ],
+    proximity:{
+      days:0,
+      hours:0,
+      minutes:55,
+    }
+  },
+
+]
 
 export const user = 
   {

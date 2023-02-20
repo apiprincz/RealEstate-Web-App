@@ -7,6 +7,7 @@ import {
   SiteMotto,
   SiteSearchBox,
   ThemeHero,
+  Hr,
 } from "../../components/Styles/PageContent.styled";
 import { ThemeContainer } from "../../components/Styles/ThemeSwitching.styled";
 import { ThemeContext } from "../../Contexts/ThemeContext";
@@ -17,6 +18,9 @@ import { Grid, InputAdornment, TextField } from "@mui/material";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import CallMadeOutlinedIcon from '@mui/icons-material/CallMadeOutlined';
 import About from "../../components/Sections/About";
+import FeaturedProperty from "../../components/Sections/Featured Property";
+import PropertyTypes from "../../components/Sections/Property Types";
+import Neighborhood from "../../components/Sections/Neighborhood";
 const Home = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
   const [tab, setTab] = useState("buy");
@@ -101,6 +105,13 @@ const Home = () => {
           </Grid>
         </Grid>
         <About/>
+        <FeaturedProperty/>
+        <Grid p={2}>
+        <Hr></Hr>
+        <PropertyTypes/>
+        <Neighborhood/>
+
+        </Grid>
       </ThemeContainer>
     </Layout>
   );

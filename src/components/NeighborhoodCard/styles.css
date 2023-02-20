@@ -1,0 +1,53 @@
+.neighborhoodCardImage{
+    height:200px;
+    overflow: hidden;
+    
+}
+.neighborhoodCardContent {
+    padding: 40px 20px;
+
+}
+.neighborhoodCardImage img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.activeNeighborhoodCardImage.neighborhoodCardImage img{
+    transform:scale(1.05);
+    animation-name: example;
+    animation-duration: 0.4s;
+}
+.activeNeighborhoodCardImage.neighborhoodCardImage {
+    position: relative;
+
+}
+.activeNeighborhoodCardImageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background:rgba(0, 0, 0, 0.282);
+    cursor: pointer;
+    pointer-events: none;
+}
+
+@keyframes example {
+    from {transform:scale(1)}
+    to {transform:scale(1.05);}
+  }
+@media only screen and (max-width:656px){
+    .neighborhoodCardImage{
+        height:160px
+    } 
+}
+@media only screen and (max-width:425px){
+    .neighborhoodCardImage{
+        height:120px
+    } 
+    .neighborhoodCardContent {
+        padding: 20px;
+    
+    }
+}

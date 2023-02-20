@@ -27,3 +27,6 @@
  
   background-size:cover;
 }
+.swiper {
+  width: 100% !important;
+}
