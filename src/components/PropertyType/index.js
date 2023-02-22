@@ -60,7 +60,7 @@ const PropertyType = ({ property, index }) => {
                 <SiteTitle>{property.propertyType}</SiteTitle>
               </Grid>
               <Grid pt={1}>
-                <PropertyTextSmall>{property.count} Properties</PropertyTextSmall>
+                <PropertyTextSmall>{property.propertyCount} Properties</PropertyTextSmall>
               </Grid>
             </Grid>
           </PropertyTypesContainer>

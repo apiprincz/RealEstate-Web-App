@@ -9,6 +9,11 @@ export const PropertyTypesContainer = styled.div`
   width: 100%;
   background:  ${(props) => (props.active ? "hsl(0,0%,25%)" : "")};
 ;
-
-
 `;
+
+export const HeaderMenuContainer = styled.div`
+  background: ${({ theme }) => theme.colors.background2};
+;
+`;
+
+// hsl(0,0%,12%)

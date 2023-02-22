@@ -1,0 +1,49 @@
+.destinationCardImage{
+  
+    overflow: hidden;
+    
+}
+.destinationCardContent {
+    padding: 40px 20px;
+
+}
+.destinationCardImage img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.activeDestinationCardImage.destinationCardImage img{
+    transform:scale(1.05);
+    animation-name: example;
+    animation-duration: 0.4s;
+}
+.activeDestinationCardImage.destinationCardImage {
+    position: relative;
+
+}
+.activeDestinationCardImageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background:rgba(0, 0, 0, 0.282);
+    cursor: pointer;
+    pointer-events: none;
+}
+
+@keyframes example {
+    from {transform:scale(1)}
+    to {transform:scale(1.05);}
+  }
+@media only screen and (max-width:656px){
+  
+}
+@media only screen and (max-width:425px){
+
+    .destinationCardContent {
+        padding: 20px;
+    
+    }
+}

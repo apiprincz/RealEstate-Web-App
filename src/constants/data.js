@@ -479,6 +479,94 @@ export const neighborhoodData = [
   },
 
 ]
+export const destinationData = [
+  {
+    id: "1",
+    location: "Lagos, Nigeria",
+    propertyCount:200,
+    files: [{
+      
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665326004/fno9kboqdoh4tphgibx8.jpg",
+      cloudinary_id:
+      "fno9kboqdoh4tphgibx8"
+          },
+          {
+            
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665349155/sr0rgl0dqz5ofqkhgxt4.jpg",
+      cloudinary_id:
+      "sr0rgl0dqz5ofqkhgxt4"
+          },
+        
+        ],
+
+  },
+  {
+    id: "2",
+    location: "Abuja, Nigeria",
+    files: [
+      
+
+          {
+            
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665349155/sr0rgl0dqz5ofqkhgxt4.jpg",
+      cloudinary_id:
+      "sr0rgl0dqz5ofqkhgxt4"
+          },
+        
+        ],
+    propertyCount:620,
+
+  },
+  {
+    id: "3",
+    location: "Portharcourt, Nigeria",
+    propertyCount:310,
+    files: [{
+      
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665326004/fno9kboqdoh4tphgibx8.jpg",
+      cloudinary_id:
+      "fno9kboqdoh4tphgibx8"
+          },
+          {
+            
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665349155/sr0rgl0dqz5ofqkhgxt4.jpg",
+      cloudinary_id:
+      "sr0rgl0dqz5ofqkhgxt4"
+          },
+        
+        ],
+
+  },
+  {
+    id: "4",
+    location: "Kano, Nigeria",
+    propertyCount:134,
+    files: [{
+      
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665326004/fno9kboqdoh4tphgibx8.jpg",
+      cloudinary_id:
+      "fno9kboqdoh4tphgibx8"
+          },
+          {
+            
+      secure_url:
+      "https://res.cloudinary.com/dkontlptv/image/upload/v1665349155/sr0rgl0dqz5ofqkhgxt4.jpg",
+      cloudinary_id:
+      "sr0rgl0dqz5ofqkhgxt4"
+          },
+        
+        ],
+ 
+  },
+
+
+]
 
 export const user = 
   {

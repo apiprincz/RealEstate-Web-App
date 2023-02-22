@@ -1,3 +1,17 @@
-.swiper-slide {
-    width: 200px !important;
+
+.swiperMainContainer {
+    height: 27rem;
+    width: 100%;
+}
+
+@media only screen and (max-width:656px){
+    .swiperMainContainer{
+        height:20rem
+    } 
+}
+@media only screen and (max-width:425px){
+    .swiperMainContainer{
+        height:14rem
+    } 
+ 
 }

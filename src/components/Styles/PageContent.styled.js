@@ -99,6 +99,9 @@ export const SiteBtn = styled.button`
     background: ${({ theme }) => theme.colors.primaryBg};
     color: hsl(169, 82%, 60%) !important;
   }
+  &:hover {
+    background: ${({ theme }) => theme.colors.primaryBg};
+  }
 `;
 export const SwiperBtn = styled.button`
   color: ${({ theme }) => theme.colors.btnColor};

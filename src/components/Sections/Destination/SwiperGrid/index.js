@@ -1,31 +1,25 @@
 import { useRef } from "react";
-import { neighborhoodData } from "../../../../constants/data";
+import { destinationData } from "../../../../constants/data";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Grid, Navigation } from "swiper";
-import "swiper/css/grid";
+import { Navigation } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
 
-import NeighborhoodCard from "../../../NeighborhoodCard";
-
-import "./styles.css"
+import DestinationCard from "../../../DestinationCard";
 
 const SwiperGrid = () => {
   const swiperRef = useRef();
   return (
-    <div  className='swiperMainContainer'>
+   
     <Swiper
-      modules={[Grid, Navigation]}
+      modules={[Navigation]}
       onBeforeInit={(swiper) => {
         swiperRef.current = swiper;
       }}
-      grid={{
-        rows: 2,
-        fill: "row",
-      }}
+
     
       spaceBetween={30}
       breakpoints={{
@@ -38,7 +32,7 @@ const SwiperGrid = () => {
           spaceBetween: 40,
         },
         1024: {
-          slidesPerView: 3,
+          slidesPerView: 4,
           spaceBetween: 50,
         },
       }}
@@ -46,13 +40,13 @@ const SwiperGrid = () => {
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      {neighborhoodData.map((neighborhood, index) => (
+      {destinationData.map((destination, index) => (
         <SwiperSlide  style={{ width: "100%" }} >
-          <NeighborhoodCard neighborhood={neighborhood} index={index}  />
+          <DestinationCard destination={destination} index={index}  />
         </SwiperSlide>
       ))}
     </Swiper>
-    </div>
+    
   );
 };
 

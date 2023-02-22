@@ -21,6 +21,7 @@ import About from "../../components/Sections/About";
 import FeaturedProperty from "../../components/Sections/Featured Property";
 import PropertyTypes from "../../components/Sections/Property Types";
 import Neighborhood from "../../components/Sections/Neighborhood";
+import Destination from "../../components/Sections/Destination";
 const Home = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
   const [tab, setTab] = useState("buy");
@@ -44,7 +45,7 @@ const Home = () => {
               </Grid>
               <Grid py={2}>
                 <SiteText>
-                  Choice is the No 1. destination to buy, sell and rent all
+                <span style={{color:"white"}}>Most<span style={{color:'hsl(169, 82%, 60%)'}}>Hospitable</span></span><span style={{color:'gray'}}>.com</span> is the No 1. destination to buy, sell and rent all
                   kinds of landed properties in Lagos, Abuja and Ibadan.
                 </SiteText>
               </Grid>
@@ -110,6 +111,7 @@ const Home = () => {
         <Hr></Hr>
         <PropertyTypes/>
         <Neighborhood/>
+        <Destination/>
 
         </Grid>
       </ThemeContainer>

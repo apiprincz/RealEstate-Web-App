@@ -17,8 +17,11 @@ body {
   font-family: 'Quicksand', sans-serif;
   overflow-x: hidden;
 }
-a {
+a,li {
   text-decoration:none
+}
+li {
+  list-style-type:none
 }
 
 // theme buttons color

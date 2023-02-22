@@ -37,6 +37,7 @@ export const light = {
     colors: {
       header: "hsl(0, 0%, 20%)",
       background: "hsl(0, 0%, 20%)",
+      background2: "hsl(0,0%,12%)",
       text: "hsl(0, 0%, 100%)",
       textColored: "hsl(169, 82%, 60%)",
       textColored2: "hsl(169, 82%, 40%)",

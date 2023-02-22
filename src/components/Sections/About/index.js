@@ -22,7 +22,7 @@ About
 </SectionHero> */}
             <Grid p={2} md={6} xs={12}>
               <SiteText xlineHeight>
-                Choice Property is an indigenous real estate company which
+              <span style={{color:"white"}}>Most<span style={{color:'hsl(169, 82%, 60%)'}}>Hospitable</span></span><span style={{color:'gray'}}>.com</span> is an indigenous real estate company which
                 started in 2015 as an errand business to connect available
                 properties within our locality to locals, friends &amp; family.
                 <br />
