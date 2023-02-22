@@ -91,7 +91,7 @@ const Header = () => {
           <a href="/" className="LogoText" style={{ color: "gray" }}>
             <span style={{ color: "white" }}>
               Most
-              <span style={{ color: "hsl(169, 82%, 60%)" }}>Hospitable</span>
+              <span style={{ color: "hsl(169, 82%, 60%)" }}>Habitable</span>
             </span>
             .com
           </a>
