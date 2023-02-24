@@ -14,16 +14,29 @@ import Home from "./Pages/Home";
 
 import { ThemeContainer } from "./components/Styles/ThemeSwitching.styled";
 import { ThemeProvider } from "styled-components";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "./Contexts/ThemeContext";
 
 import { light, dark } from "./components/Styles/Theme.styled";
 import { GlobalStyles } from "./components/Styles/Global";
 import { ThemeHero } from "./components/Styles/PageContent.styled";
+import Properties from "./Pages/Properties";
+import { useDispatch } from "react-redux";
+import { getProperties } from "./actions/properties";
+import {   useFilterContext } from "./Contexts/FilterContext";
+import { propertyData } from "./constants/data";
 
 const App = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
   const [selectedTheme, setSelectedTheme] = useState(light);
+  const { filterItems, dispatch } = useFilterContext()
+
+
+  const dispatchRedux = useDispatch();
+  useEffect(() => {
+    dispatchRedux(getProperties())
+  }, [])
+ 
 
   return (
     <ThemeProvider theme={darkMode}>
@@ -32,6 +45,7 @@ const App = () => {
         <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/properties" element={<Properties />}></Route>
         </Routes>
       </Router>
     </ThemeProvider>

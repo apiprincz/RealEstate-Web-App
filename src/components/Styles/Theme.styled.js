@@ -53,7 +53,8 @@ export const light = {
       primaryBg3:"rgba(0, 0,0, 28%)",
       primarySiteColor:"hsl(169, 82%, 60%)",
       lineColor:"rgba(255, 255, 255, 0.24)",
-      inputColor:"rgba(255, 255, 255, 1)"
+      inputColor:"rgba(255, 255, 255, 1)",
+      inputColor2:"rgba(255, 255, 255, 0.44)"
      
     },
   };

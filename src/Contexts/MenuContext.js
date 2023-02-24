@@ -11,7 +11,7 @@ const initialItems = [
 // Actions
 export const SHOW_MENU = "SHOW_MENU";
 export const HIDE_MENU = "HIDE_MENU";
-export const CLEAR_ALL = "CLEAR_ALL";
+
 
 // Action creators
 export function showMenu(e) {
@@ -23,9 +23,7 @@ export function hideMenu(index) {
   return { type: HIDE_MENU };
 }
 
-export function clearAll() {
-  return { type: CLEAR_ALL };
-}
+
 
 // Reducer
 export function menuReducer(state = { settingsMenu: false }, action) {
@@ -35,8 +33,7 @@ export function menuReducer(state = { settingsMenu: false }, action) {
     case HIDE_MENU:
         return {...state, settingsMenu:false};
 
-    case CLEAR_ALL:
-      return [];
+ 
     default:
       return state;
   }

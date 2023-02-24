@@ -22,14 +22,21 @@ import FeaturedProperty from "../../components/Sections/Featured Property";
 import PropertyTypes from "../../components/Sections/Property Types";
 import Neighborhood from "../../components/Sections/Neighborhood";
 import Destination from "../../components/Sections/Destination";
+import { setListing, useFilterContext } from "../../Contexts/FilterContext";
+import { useDispatch } from "react-redux";
 const Home = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
-  const [tab, setTab] = useState("buy");
+const { filterItems,dispatch } = useFilterContext()
+// const dispatch = useDispatch()
+console.log("filterItems", filterItems)
+
+  const [tab, setTab] = useState("sale");
 
   const handleTab = (tab) => {
     setTab(tab);
-  };
+    dispatch(setListing(tab));
 
+  };
   return (
     <Layout>
       {/* {darkMode === light ? "light" : "dark"} */}
@@ -45,15 +52,15 @@ const Home = () => {
               </Grid>
               <Grid py={2}>
                 <SiteText>
-                <span style={{color:"white"}}>Most<span style={{color:'hsl(169, 82%, 60%)'}}>Hospitable</span></span><span style={{color:'gray'}}>.com</span> is the No 1. destination to buy, sell and rent all
+                <span style={{color:"white"}}>Most<span style={{color:'hsl(169, 82%, 60%)'}}>Habitable</span></span><span style={{color:'gray'}}>.com</span> is the No 1. destination to buy, sell and rent all
                   kinds of landed properties in Lagos, Abuja and Ibadan.
                 </SiteText>
               </Grid>
               <Grid xs={12} pt={5}>
                 <Grid container>
                   <SiteBtn
-                    className={tab === "buy" ? "activeBtn" : ""}
-                    onClick={() => handleTab("buy")}
+                    className={tab === "sale" ? "activeBtn" : ""}
+                    onClick={() => handleTab("sale")}
                   >
                     BUY
                   </SiteBtn>

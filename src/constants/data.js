@@ -26,7 +26,7 @@ export const propertyData = [
       "Water Heater", "Air Condition", "Gym", "Microwave", "Laundry", "Parking", "Power Plant", "Water Front"
 
     ],
-    location: "Lagos",
+    location: "lagos",
     address: "No 12, Ikate Street, Command bus-stop, Lagos",
     country:'Nigeria',
     files: [{
@@ -45,8 +45,8 @@ cloudinary_id:
     },
   
   ],
-    listing: "rent",
-    propertyType: "apartments",
+    listing: "sale",
+    propertyType: "land",
     currency: "NGN",
     realtor: [
       { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
@@ -110,7 +110,7 @@ cloudinary_id:
     propertyAmenities:[
 
     ],
-    location: "Lagos",
+    location: "ibadan",
     address: "No 12, Ikate Street, Command bus-stop, Lagos",
     country:'Nigeria',
     files: [ {
@@ -120,8 +120,8 @@ cloudinary_id:
       cloudinary_id:
       "sr0rgl0dqz5ofqkhgxt4"
           }],
-    listing: "sale",
-    propertyType: "Land",
+    listing: "rent",
+    propertyType: "land",
     currency: "NGN",
     realtor: [
       { name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
@@ -199,7 +199,7 @@ cloudinary_id:
       cloudinary_id:
       "sr0rgl0dqz5ofqkhgxt4"
           }],
-    listing: "rent",
+    listing: "sale",
     propertyType: "apartments",
     currency: "NGN",
     realtor: [
@@ -247,7 +247,7 @@ cloudinary_id:
  
   },
   {
-    id: "3",
+    id: "4",
     title: "3 Bedroom flat",
     price: 1000000,
     didNo:"ioe324",
@@ -482,7 +482,8 @@ export const neighborhoodData = [
 export const destinationData = [
   {
     id: "1",
-    location: "Lagos, Nigeria",
+    location: "lagos",
+    country:'nigeria',
     propertyCount:200,
     files: [{
       

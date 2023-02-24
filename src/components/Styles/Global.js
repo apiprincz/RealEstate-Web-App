@@ -52,6 +52,19 @@ li {
  .searchInput{
   border-bottom:1px solid ${({ theme }) => theme.colors.lineColor} !important;
 }
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border-color: ${({ theme }) => theme.colors.lineColor} !important;
+  color: ${({ theme }) => theme.colors.lineColor} !important;
+  
+}
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+  color: ${({ theme }) => theme.colors.inputColor2} !important;
+  font-size: 0.9rem !important;
 
+}
+.inputLabel {
+  font-family: "Jost", sans-serif !important;
+
+}
 `;
 
