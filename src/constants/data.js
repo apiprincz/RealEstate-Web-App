@@ -26,7 +26,7 @@ export const propertyData = [
       "Water Heater", "Air Condition", "Gym", "Microwave", "Laundry", "Parking", "Power Plant", "Water Front"
 
     ],
-    location: "lagos",
+    location: "ibadan",
     address: "No 12, Ikate Street, Command bus-stop, Lagos",
     country:'Nigeria',
     files: [{
@@ -189,7 +189,7 @@ cloudinary_id:
       "Water Heater", "Air Condition", "Gym", "Microwave", "Laundry", "Parking", "Power Plant", "Water Front"
 
     ],
-    location: "Lagos",
+    location: "lagos",
     address: "No 12, Ikate Street, Command bus-stop, Lagos",
     country:'Nigeria',
     files: [ {
@@ -268,7 +268,7 @@ cloudinary_id:
       "Water Heater", "Air Condition", "Gym", "Microwave", "Laundry", "Parking", "Power Plant", "Water Front"
 
     ],
-    location: "Lagos",
+    location: "lagos",
     address: "No 12, Ikate Street, Command bus-stop, Lagos",
     country:'Nigeria',
     files: [ {

@@ -29,7 +29,7 @@ const PropertyCard = ({ property, index, section }) => {
   return (
     <Grid
       item
-      md={section === "feature" ? 12 : 4}
+      lg={section === "feature" ? 12 : 4}
       sm={section === "feature" ? 12 : 6}
       xs={12}
       className="propertyCard"
@@ -128,12 +128,12 @@ const PropertyCard = ({ property, index, section }) => {
                   </Grid>
               </Grid>}
               {property.propertyFeatures[0].bathroom && 
-              <Grid container xs={4} alignItems='center'>
+              <Grid container xs={4} alignItems='center' style={{flexWrap:'nowrap'}}>
                 <Grid>
                 <SiteIcon><BathroomOutlinedIcon/></SiteIcon>
 
                 </Grid>&nbsp;
-                <Grid>
+                <Grid container style={{whiteSpace:'nowrap'}}>
                 <PropertyTextSmall>{property.propertyFeatures[0].bathroom} Bathrooms</PropertyTextSmall>
                   
                 </Grid>

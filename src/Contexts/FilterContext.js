@@ -29,6 +29,7 @@ export const SET_BATHROOM = "SET_BATHROOM";
 export const SET_PROPERTY_AMENITIES = "SET_PROPERTY_AMENITIES";
 export const SET_SEARCH = "SET_SEARCH";
 export const SET_DID_NO = "SET_DID_NO";
+export const RESET = "RESET";
 
 // Action creators
 export function setPropertyType(e) {
@@ -91,6 +92,11 @@ export function setDidNo(e) {
 
   return { type: SET_DID_NO, payload: e };
 }
+export function clearAll(e) {
+  // e.preventDefault();
+
+  return { type: RESET, payload: e };
+}
 
 // Reducer
 export function filterReducer(state = { ...initialItems }, action) {
@@ -105,7 +111,7 @@ export function filterReducer(state = { ...initialItems }, action) {
       } else {
       console.log("stateProperty2", propertyType)
         
-         propertyType =propertyType.splice(index, 1);
+         propertyType.splice(index, 1);
          
         
       }
@@ -151,10 +157,9 @@ export function filterReducer(state = { ...initialItems }, action) {
       if (priceIndex === -1) {
         price.push(action.payload);
       } else {
-        const myIndex = price.indexOf(action.payload);
-        if (myIndex !== -1) {
-          price.splice(myIndex, 1);
-        }
+        
+          price.splice(priceIndex, 1);
+        
       }
 
       return { ...state, price: price };
@@ -206,6 +211,10 @@ export function filterReducer(state = { ...initialItems }, action) {
       console.log("propertyType", state.didNo);
 
       return { ...state, didNo: action.payload };
+    case RESET:
+      console.log("propertyType", state.didNo);
+
+      return { ...state, ...initialItems };
  
     default:
       return state;

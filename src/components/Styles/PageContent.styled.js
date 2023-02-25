@@ -8,6 +8,12 @@ export const SectionHero = styled.h3`
   color: ${({ theme }) => theme.colors.text};
   font-size: 2.5em;
 `;
+export const SectionHeroSmall = styled.h3`
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 1.5em;
+  font-family:'Jost';
+  font-weight:500
+`;
 
 export const SiteMotto = styled.h1`
   color: ${({ theme }) => theme.colors.text};
@@ -40,6 +46,24 @@ export const SiteText = styled.p`
   font-family: "Jost", sans-serif;
   &:hover {
     color: ${(props) => (props.cursorEnabled ? "hsl(0, 0%, 80%)" : "")};
+  }
+ 
+  color: ${(props) => (props.gray ? "gray " : "")};
+  
+
+`;
+
+export const SiteTextSmall = styled.p`
+  color: ${({ theme }) => theme.colors.textAlt2};
+  cursor: ${props => props.cursorEnabled ? "pointer" : ""};
+  line-height: ${props => props.xlineHeight ? "2rem" : ""};
+  font-size: 0.8em;
+  font-family: 'Jost', sans-serif;
+  text-transform:capitalize;
+  border-color:white;
+  &:hover {
+  color: ${props => props.cursorEnabled ?  "hsl(0, 0%, 80%)" : ""};
+
   }
 `;
 export const SiteTextColored = styled.p`
@@ -155,6 +179,7 @@ export const SiteIcon = styled.p`
   font-size: 0.8em;
   height: 20px;
   font-family: "Jost", sans-serif;
+  cursor:pointer;
   & svg {
     height: 0.8em;
   }

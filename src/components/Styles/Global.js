@@ -10,7 +10,9 @@ export const GlobalStyles = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
 }
-
+span {
+  font-family: "Jost", sans-serif !important;
+}
 body {
   background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
@@ -65,6 +67,20 @@ li {
 .inputLabel {
   font-family: "Jost", sans-serif !important;
 
+}
+.checkBoxContainer svg {
+  color:gray !important
+}
+.modal button.modalBtn {
+  position:fixed;
+  bottom:20px;
+  margin: 0 auto;
+  left:50%;
+  transform:translateX(-50%);
+padding:10px 50px;
+zIndex:1000;
+font-family: "Jost", sans-serif !important;
+white-space:nowrap
 }
 `;
 

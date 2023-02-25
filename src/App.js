@@ -20,11 +20,11 @@ import { ThemeContext } from "./Contexts/ThemeContext";
 import { light, dark } from "./components/Styles/Theme.styled";
 import { GlobalStyles } from "./components/Styles/Global";
 import { ThemeHero } from "./components/Styles/PageContent.styled";
-import Properties from "./Pages/Properties";
 import { useDispatch } from "react-redux";
 import { getProperties } from "./actions/properties";
 import {   useFilterContext } from "./Contexts/FilterContext";
 import { propertyData } from "./constants/data";
+import PropertiesPage from "./Pages/PropertiesPage";
 
 const App = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
@@ -45,7 +45,7 @@ const App = () => {
         <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/properties" element={<Properties />}></Route>
+          <Route path="/properties" element={<PropertiesPage />}></Route>
         </Routes>
       </Router>
     </ThemeProvider>

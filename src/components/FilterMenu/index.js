@@ -7,8 +7,15 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import React, { useState } from "react";
-import { setListing, setLocation, setLocationSingle, setPropertyType, setPropertyTypeSingle, useFilterContext } from "../../Contexts/FilterContext";
+import React, { useEffect, useState } from "react";
+import {
+  setListing,
+  setLocation,
+  setLocationSingle,
+  setPropertyType,
+  setPropertyTypeSingle,
+  useFilterContext,
+} from "../../Contexts/FilterContext";
 import {
   SearchBtn,
   SiteBtn,
@@ -33,21 +40,33 @@ const FilterMenu = () => {
   };
   const handleSearchChange = (e) => {
     setSearchText(e.target.value);
-    console.log("search", searchText)
+    console.log("search", searchText);
     // dispatch(setSearch(search));
   };
   const handleLocationChange = (e) => {
     setLocationValue(e.target.value);
-    console.log("setLocation", locationValue)
+    console.log("setLocation", locationValue);
     dispatch(setLocationSingle(e.target.value));
   };
   const handlePropertyTypeChange = (e) => {
     setPropertyTypeValue(e.target.value);
-    console.log("setPropertyType", propertyTypeValue, e.target.value)
+    console.log("setPropertyType", propertyTypeValue, e.target.value);
     dispatch(setPropertyTypeSingle(e.target.value));
   };
 
-  console.log("window");
+  useEffect(() => {
+    console.log("dgsgdsd", filterItems.location);
+
+    if (filterItems.location.length === 0) {
+      setLocationValue("");
+    }
+
+    if (filterItems.propertyType.length === 0) {
+      setPropertyTypeValue("");
+    }
+  }, [filterItems]);
+
+  console.log("iejjnwenwe", locationValue);
   return (
     <Grid>
       <Grid
@@ -80,7 +99,7 @@ const FilterMenu = () => {
               className="searchInput"
               id="input-with-icon-textfield"
               placeholder="Search for city, neighbourhood..."
-              name='search'
+              name="search"
               onChange={handleSearchChange}
               InputProps={{
                 startAdornment: (
@@ -161,6 +180,10 @@ const FilterMenu = () => {
               <MenuItem value="farm">
                 {" "}
                 <SiteText>Farms</SiteText>
+              </MenuItem>
+              <MenuItem value="shop">
+                {" "}
+                <SiteText>Shop</SiteText>
               </MenuItem>
             </Select>
           </FormControl>
