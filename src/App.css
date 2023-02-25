@@ -30,9 +30,22 @@
 .swiper {
   width: 100% !important;
 }
- .MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list {
+ .MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list, .MuiMenu-list.css-r8u8y9 {
   background: hsl(0,0%,12%) !important;
 }
 .css-1wuw8dw-MuiBreadcrumbs-separator{
-color: gray;
+color: gray !important;
+}
+.MuiOutlinedInput-notchedOutline.css-igs3ac {
+  border-color: gray !important;
+}
+.css-3mf706{
+  color: gray;
+}
+.MuiPaginationItem-previousNext.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root {
+  color:hsl(169,82%,60%) !important;
+}
+
+.MuiPaginationItem-page.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root {
+  color: rgba(25, 232, 22, 0.535) !important;
 }

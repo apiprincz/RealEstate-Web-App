@@ -133,7 +133,7 @@ const FilterMenu = () => {
               className="sortInput"
               value={locationValue}
               label="Location"
-              style={{ borderColor: "white" }}
+              style={{ borderColor: "gray !important" }}
               onChange={handleLocationChange}
             >
               <MenuItem value="abuja">
@@ -160,7 +160,8 @@ const FilterMenu = () => {
               className="sortInput"
               value={propertyTypeValue}
               label="Property Type"
-              style={{ borderColor: "white" }}
+              style={{ borderColor: "gray !important" }}
+             
               onChange={handlePropertyTypeChange}
             >
               <MenuItem value="apartments">
