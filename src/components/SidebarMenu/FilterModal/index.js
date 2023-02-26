@@ -55,6 +55,8 @@ export default function FilterModal() {
           background: "hsl(0,0%,20%)",
           bottom: "68px",
           zIndex: 1000,
+          transform: "translateX(-50%)",
+    left: "50%"
         }}
         container
       >

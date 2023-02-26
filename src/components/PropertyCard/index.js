@@ -13,9 +13,12 @@ import BedroomChildOutlinedIcon from '@mui/icons-material/BedroomChildOutlined';
 import FitScreenOutlinedIcon from '@mui/icons-material/FitScreenOutlined';
 import "./styles.css";
 import { Hr, SiteIcon } from "../Styles/PageContent.styled";
+import { useSortContext } from "../../Contexts/SortContext";
 
 const PropertyCard = ({ property, index, section }) => {
   const [activeIndex, setActiveIndex] = useState(false);
+  const { sortItems, dispatch } = useSortContext();
+
   var nf = Intl.NumberFormat();
 
   const handleMouseEnter = (index) => {
@@ -29,12 +32,15 @@ const PropertyCard = ({ property, index, section }) => {
   return (
     <Grid
       item
-      lg={section === "feature" ? 12 : 4}
-      sm={section === "feature" ? 12 : 6}
+      lg={section === "feature" || sortItems.sortByList ? 12 : sortItems.sortByGrid ? 6 : 4 }
+      sm={section === "feature"  || sortItems.sortByList? 12 : sortItems.sortByGrid ? 12 : 6}
       xs={12}
       className="propertyCard"
       onMouseEnter={() => handleMouseEnter(index)}
       onMouseLeave={() => handleMouseLeave(index)}
+      container={sortItems.sortByList ? true : false}
+      alignItems='center'
+      
     >
       <Grid
         className={
@@ -42,6 +48,7 @@ const PropertyCard = ({ property, index, section }) => {
             ? `propertyCardImage activePropertyCardImage`
             : "propertyCardImage"
         }
+        xs={sortItems.sortByList ? 5 : ''}
       >
         {index === activeIndex && (
           <Grid
@@ -54,8 +61,9 @@ const PropertyCard = ({ property, index, section }) => {
           <img src={property.files[0].secure_url} alt="property image" />
         </a>
       </Grid>
+      <Grid xs={sortItems.sortByList ? 7 : ''}>
       <PropertyContainer>
-        <Grid p={2}>
+        <Grid p={2} >
           <Grid>
             <PropertyTitle>
               <a href={`/property/`}>{property.title}</a>
@@ -116,7 +124,9 @@ const PropertyCard = ({ property, index, section }) => {
 
                 </Grid>
               </Grid>
-              {property.propertyFeatures[0].room &&
+
+
+              {property.propertyFeatures[0].room ?
               <Grid container xs={4} alignItems='center'>
                 <Grid>
                 <SiteIcon><BedroomChildOutlinedIcon/></SiteIcon>
@@ -126,7 +136,7 @@ const PropertyCard = ({ property, index, section }) => {
                 <PropertyTextSmall>{property.propertyFeatures[0].room} Rooms</PropertyTextSmall>
                   
                   </Grid>
-              </Grid>}
+              </Grid> : <Grid></Grid>}
               {property.propertyFeatures[0].bathroom && 
               <Grid container xs={4} alignItems='center' style={{flexWrap:'nowrap'}}>
                 <Grid>
@@ -142,6 +152,8 @@ const PropertyCard = ({ property, index, section }) => {
           </Grid>
         </Grid>
       </PropertyContainer>
+      </Grid>
+    
     </Grid>
   );
 };

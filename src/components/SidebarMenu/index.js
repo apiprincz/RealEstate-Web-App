@@ -35,6 +35,7 @@ import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import CallMadeOutlinedIcon from "@mui/icons-material/CallMadeOutlined";
 import useWindowDimensions from "../../Hooks/screen";
 import { PropertyTitle } from "../Styles/Property.styled";
+import { useNavigate } from "react-router-dom";
 
 const SidebarMenu = () => {
   const [tab, setTab] = useState("sale");
@@ -45,6 +46,7 @@ const SidebarMenu = () => {
   const [areaValue, setAreaValue] = useState("");
   const { filterItems, dispatch } = useFilterContext();
   const { width } = useWindowDimensions();
+  const navigate = useNavigate()
 
   const handleTab = (e) => {
     setTab(e);
@@ -60,21 +62,29 @@ const SidebarMenu = () => {
     setPropertyTypeValue(e.target.name);
     console.log("sidebar", e.target.name);
     dispatch(setPropertyType(e.target.name));
+    navigate(`/properties?page=1`);
+
   };
   const handleLocationChange = (e) => {
     setLocationValue(e.target.name);
     console.log("setLocation", locationValue);
     dispatch(setLocation(e.target.name));
+    navigate(`/properties?page=1`);
+    
   };
   const handlePriceChange = (e) => {
     setPriceValue(e.target.name);
     console.log("sidebar", e.target.name);
     dispatch(setPrice(e.target.name));
+    navigate(`/properties?page=1`);
+
   };
   const handleAreaChange = (e) => {
     setAreaValue(e.target.name);
     console.log("sidebar", e.target.name);
     dispatch(setArea(e.target.name));
+    navigate(`/properties?page=1`);
+
   };
 
   console.log("treyty", filterItems);

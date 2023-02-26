@@ -26,7 +26,7 @@ import {
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import CallMadeOutlinedIcon from "@mui/icons-material/CallMadeOutlined";
 import useWindowDimensions from "../../Hooks/screen";
-import { useSortContext } from "../../Contexts/SortContext";
+import { setSortBy, setSortByGrid, setSortByList, useSortContext } from "../../Contexts/SortContext";
 import GridViewIcon from '@mui/icons-material/GridView';
 import ListIcon from '@mui/icons-material/List';
 
@@ -41,10 +41,18 @@ const SortMenu = () => {
 
   const handleChange = (e) => {
     setSortValue(e.target.value);
-    console.log("setLocation", sortValue);
-    // dispatch(setLocationSingle(e.target.value));
+    console.log("setLocation", e.target.value);
+    dispatch(setSortBy(e.target.value));
   };
-  console.log("window");
+  const handleGrid = () => {
+
+    dispatch(setSortByGrid());
+  };
+  const handleList = (e) => {
+    
+    dispatch(setSortByList());
+  };
+  console.log("window", sortItems.sortBy, sortItems);
   return (
     <Grid
       container
@@ -52,10 +60,10 @@ const SortMenu = () => {
       justifyContent="space-between"
       md={6}
       sm={7}
-      xs={12}
+      xs={width >= 525 ? 12: 6}
       // style={{background:'red'}}
     >
-      <Grid xs={6} sm={6}>
+      <Grid xs={width >= 525 ? 6 : 12} sm={6}>
         <FormControl fullWidth>
           <InputLabel
             id="demo-simple-select-label"
@@ -87,11 +95,11 @@ const SortMenu = () => {
               {" "}
               <SiteText>No of Rooms</SiteText>
             </MenuItem>
-            <MenuItem value="viewerCount">
+            <MenuItem value="viewersCount">
               {" "}
               <SiteText>Most Viewed</SiteText>
             </MenuItem>
-            <MenuItem value="favoriteCount">
+            <MenuItem value="favoritesCount">
               {" "}
               <SiteText>Most Favorited</SiteText>
             </MenuItem>
@@ -108,14 +116,18 @@ const SortMenu = () => {
           borderRight: "1px solid white",
         }}
       ></Grid>
-      <Grid container justifyContent="space-between" xs={3} sm={2}>
-        <SiteIcon>
+         {width >= 525 &&<Grid container justifyContent="flex-end"  xs={3} sm={2}>
+        <SiteIcon onClick={handleGrid}>
           <GridViewIcon />
         </SiteIcon>
-        <SiteIcon>
+     <SiteIcon onClick={handleList}>
+         &nbsp;
+         &nbsp;
+         &nbsp;
+         &nbsp;
           <ListIcon />
         </SiteIcon>
-      </Grid>
+      </Grid>}
     </Grid>
   );
 };

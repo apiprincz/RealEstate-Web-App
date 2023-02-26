@@ -19,12 +19,15 @@ import {
 import {
   SearchBtn,
   SiteBtn,
+  SiteIcon,
   SiteSearchBox,
   SiteText,
 } from "../Styles/PageContent.styled";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import CallMadeOutlinedIcon from "@mui/icons-material/CallMadeOutlined";
 import useWindowDimensions from "../../Hooks/screen";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { useNavigate } from "react-router-dom";
 
 const FilterMenu = () => {
   const [tab, setTab] = useState("sale");
@@ -33,6 +36,7 @@ const FilterMenu = () => {
   const [propertyTypeValue, setPropertyTypeValue] = useState("");
   const { filterItems, dispatch } = useFilterContext();
   const { width } = useWindowDimensions();
+  const navigate = useNavigate()
 
   const handleTab = (e) => {
     setTab(e);
@@ -52,6 +56,8 @@ const FilterMenu = () => {
     setPropertyTypeValue(e.target.value);
     console.log("setPropertyType", propertyTypeValue, e.target.value);
     dispatch(setPropertyTypeSingle(e.target.value));
+    navigate(`/properties?page=1`);
+  
   };
 
   useEffect(() => {
@@ -118,7 +124,7 @@ const FilterMenu = () => {
           </Grid>
         )}
 
-        <Grid item md={1.5} sm={4} xs={6}>
+        <Grid item md={2} sm={6} xs={6}>
           <FormControl fullWidth>
             <InputLabel
               id="demo-simple-select-label"
@@ -149,7 +155,7 @@ const FilterMenu = () => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item md={1.5} sm={4} xs={6}>
+        <Grid item md={2} sm={6} xs={6}>
           <FormControl fullWidth>
             <InputLabel className="inputLabel" style={{ color: "blueviolet" }}>
               {" "}
@@ -190,26 +196,26 @@ const FilterMenu = () => {
           </FormControl>
         </Grid>
 
-        {width >= 600 && (
+        {/* {width >= 600 && (
           <Grid item md={1.5} sm={4} xs={12} container justifyContent="center">
-            <SiteText cursorEnabled>
-              Advanced Search <CallMadeOutlinedIcon />
+            <SiteText cursorEnabled style={{whiteSpace:'nowrap',display:'flex', alignItems:'center'}}>
+              Advanced Search <SiteIcon><KeyboardArrowDownIcon /></SiteIcon> 
             </SiteText>
           </Grid>
-        )}
+        )} */}
         {(width >= 900 || width <= 600) && (
-          <Grid item sm={3} md={2} xs={12}>
+          <Grid item sm={3} md={2.5} xs={12}>
             <SearchBtn fullWidth>Search</SearchBtn>
           </Grid>
         )}
 
-        {width < 600 && (
+        {/* {width < 600 && (
           <Grid item md={1.5} sm={4} xs={12} container justifyContent="center">
             <SiteText cursorEnabled>
-              Advanced Search <CallMadeOutlinedIcon />
+              Advanced Search <KeyboardArrowDownIcon />
             </SiteText>
           </Grid>
-        )}
+        )} */}
         {/* <Grid md={1.5}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label"  className='inputLabel' style={{color:'blueviolet'}}>Sort By Location</InputLabel>
