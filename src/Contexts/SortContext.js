@@ -46,15 +46,18 @@ export function sortReducer(state = { ...initialItems }, action) {
 
     case SET_SORT_BY_GRID:
       let sortByGrid = state.sortByGrid;
+   
+
 
       console.log("sort", sortByGrid);
 
-      return { ...state, sortByGrid: !sortByGrid };
+      return { ...state, sortByGrid: !sortByGrid, sortByList:false };
 
     case SET_SORT_BY_LIST:
-      let sortByList = state.sortByList;
+  
+     let sortByList = state.sortByList;
 
-      return { ...state, sortByList: !sortByList };
+      return { ...state ,sortByList: !sortByList, sortByGrid:false};
 
     case SET_SORT_BY_LOCATION:
       console.log("sort", action.payload);
