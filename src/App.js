@@ -25,6 +25,7 @@ import { getProperties } from "./actions/properties";
 import {   useFilterContext } from "./Contexts/FilterContext";
 import { propertyData } from "./constants/data";
 import PropertiesPage from "./Pages/PropertiesPage";
+import AgentPage from "./Pages/AgentPage";
 
 const App = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
@@ -46,6 +47,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/properties" element={<PropertiesPage />}></Route>
+          <Route path="/agents" element={<AgentPage />}></Route>
         </Routes>
       </Router>
     </ThemeProvider>

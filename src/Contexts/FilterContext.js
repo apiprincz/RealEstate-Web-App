@@ -14,6 +14,7 @@ const initialItems = {
   propertyAmenities: [],
   search: "",
   didNo: "",
+  cityArea:''
 };
 
 // Actions
@@ -29,6 +30,7 @@ export const SET_BATHROOM = "SET_BATHROOM";
 export const SET_PROPERTY_AMENITIES = "SET_PROPERTY_AMENITIES";
 export const SET_SEARCH = "SET_SEARCH";
 export const SET_DID_NO = "SET_DID_NO";
+export const SET_CITY_AREA = "SET_CITY_AREA";
 export const RESET = "RESET";
 
 // Action creators
@@ -92,6 +94,11 @@ export function setDidNo(e) {
 
   return { type: SET_DID_NO, payload: e };
 }
+export function setCityArea(e) {
+  // e.preventDefault();
+
+  return { type: SET_CITY_AREA, payload: e };
+}
 export function clearAll(e) {
   // e.preventDefault();
 
@@ -145,7 +152,8 @@ export function filterReducer(state = { ...initialItems }, action) {
      
       console.log("stateProperty",action.payload)
 
-      return { ...state, location: [action.payload] };
+
+  return { ...state, location: [action.payload],    cityArea:''};
    
     
       case SET_LISTING:
@@ -204,6 +212,7 @@ export function filterReducer(state = { ...initialItems }, action) {
       return { ...state, propertyAmenities: propertyAmenities };
     case SET_SEARCH:
       console.log("propertyType", state.search);
+      
 
       return { ...state, search: action.payload };
 
@@ -211,6 +220,10 @@ export function filterReducer(state = { ...initialItems }, action) {
       console.log("propertyType", state.didNo);
 
       return { ...state, didNo: action.payload };
+    case SET_CITY_AREA:
+      console.log("cityArea", state.cityArea);
+
+      return { ...state, cityArea: action.payload };
     case RESET:
       console.log("propertyType", state.didNo);
 

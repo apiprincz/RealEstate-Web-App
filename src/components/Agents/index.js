@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { propertyData } from "../../constants/data";
 import { clearAll, useFilterContext } from "../../Contexts/FilterContext";
 import { useSortContext } from "../../Contexts/SortContext";
+import AgentCard from "../AgentCard";
 import Paginate from "../Pagination";
 import PropertyCard from "../PropertyCard";
 import SortMenu from "../SortMenu";
@@ -15,18 +16,20 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-const Properties = ({ filterProperties }) => {
+const Agents = ({ filterAgents }) => {
   const { filterItems, dispatch } = useFilterContext();
   const navigate = useNavigate();
   const query = useQuery();
-  const propertyPerPage = 9;
+  const agentPerPage = 12;
   const page = query.get("page") || 1;
 
   const [startIndex, setStartIndex] = useState();
   const [endIndex, setEndIndex] = useState();
-  const [slicedProperties, setSlicedProperties] = useState([]);
+  const [slicedAgents, setSlicedProperties] = useState([]);
   const [numberOfPages, setNumberOfPages] = useState();
   const { sortItems } = useSortContext();
+
+  console.log("sdfjsdjfjsdfjsd", filterAgents)
 
   const handleReset = () => {
     dispatch(clearAll());
@@ -36,86 +39,86 @@ const Properties = ({ filterProperties }) => {
 
   useEffect(() => {
     // setPage(1)
-    navigate(`/properties?page=1`);
+    navigate(`/agents?page=1`);
   }, []);
   useEffect(() => {
-    if (filterProperties) {
+    if (filterAgents) {
       const numberOfPages = Math.ceil(
-        filterProperties?.length / propertyPerPage
+        filterAgents?.length / agentPerPage
       );
       setNumberOfPages(numberOfPages);
     }
-  }, [filterProperties]);
+  }, [filterAgents]);
 
   // useEffect(() => {
-  //   if (sortItems && filterProperties && page) {
-  //     let sortProperties
+  //   if (sortItems && filterAgents && page) {
+  //     let sortAgents
 
   //   }
-  // }, [sortItems, page, filterProperties]);
+  // }, [sortItems, page, filterAgents]);
 
   useEffect(() => {
-    let slicedProperties;
-    let sortProperties;
+    let slicedAgents;
+    let sortAgents;
 
-    if (page && filterProperties) {
-      const startIndex = (Number(page) - 1) * Number(propertyPerPage);
-      const endIndex = Number(page) * Number(propertyPerPage);
+    if (page && filterAgents) {
+      const startIndex = (Number(page) - 1) * Number(agentPerPage);
+      const endIndex = Number(page) * Number(agentPerPage);
       setStartIndex(startIndex);
       setEndIndex(endIndex);
-      slicedProperties = filterProperties.slice(startIndex, endIndex);
-      setSlicedProperties([...slicedProperties]);  
+      slicedAgents = filterAgents.slice(startIndex, endIndex);
+      setSlicedProperties([...slicedAgents]);  
 
     }
 
     if (sortItems) {
       switch (sortItems.sortBy) {
         case "lth":
-          sortProperties = slicedProperties.sort(function (a, b) {
+          sortAgents = slicedAgents.sort(function (a, b) {
             return a.price - b.price;
           });
-          setSlicedProperties([...sortProperties]);
-          console.log("pageChanges", slicedProperties);
+          setSlicedProperties([...sortAgents]);
+          console.log("pageChanges", slicedAgents);
 
           break;
         case "htl":
-          sortProperties = slicedProperties.sort(function (a, b) {
+          sortAgents = slicedAgents.sort(function (a, b) {
             return b.price - a.price;
           });
-          setSlicedProperties([...sortProperties]);
-          console.log("pageChanges", slicedProperties);
+          setSlicedProperties([...sortAgents]);
+          console.log("pageChanges", slicedAgents);
 
           break;
         case "createdDate":
-          sortProperties = slicedProperties.sort(function (a, b) {
+          sortAgents = slicedAgents.sort(function (a, b) {
             return new Date(b.createdAt) - new Date(a.createdAt);
           });
-          setSlicedProperties([...sortProperties]);
-          console.log("pageChanges", slicedProperties);
+          setSlicedProperties([...sortAgents]);
+          console.log("pageChanges", slicedAgents);
 
           break;
         case "roomsCount":
-          sortProperties = slicedProperties.sort(function (a, b) {
-            return b.propertyFeatures[0].room - a.propertyFeatures[0].room;
+          sortAgents = slicedAgents.sort(function (a, b) {
+            return b.propertyFeatures[0]?.room - a.propertyFeatures[0]?.room;
           });
-          setSlicedProperties([...sortProperties]);
-          console.log("pageChanges", slicedProperties);
+          setSlicedProperties([...sortAgents]);
+          console.log("pageChanges", slicedAgents);
 
           break;
         case "viewersCount":
-          sortProperties = slicedProperties.sort(function (a, b) {
-            return b.viewerCount.length- a.viewerCount.length;
+          sortAgents = slicedAgents.sort(function (a, b) {
+            return b.viewerCount?.length- a.viewerCount?.length;
           });
-          setSlicedProperties([...sortProperties]);
-          console.log("pageChanges", slicedProperties);
+          setSlicedProperties([...sortAgents]);
+          console.log("pageChanges", slicedAgents);
 
           break;
         case "favoritesCount":
-          sortProperties = slicedProperties.sort(function (a, b) {
-            return b.favoriteCount.length - a.favoriteCount.length;
+          sortAgents = slicedAgents.sort(function (a, b) {
+            return b.favoriteCount?.length - a.favoriteCount?.length;
           });
-          setSlicedProperties([...sortProperties]);
-          console.log("pageChanges", slicedProperties);
+          setSlicedProperties([...sortAgents]);
+          console.log("pageChanges", slicedAgents);
 
           break;
 
@@ -123,13 +126,13 @@ const Properties = ({ filterProperties }) => {
           break;
       }
     }
-  }, [page, filterProperties, sortItems]);
+  }, [page, filterAgents, sortItems]);
 
   console.log("index", startIndex, endIndex, page);
 
-  if (filterProperties?.length <= 0) {
+  if (filterAgents?.length <= 0) {
     return (
-      <Grid px={2} xs={12} md={9} lg={9.5}>
+      <Grid px={2} xs={12} md={12} lg={12}>
         <Grid
           xs={12}
           pb={4}
@@ -140,9 +143,9 @@ const Properties = ({ filterProperties }) => {
           <Grid>
             <SiteText gray>
               <span style={{ color: "rgb(69, 237, 206)" }}>
-                {filterProperties?.length}{" "}
+                {filterAgents?.length}{" "}
               </span>{" "}
-              Propert{filterProperties?.length > 1 ? "ies" : 'y'} found
+              Agents found
             </SiteText>
           </Grid>
 
@@ -158,7 +161,7 @@ const Properties = ({ filterProperties }) => {
           flexDirection="column"
         >
           <SiteText gray>
-            <span style={{ color: "rgb(69, 237, 206)" }}>No </span> Properties
+            <span style={{ color: "rgb(69, 237, 206)" }}>No </span> Agents
             found for your search
           </SiteText>
           <br />
@@ -172,7 +175,7 @@ const Properties = ({ filterProperties }) => {
   }
 
   return (
-    <Grid px={2} xs={12} md={9} lg={9.5}>
+    <Grid px={2} xs={12} md={12} lg={12}>
       <Grid
         xs={12}
         pb={4}
@@ -183,9 +186,9 @@ const Properties = ({ filterProperties }) => {
         <Grid>
           <SiteText gray>
             <span style={{ color: "rgb(69, 237, 206)" }}>
-              {filterProperties?.length}{" "}
+              {filterAgents?.length}{" "}
             </span>{" "}
-            Properties found
+            Agent{filterAgents?.length > 1 && "s"} found
           </SiteText>
         </Grid>
 
@@ -194,8 +197,8 @@ const Properties = ({ filterProperties }) => {
 
       <Grid xs={12}>
         <Grid container spacing={2} style={{ minHeight: "70vh" }}>
-          {slicedProperties?.map((property, index) => (
-            <PropertyCard property={property} index={index} />
+          {slicedAgents?.map((agent, index) => (
+            <AgentCard agent={agent} index={index} />
           ))}
         </Grid>
 
@@ -207,4 +210,4 @@ const Properties = ({ filterProperties }) => {
   );
 };
 
-export default Properties;
+export default Agents;

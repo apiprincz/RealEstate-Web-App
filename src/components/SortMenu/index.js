@@ -68,7 +68,7 @@ const SortMenu = () => {
           <InputLabel
             id="demo-simple-select-label"
             className="inputLabel"
-            style={{ color: "blueviolet" }}
+            style={{ color: "wheat" }}
           >
             Sort By
           </InputLabel>
@@ -81,20 +81,20 @@ const SortMenu = () => {
             style={{ borderColor: "white" }}
             onChange={handleChange}
           >
-            <MenuItem value="lth">
+           {window.location.pathname !=="/agents" && <MenuItem value="lth">
               <SiteText>Price:Low To High</SiteText>
-            </MenuItem>
-            <MenuItem value="htl">
+            </MenuItem>}
+            {window.location.pathname !=="/agents" &&  <MenuItem value="htl">
               <SiteText>Price:High To Low</SiteText>
-            </MenuItem>
-            <MenuItem value="createdDate">
+            </MenuItem>}
+            {window.location.pathname !=="/agents" && <MenuItem value="createdDate">
               {" "}
               <SiteText>Recently Created</SiteText>
-            </MenuItem>
-            <MenuItem value="roomsCount">
+            </MenuItem>}
+            {window.location.pathname !=="/agents" && <MenuItem value="roomsCount">
               {" "}
               <SiteText>No of Rooms</SiteText>
-            </MenuItem>
+            </MenuItem>}
             <MenuItem value="viewersCount">
               {" "}
               <SiteText>Most Viewed</SiteText>
@@ -120,13 +120,13 @@ const SortMenu = () => {
         <SiteIcon onClick={handleGrid}>
           <GridViewIcon />
         </SiteIcon>
-     <SiteIcon onClick={handleList}>
+    {window.location.pathname !== "/agents" && <SiteIcon onClick={handleList}>
          &nbsp;
          &nbsp;
          &nbsp;
          &nbsp;
           <ListIcon />
-        </SiteIcon>
+        </SiteIcon>}
       </Grid>}
     </Grid>
   );

@@ -24,13 +24,14 @@ import {
   setPropertyType,
   useFilterContext,
 } from "../../Contexts/FilterContext";
-import { propertyData } from "../../constants/data";
+import { agentData } from "../../constants/data";
 import FilterMenu from "../../components/FilterMenu";
 import BreadCrumbs from "../../components/BreadCrumbs";
 import SidebarMenu from "../../components/SidebarMenu";
 import Properties from "../../components/Properties";
 import FilterModal from "../../components/SidebarMenu/FilterModal";
 import useWindowDimensions from "../../Hooks/screen";
+import Agents from "../../components/Agents";
 
 // Initial state
 const initialItems = {
@@ -46,15 +47,14 @@ const initialItems = {
   didNo: "",
 };
 
-const PropertiesPage = () => {
+const AgentPage = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
   const { filterItems, dispatch } = useFilterContext();
 
   // console.log("filterItems", filterItems)
   const [tab, setTab] = useState("sale");
-  const [filterProperties, setFilterProperties] = useState();
+  const [filterAgents, setFilterAgents] = useState();
   const { width } = useWindowDimensions();
-
 
   const handleTab = (tab) => {
     setTab(tab);
@@ -62,88 +62,103 @@ const PropertiesPage = () => {
     dispatch(setPropertyType(tab));
   };
   useEffect(() => {
-    setFilterProperties([...propertyData]);
+    setFilterAgents([...agentData]);
   }, []);
   useEffect(() => {
-    if (propertyData) {
+    if (agentData) {
       const listing = "rent";
       // const propertyType = "land";
       const propertyType = ["land", "apartments"];
-      let newFilterProperties = [...propertyData];
-      console.log("teywyeuui", filterProperties, filterItems);
+      let newFilterAgents = [...agentData];
+      console.log("teywyeuui", filterAgents, filterItems,newFilterAgents);
 
       if (filterItems.propertyType.length > 0) {
-        newFilterProperties = newFilterProperties.filter(
+        newFilterAgents = newFilterAgents.filter(
           (x) => filterItems.propertyType.indexOf(x.propertyType) !== -1
         );
 
-        console.log("etwyypropertyType", newFilterProperties);
+        console.log("etwyypropertyType", newFilterAgents);
       }
       if (filterItems.location.length > 0) {
-        newFilterProperties = newFilterProperties.filter(
+        newFilterAgents = newFilterAgents.filter(
           (x) => filterItems.location.indexOf(x.location) !== -1
         );
+        console.log("filterAgent",newFilterAgents, filterItems.location);
 
-        console.log("uweuuuwelocation", newFilterProperties);
+        console.log("agentlocation", newFilterAgents);
       }
 
       if (filterItems.listing) {
         console.log("043894", filterItems);
 
-        newFilterProperties = newFilterProperties.filter(
+        newFilterAgents = newFilterAgents.filter(
           (x) => x.listing === filterItems.listing
+        );
+      }
+      if (filterItems.cityArea) {
+        console.log("043894", filterItems);
+
+        newFilterAgents = newFilterAgents.filter(
+          (x) => x.area === filterItems.cityArea
         );
       }
       if (filterItems.price.length > 0) {
         console.log("043894", filterItems);
 
-        newFilterProperties = newFilterProperties.filter(
+        newFilterAgents = newFilterAgents.filter(
           (x) => filterItems.price.indexOf(x.price) !== -1
         );
 
-        console.log("123456", newFilterProperties);
+        console.log("123456", newFilterAgents);
       }
 
       if (filterItems.area.length > 0) {
-        newFilterProperties = newFilterProperties.filter(
+        newFilterAgents = newFilterAgents.filter(
           (x) => filterItems.area.indexOf(x.propertyFeatures[0].area) !== -1
         );
 
-        console.log("123456", newFilterProperties);
+        console.log("123456", newFilterAgents);
       }
       if (filterItems.room) {
-        newFilterProperties = newFilterProperties.filter(
+        newFilterAgents = newFilterAgents.filter(
           (x) => x.propertyFeatures[0].room === filterItems.room
         );
       }
       if (filterItems.bathroom) {
-        newFilterProperties = newFilterProperties.filter(
+        newFilterAgents = newFilterAgents.filter(
           (x) => x.propertyFeatures[0].bathroom === filterItems.bathroom
         );
       }
       if (filterItems.propertyAmenities.length > 0) {
-        newFilterProperties = newFilterProperties.filter(
+        newFilterAgents = newFilterAgents.filter(
           (x) => filterItems.propertyAmenities.indexOf(x) !== -1
         );
 
-        console.log("123456", newFilterProperties);
+        console.log("123456", newFilterAgents);
       }
       if (filterItems.search) {
-        newFilterProperties = newFilterProperties.filter(
-          (x) => x.search === filterItems.search
+    console.log("jdsjjjd", filterItems.search)
+        newFilterAgents = newFilterAgents.filter(
+          (x) => x.name.toLowerCase().indexOf(filterItems.search) >= 0
         );
+
+
+   
+        // newFilterAgents = newFilterAgents.filter(
+        //   (x) => new RegExp('\\b' + x.name + '\\b').test(filterItems.search)
+        // );
       }
       if (filterItems.didNo) {
-        newFilterProperties = newFilterProperties.filter(
+        newFilterAgents = newFilterAgents.filter(
           (x) => x.didNo === filterItems.didNo
         );
       }
-      setFilterProperties(newFilterProperties);
+      setFilterAgents(newFilterAgents);
     }
   }, [filterItems]);
 
   console.log("filterItems", filterItems);
-  console.log("filterProperties", filterProperties);
+  console.log("filterAgents345566", filterAgents);
 
   return (
     <Layout>
@@ -151,25 +166,18 @@ const PropertiesPage = () => {
         <Grid xs={12} p={2}>
           <FilterMenu />
           <Grid pt={5}>
-            <SectionHero>Properties In Nigeria</SectionHero>
+            <SectionHero>Agents List</SectionHero>
           </Grid>
           <Grid pt={3}>
             <BreadCrumbs></BreadCrumbs>
           </Grid>
           <Grid container pt={5}>
-          <Grid md={3} lg={2.5}>
-            {width <= 900 ? <FilterModal/> :
-           <SidebarMenu/>}
-          </Grid>
-          <Properties filterProperties={filterProperties}/>
+            <Agents filterAgents={filterAgents} />
           </Grid>
         </Grid>
-        {/* <Button variant='contained' size='small' style={{fontFamily:'Jost', position:'fixed', bottom:'0',left:'20px', width:'250px'}} >
-        Reset Filter
-      </Button> */}
       </ThemeContainer>
     </Layout>
   );
 };
 
-export default PropertiesPage;
+export default AgentPage;

@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 export default function Paginate({page, numberOfPages}) {
 
+  console.log("dfhhdfhdf", window.location.pathname)
 
   return (
     <Stack spacing={2}>
@@ -17,7 +18,7 @@ export default function Paginate({page, numberOfPages}) {
         renderItem={(item) => (
           <PaginationItem
           component={Link}
-          to={`/properties?page=${item.page}`}
+          to={window.location.pathname ==="/agents" ? `/agents?page=${item.page}` : `/properties?page=${item.page}`}
             slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
             {...item}
           />

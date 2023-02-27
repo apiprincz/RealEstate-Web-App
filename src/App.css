@@ -42,10 +42,11 @@ color: gray !important;
 .css-3mf706{
   color: gray;
 }
-.MuiPaginationItem-previousNext.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root {
+.MuiPaginationItem-previousNext.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root, .MuiPaginationItem-textPrimary.MuiPaginationItem-previousNext.css-1omp2b7{
   color:hsl(169,82%,60%) !important;
 }
 
-.MuiPaginationItem-page.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root {
+.MuiPaginationItem-page.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root,.MuiPaginationItem-page.css-1omp2b7 {
   color: rgba(25, 232, 22, 0.535) !important;
 }
+

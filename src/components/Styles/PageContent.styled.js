@@ -44,6 +44,7 @@ export const SiteText = styled.p`
   line-height: ${(props) => (props.xlineHeight ? "2rem" : "")};
   font-size: 0.9em;
   font-family: "Jost", sans-serif;
+  text-transform:capitalize;
   &:hover {
     color: ${(props) => (props.cursorEnabled ? "hsl(0, 0%, 80%)" : "")};
   }
