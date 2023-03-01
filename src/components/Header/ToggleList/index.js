@@ -114,21 +114,21 @@ const ToggleList = () => {
                <ul className="profileList">
             {" "}
             <li>
-              <a href="/account">
+              <a href="/account?tab=profile">
                 <Grid container alignItems="center">
                   <PersonIcon /> <span>Profile</span>
                 </Grid>
               </a>
             </li>
             <li>
-              <a href="/favourites">
+              <a href="/account?tab=my-favorites">
                 <Grid container alignItems="center">
                   <FavoriteIcon /> <span>Favourites</span>
                 </Grid>
               </a>
             </li>
             <li>
-              <a href="/properties">
+              <a href="/account?tab=properties">
                 <Grid container alignItems="center">
                   <HomeIcon /> <span> My Properties</span>
                 </Grid>

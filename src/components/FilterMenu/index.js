@@ -31,8 +31,8 @@ import CallMadeOutlinedIcon from "@mui/icons-material/CallMadeOutlined";
 import useWindowDimensions from "../../Hooks/screen";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useNavigate } from "react-router-dom";
-import {city} from "../../constants/data"
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import { city } from "../../constants/data";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 
 const FilterMenu = () => {
   const [tab, setTab] = useState("sale");
@@ -89,18 +89,15 @@ const FilterMenu = () => {
   }, [filterItems]);
 
   useEffect(() => {
-    
-    if(filterItems && window.location.pathname === "/agents"){
-     const selectedCity = city.filter(city => 
-       city.city===filterItems.location[0]
-        )
-        console.log("city", selectedCity[0])
+    if (filterItems && window.location.pathname === "/agents") {
+      const selectedCity = city.filter(
+        (city) => city.city === filterItems.location[0]
+      );
+      console.log("city", selectedCity[0]);
 
-        setSelectedCity(selectedCity[0])
+      setSelectedCity(selectedCity[0]);
     }
-  
-  }, [filterItems])
-  
+  }, [filterItems]);
 
   console.log("yweywrhhwrh", selectedCity);
   return (
@@ -162,7 +159,9 @@ const FilterMenu = () => {
         </Grid>
         {width <= 900 && width >= 600 && (
           <Grid item sm={3} md={2} xs={4}>
-            <SearchBtn fullWidth onClick={handleReset}>Reset</SearchBtn>
+            <SearchBtn fullWidth onClick={handleReset}>
+              Reset
+            </SearchBtn>
           </Grid>
         )}
 
@@ -198,67 +197,69 @@ const FilterMenu = () => {
           </FormControl>
         </Grid>
         <Grid item md={2} sm={6} xs={6}>
-          {window.location.pathname === "/agents" ?
-          <FormControl disabled={filterItems.location.length > 0 ? false : true} fullWidth>
-            <InputLabel className="inputLabel" style={{ color: "wheat" }}>
-              {" "}
-              Area
-            </InputLabel>
-       <Select
-              labelId="demo-simple-select-label"
-              className="sortInput"
-              value={cityAreaValue}
-              label="Area"
-              style={{ borderColor: "gray !important" }}
-              onChange={handleAreaChange}
+          {window.location.pathname === "/agents" ? (
+            <FormControl
+              disabled={filterItems.location.length > 0 ? false : true}
+              fullWidth
             >
-              {selectedCity?.areas?.map((city, index) => 
-                <MenuItem value={city.area}>
-                <SiteText>{city.label}</SiteText>
-              </MenuItem>
-              )}
-            
-             
-            </Select>
-          </FormControl> : 
-          <FormControl fullWidth>
-          <InputLabel className="inputLabel" style={{ color: "wheat" }}>
-            {" "}
-            Property Type
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            className="sortInput"
-            value={propertyTypeValue}
-            label="Property Type"
-            style={{ borderColor: "gray !important" }}
-            onChange={handlePropertyTypeChange}
-          >
-            <MenuItem value="apartments">
-              <SiteText>Apartments</SiteText>
-            </MenuItem>
-            <MenuItem value="land">
-              <SiteText>Land</SiteText>
-            </MenuItem>
-            <MenuItem value="office">
-              {" "}
-              <SiteText>Offices</SiteText>
-            </MenuItem>
-            <MenuItem value="warehouse">
-              {" "}
-              <SiteText>Ware Houses</SiteText>
-            </MenuItem>
-            <MenuItem value="farm">
-              {" "}
-              <SiteText>Farms</SiteText>
-            </MenuItem>
-            <MenuItem value="shop">
-              {" "}
-              <SiteText>Shop</SiteText>
-            </MenuItem>
-          </Select>
-        </FormControl>
-          }
+              <InputLabel className="inputLabel" style={{ color: "wheat" }}>
+                {" "}
+                Area
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                className="sortInput"
+                value={cityAreaValue}
+                label="Area"
+                style={{ borderColor: "gray !important" }}
+                onChange={handleAreaChange}
+              >
+                {selectedCity?.areas?.map((city, index) => (
+                  <MenuItem value={city.area}>
+                    <SiteText>{city.label}</SiteText>
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          ) : (
+            <FormControl fullWidth>
+              <InputLabel className="inputLabel" style={{ color: "wheat" }}>
+                {" "}
+                Property Type
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                className="sortInput"
+                value={propertyTypeValue}
+                label="Property Type"
+                style={{ borderColor: "gray !important" }}
+                onChange={handlePropertyTypeChange}
+              >
+                <MenuItem value="apartments">
+                  <SiteText>Apartments</SiteText>
+                </MenuItem>
+                <MenuItem value="land">
+                  <SiteText>Land</SiteText>
+                </MenuItem>
+                <MenuItem value="office">
+                  {" "}
+                  <SiteText>Offices</SiteText>
+                </MenuItem>
+                <MenuItem value="warehouse">
+                  {" "}
+                  <SiteText>Ware Houses</SiteText>
+                </MenuItem>
+                <MenuItem value="farm">
+                  {" "}
+                  <SiteText>Farms</SiteText>
+                </MenuItem>
+                <MenuItem value="shop">
+                  {" "}
+                  <SiteText>Shop</SiteText>
+                </MenuItem>
+              </Select>
+            </FormControl>
+          )}
         </Grid>
 
         {/* {width >= 600 && (
@@ -270,7 +271,9 @@ const FilterMenu = () => {
         )} */}
         {(width >= 900 || width <= 600) && (
           <Grid item sm={3} md={2.5} xs={12}>
-            <SearchBtn fullWidth onClick={handleReset}>Reset</SearchBtn>
+            <SearchBtn fullWidth onClick={handleReset}>
+              Reset
+            </SearchBtn>
           </Grid>
         )}
 

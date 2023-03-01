@@ -19,6 +19,43 @@ body {
   font-family: 'Quicksand', sans-serif;
   overflow-x: hidden;
 }
+.settingsMenuTabContainer a {
+ 
+  color: ${({ theme }) => theme.colors.text};
+  font-family: 'Quicksand', sans-serif;
+
+}
+.siteText, input, select {
+ 
+  color: ${({ theme }) => theme.colors.text} !important;
+  font-family: 'Quicksand', sans-serif !important;
+
+}
+.siteText svg{
+ 
+  color: ${({ theme }) => theme.colors.textColored};
+  font-family: 'Quicksand', sans-serif;
+
+}
+
+.siteContainerRow  {
+ 
+  background: ${({ theme }) => theme.colors.background2} !important;
+  font-family: 'Quicksand', sans-serif;
+  border-bottom:1px solid gray !important
+  // border-bottom:1px solid ${({ theme }) => theme.colors.background2} !important;
+
+
+}
+.siteContainerContent  {
+ 
+  background: ${({ theme }) => theme.colors.background} !important;
+  font-family: 'Quicksand', sans-serif;
+
+}
+.settingsMenuTabContainer a:hover {
+  
+}
 a,li {
   text-decoration:none
 }
@@ -45,7 +82,7 @@ li {
 }
  .searchInput >div > input {
   color:${({ theme }) => theme.colors.inputColor};
-  font-size:'0.9rem';
+  font-size:'1rem';
  
   padding:10px;
   font-family: 'Quicksand', sans-serif;

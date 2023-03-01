@@ -9,7 +9,6 @@ import "./App.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 import Home from "./Pages/Home";
 
 import { ThemeContainer } from "./components/Styles/ThemeSwitching.styled";
@@ -22,22 +21,21 @@ import { GlobalStyles } from "./components/Styles/Global";
 import { ThemeHero } from "./components/Styles/PageContent.styled";
 import { useDispatch } from "react-redux";
 import { getProperties } from "./actions/properties";
-import {   useFilterContext } from "./Contexts/FilterContext";
+import { useFilterContext } from "./Contexts/FilterContext";
 import { propertyData } from "./constants/data";
 import PropertiesPage from "./Pages/PropertiesPage";
 import AgentPage from "./Pages/AgentPage";
+import ProfilePage from "./Pages/ProfilePage";
 
 const App = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
   const [selectedTheme, setSelectedTheme] = useState(light);
-  const { filterItems, dispatch } = useFilterContext()
-
+  const { filterItems, dispatch } = useFilterContext();
 
   const dispatchRedux = useDispatch();
   useEffect(() => {
-    dispatchRedux(getProperties())
-  }, [])
- 
+    dispatchRedux(getProperties());
+  }, []);
 
   return (
     <ThemeProvider theme={darkMode}>
@@ -48,6 +46,10 @@ const App = () => {
           <Route path="/" element={<Home />}></Route>
           <Route path="/properties" element={<PropertiesPage />}></Route>
           <Route path="/agents" element={<AgentPage />}></Route>
+          <Route path="/account" element={<ProfilePage />}>
+            <Route index element={<ProfilePage />} />
+            <Route path=":id" element={<ProfilePage />} />
+          </Route>
         </Routes>
       </Router>
     </ThemeProvider>

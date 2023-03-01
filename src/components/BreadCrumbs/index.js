@@ -3,8 +3,6 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 import { SiteTextSmall } from "../Styles/PageContent.styled";
 
-
-
 function handleClick(e) {
   e.preventDefault();
   console.info("You clicked a breadcrumb.");
@@ -22,11 +20,10 @@ export default function BreadCrumbs() {
     console.log("href", window.location.pathname, pathName);
     if (pathName) {
       let arr = pathName.split("/");
- 
+
       const newArr = arr.filter(function (entry) {
         return entry.trim() != "";
       });
-  
 
       setLocation(newArr);
     }
@@ -38,24 +35,18 @@ export default function BreadCrumbs() {
     <div role="presentation" onClick={handleClick}>
       <Breadcrumbs aria-label="breadcrumb">
         <Link underline="hover" color="inherit" href="/">
-       <SiteTextSmall cursorEnabled>Home</SiteTextSmall> 
-
-          
+          <SiteTextSmall cursorEnabled>Home</SiteTextSmall>
         </Link>
-        {location?.map((location, index) => 
-        <Link
-        underline="hover"
-        color="text.primary"
-        href={`/${location}`}
-        aria-current="page"
-      >
-       <SiteTextSmall cursorEnabled>{location}</SiteTextSmall> 
-
-       
-      </Link>
-        )}
-
-        
+        {location?.map((location, index) => (
+          <Link
+            underline="hover"
+            color="text.primary"
+            href={`/${location}`}
+            aria-current="page"
+          >
+            <SiteTextSmall cursorEnabled>{location}</SiteTextSmall>
+          </Link>
+        ))}
       </Breadcrumbs>
     </div>
   );

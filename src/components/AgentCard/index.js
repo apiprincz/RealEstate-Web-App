@@ -17,7 +17,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import "./styles.css";
 import { Hr, SiteIcon } from "../Styles/PageContent.styled";
 import { useSortContext } from "../../Contexts/SortContext";
-import Avatar from "../../images/avatar1.png"
+import Avatar from "../../images/avatar1.png";
 
 const AgentCard = ({ agent, index, section }) => {
   const [activeIndex, setActiveIndex] = useState(false);
@@ -36,14 +36,8 @@ const AgentCard = ({ agent, index, section }) => {
   return (
     <Grid
       item
-      lg={sortItems.sortByGrid
-          ? 4
-          : 3
-      }
-      sm={sortItems.sortByGrid
-          ? 6
-          : 4
-      }
+      lg={sortItems.sortByGrid ? 4 : 3}
+      sm={sortItems.sortByGrid ? 6 : 4}
       xs={12}
       className="agentCard"
       onMouseEnter={() => handleMouseEnter(index)}
@@ -61,32 +55,49 @@ const AgentCard = ({ agent, index, section }) => {
       >
         {index === activeIndex && (
           <Grid
+          container
+          alignItems='center'
+          justifyContent='center'
             className={index === activeIndex && `activeAgentCardImageOverlay`}
-          ></Grid>
+          >
+            {agent?.name?.split("")[0]}
+
+            {agent?.name?.split(" ")[1]?.split("")[0]}
+          </Grid>
         )}
-        <a href={`/agent/`} style={{display:'block', width:'100%'}}>
-          <img   style={{display:'block', width:'100%'}} src={agent.profilePhoto.secure_url || Avatar} alt="agent image" />
+        <a href={`/agent/`} style={{ display: "block", width: "100%" }}>
+          <img
+            style={{ display: "block", width: "100%" }}
+            src={agent.profilePhoto.secure_url || Avatar}
+            alt="agent image"
+          />
         </a>
       </Grid>
-   
-      <Grid xs={sortItems.sortByList ? 7 : ""} 
-  
-      
-      >
+
+      <Grid xs={sortItems.sortByList ? 7 : ""}>
         <PropertyContainer>
-          <Grid p={2} container flexDirection='column' justifyContent='space-between' style={{minHeight:'240px'}}>
+          <Grid
+            p={2}
+            container
+            flexDirection="column"
+            justifyContent="space-between"
+            style={{ minHeight: "240px" }}
+          >
             <Grid>
               <PropertyTitle>
                 <a href={`/agent/`}>{agent.name}</a>
               </PropertyTitle>
             </Grid>
             <Grid py={2}>
-              <PropertyTextSmall>
+              <PropertyTextSmall capitalize>
                 {agent.role}{" "}
                 <>
                   {agent.company && (
                     <>
-                      @ <span style={{ color: "lightblue" }}>{agent.company}</span>
+                      @{" "}
+                      <span style={{ color: "lightblue" }}>
+                        {agent.company}
+                      </span>
                     </>
                   )}
                 </>

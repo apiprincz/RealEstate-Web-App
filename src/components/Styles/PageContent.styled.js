@@ -7,6 +7,9 @@ export const ThemeHero = styled.h3`
 export const SectionHero = styled.h3`
   color: ${({ theme }) => theme.colors.text};
   font-size: 2.5em;
+  text-transform:capitalize;
+  font-family: "Jost", sans-serif;
+
 `;
 export const SectionHeroSmall = styled.h3`
   color: ${({ theme }) => theme.colors.text};
@@ -39,10 +42,10 @@ export const SiteTitle = styled.p`
 `;
 
 export const SiteText = styled.p`
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.text} ;
   cursor: ${(props) => (props.cursorEnabled ? "pointer" : "")};
   line-height: ${(props) => (props.xlineHeight ? "2rem" : "")};
-  font-size: 0.9em;
+  font-size: 1em;
   font-family: "Jost", sans-serif;
   text-transform:capitalize;
   &:hover {
@@ -58,7 +61,7 @@ export const SiteTextSmall = styled.p`
   color: ${({ theme }) => theme.colors.textAlt2};
   cursor: ${props => props.cursorEnabled ? "pointer" : ""};
   line-height: ${props => props.xlineHeight ? "2rem" : ""};
-  font-size: 0.8em;
+  font-size: 0.9em;
   font-family: 'Jost', sans-serif;
   text-transform:capitalize;
   border-color:white;

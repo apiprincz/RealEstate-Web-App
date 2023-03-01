@@ -58,7 +58,7 @@ const HeaderMenu = ({ respScreen }) => {
           {user ? (
             <>
               <li>
-                <a href="/account">Profile</a>
+                <a href="/account/profile?tab=profile">Profile</a>
               </li>
             </>
           ) : (
@@ -76,7 +76,7 @@ const HeaderMenu = ({ respScreen }) => {
         </>
       ) : (
         <>
-          {user ? (
+          {!user ? (
             <>
               &nbsp;
               <li className="profileIcon" style={{ position: "relative" }}>

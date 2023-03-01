@@ -56,8 +56,11 @@ export const PropertyTextSmall = styled.p`
   color: ${({ theme }) => theme.colors.textAlt2};
   cursor: ${props => props.cursorEnabled ? "pointer" : ""};
   line-height: ${props => props.xlineHeight ? "2rem" : ""};
-  font-size: 0.8em;
+  font-size: 1em;
   font-family: 'Jost', sans-serif;
+
+  text-transform: ${props => props.capitalize ?  "capitalize" : ""};
+
   &:hover {
   color: ${props => props.cursorEnabled ?  "hsl(0, 0%, 80%)" : ""};
 
