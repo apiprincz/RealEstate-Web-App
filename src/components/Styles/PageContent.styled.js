@@ -120,6 +120,8 @@ export const SiteBtn = styled.button`
   webkit-filter: blur(0.5px);
   filter: blur(0.5px);
   cursor: pointer;
+  padding: ${(props) => (props.small ? "10px" : "")};
+  background: ${(props) => (props.alt ? `hsl(0, 0%, 25%)` : "")};
 
   &.activeBtn {
     webkit-filter: blur(0px);
@@ -128,7 +130,14 @@ export const SiteBtn = styled.button`
     color: hsl(169, 82%, 60%) !important;
   }
   &:hover {
+    
+
     background: ${({ theme }) => theme.colors.primaryBg};
+  }
+  &:hover {
+    background: ${(props) => (props.alt ? `hsl(0, 0%, 36%)` : "")};
+
+  
   }
 `;
 export const SwiperBtn = styled.button`

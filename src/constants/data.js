@@ -1080,6 +1080,11 @@ export const propertyTypes = [
     propertyType: "shop",
     propertyCount: 20,
   },
+  {
+    id: "5",
+    propertyType: "Event Center",
+    propertyCount: 20,
+  },
 ];
 export const neighborhoodData = [
   {
@@ -1258,7 +1263,7 @@ export const destinationData = [
 export const agentData = [
 {
   name:'add23 shsn',
-  id: "1",
+  id: "100",
   email: "kennyg@gmail.com",
   username: "kenny",
   location:"lagos",
@@ -3534,3 +3539,106 @@ export const user = {
     },
   ],
 };
+
+export const agent = 
+  {
+    name:'add23 shsn',
+    id: "100",
+    email: "kennyg@gmail.com",
+    username: "kenny",
+    location:"lagos",
+    area:'ago_palace',
+    password:'123456',
+    viewerCount: [
+   
+      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
+      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
+      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
+    ],
+    favoriteCount: [
+      { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
+  
+    ],
+    role:'agent',
+    company:'',
+    bio: "i love Mansions",
+    phone:'23400067786758',
+    socialHandle: {
+      twitter: "https://twitter.com/kenny",
+      facebook: "https://facebook.com/kenny",
+      instagram: "https://instagram.com/kenny",
+    },
+  
+    ratings: [
+      { userId: "1", rating: 5 },
+      { userId: "2", rating: 3 },
+    ],
+    notifications: [
+      {
+        itemSold: true,
+        bidActivity: false,
+        auctionExpiration: true,
+        outbid: false,
+        successfulPurchase: false,
+        newsletter: false,
+        minimumBid: true,
+      },
+    ],
+    verified: true,
+    documents: [{}],
+    propVerifyDocs: [
+      {
+        propertyId: "1",
+        docs: Flat,
+        createdAt: "2022-08-06T22:57:19.024+00:00",
+        status: "pending",
+      },
+    ],
+    properties: [],
+    address: "No 12, Ikate Street, Command bus-stop",
+    profilePhoto: {
+      secure_url:
+        "https://res.cloudinary.com/dkontlptv/image/upload/v1677503041/agent_zxcidu.jpg",
+      cloudinary_id: "agent_zxcidu",
+    },
+    profileBanner: {
+      secure_url:
+        "https://res.cloudinary.com/dkontlptv/image/upload/v1677503041/agent_zxcidu.jpg",
+      cloudinary_id: "agent_zxcidu",
+    },
+  
+    preferredCurrency: ["NGN"],
+    createdAt: "2022-02-06T22:57:19.024+00:00",
+    earnings: [
+      {
+        propertyId: "1",
+        soldOn: "2022-06-06T22:57:19.024+00:00",
+        paidOut: "2022-06-12T22:57:19.024+00:00",
+        percentage: 10,
+        activity: "sold",
+        amount: 5000000,
+        currency: "US$",
+        payoutType: "commission-based",
+      },
+      {
+        propertyId: "2",
+        soldOn: "2022-07-16T22:57:19.024+00:00",
+        paidOut: "2022-08-01T22:57:19.024+00:00",
+        activity: "sold",
+        percentage: 5,
+        amount: 5000000,
+        currency: "US$",
+        payoutType: "royalty-based",
+      },
+      {
+        propertyId: "2",
+        soldOn: "2022-07-16T22:57:19.024+00:00",
+        paidOut: "2022-08-01T22:57:19.024+00:00",
+        activity: "sold",
+        percentage: 1,
+        amount: 1000000,
+        currency: "NGN",
+        payoutType: "referral-based",
+      },
+    ],
+  }

@@ -25,7 +25,7 @@ body {
   font-family: 'Quicksand', sans-serif;
 
 }
-.siteText, input, select {
+.siteText, input, select, textarea, checkbox {
  
   color: ${({ theme }) => theme.colors.text} !important;
   font-family: 'Quicksand', sans-serif !important;
@@ -38,7 +38,7 @@ body {
 
 }
 
-.siteContainerRow  {
+.siteContainerRow, .dropzone-ui.clickable  {
  
   background: ${({ theme }) => theme.colors.background2} !important;
   font-family: 'Quicksand', sans-serif;
@@ -118,6 +118,9 @@ padding:10px 50px;
 zIndex:1000;
 font-family: "Jost", sans-serif !important;
 white-space:nowrap
+}
+label{
+  color:gray !important
 }
 `;
 

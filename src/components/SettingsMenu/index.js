@@ -33,6 +33,7 @@ import CustomizedBreadcrumbs from "../BreadCrumb";
 import { SectionHero, SiteIcon, SiteText } from "../Styles/PageContent.styled";
 import BreadCrumbs from "../BreadCrumbs";
 import AddNewProperty from "../SettingsList/AddNewProperty";
+import PropertyTable from "../PropertyTable";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -368,6 +369,9 @@ if(tab) {
               <Profile />
             </TabPanel>
             <TabPanel value={value} index={3}>
+        <PropertyTable/>
+            </TabPanel>
+            <TabPanel value={value} index={4}>
               <Notifications />
             </TabPanel>
             <TabPanel value={value} index={4}>

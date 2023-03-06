@@ -1,40 +1,108 @@
 import {
   Button,
+  FormControl,
   Grid,
   IconButton,
   InputAdornment,
+  InputLabel,
+  MenuItem,
   OutlinedInput,
+  Select,
   TextField,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InfoIcon from "@mui/icons-material/Info";
 import Input from "../../CustomInput";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import FileUpload from "../../FileUpload";
 import Overlay from "../../Overlay";
+import { Dropzone, FileItem } from "@dropzone-ui/react";
 
 import "./styles.css";
 import TooltipWrapper from "../../Tooltip";
+import { SiteText } from "../../Styles/PageContent.styled";
+import { agent, city } from "../../../constants/data";
 const initialState = {
   name: "",
-  phone: "",
-  password: "",
-  confirmPassword: "",
+  id: "",
   email: "",
-  referrer: "",
+  password: "",
+  username: "",
+  location: "",
+  area: "",
+  role: "",
+  company: "",
+  bio: "",
+  phone: "",
+  socialHandle: {
+    twitter: "https://twitter.com/",
+    facebook: "https://facebook.com/",
+    instagram: "https://instagram.com/",
+    website: "",
+  },
+
+  address: "",
+  profilePhoto: [],
+  profileBanner: [],
 };
 
 const Profile = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [files, setFiles] = useState([]);
+  const [bannerFiles, setBannerFiles] = useState([]);
   const [show, setShow] = useState(false);
   const [altShow, setAltShow] = useState();
   const [toggleShow, setToggleShow] = useState(false);
-  const [formData, setFormData] = useState(initialState);
+  const [profileData, setProfileData] = useState(initialState);
+  const [selectedCity, setSelectedCity] = useState("");
+  const user = agent;
+
   const handleSubmit = () => {};
 
-  const handleChange = () => {};
-  const handleShowPassword = () => {};
+  const handleChange = (e) => {
+    switch (e.target.name) {
+      case "twitter":
+        setProfileData({
+          ...profileData,
+          socialHandle: {
+            ...profileData.socialHandle,
+            [e.target.name]: e.target.value,
+          },
+        });
+
+        break;
+      case "instagram":
+        setProfileData({
+          ...profileData,
+          socialHandle: {
+            ...profileData.socialHandle,
+            [e.target.name]: e.target.value,
+          },
+        });
+
+        break;
+      case "website":
+        setProfileData({
+          ...profileData,
+          socialHandle: {
+            ...profileData.socialHandle,
+            [e.target.name]: e.target.value,
+          },
+        });
+
+        break;
+
+      default:
+        setProfileData({ ...profileData, [e.target.name]: e.target.value });
+
+        break;
+    }
+  };
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
   const handleWalletCopy = () => {
     console.log("wallet");
   };
@@ -54,9 +122,69 @@ const Profile = () => {
     setAltShow(false);
     setShow(true);
   };
+
+  const handleLocationChange = (e) => {
+    setProfileData({ ...profileData, [e.target.name]: e.target.value });
+  };
+  const handleAreaChange = (e) => {
+    setProfileData({ ...profileData, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    if (profileData) {
+      const selectedCity = city.filter(
+        (city) => city.city === profileData.location
+      );
+      console.log("city", selectedCity[0]);
+
+      setSelectedCity(selectedCity[0]);
+    }
+  }, [profileData]);
+
+  const onDelete = (id) => {
+    setFiles(files?.filter((x) => x.id !== id));
+  };
+
+  const updateBannerFiles = (event) => {
+    console.log("incomming files", event);
+
+    if (event.length >= 1) {
+      setBannerFiles([event[event?.length - 1]]);
+    } else {
+      setBannerFiles([event[event?.length - 1]]);
+    }
+  };
+
+  const updateFiles = (event) => {
+    console.log("incomming files", event);
+
+    if (event.length >= 1) {
+      setFiles([event[event?.length - 1]]);
+    } else {
+      setFiles([event[event?.length - 1]]);
+    }
+  };
+  useEffect(() => {
+    if (files) {
+      setProfileData({ ...profileData, profilePhoto: files });
+    }
+  }, [files]);
+  useEffect(() => {
+    if (bannerFiles) {
+      setProfileData({ ...profileData, profileBanner: bannerFiles });
+    }
+  }, [bannerFiles]);
+
+  useEffect(() => {
+    if (user) {
+      setProfileData({ ...user, profilePhoto: [], profileBanner: [] });
+    }
+  }, [user]);
+  console.log("files", files);
+
   return (
     <Grid>
-      <h1>Profile Details</h1>
+      <h1>Profile</h1>
 
       <form onSubmit={handleSubmit}>
         <Grid
@@ -72,12 +200,22 @@ const Profile = () => {
                 label="Email Address"
                 handleChange={handleChange}
                 type="email"
+                value={profileData.email}
               />
               <br />
+              <Input
+                name="Full Name"
+                label="Enter Full Name"
+                handleChange={handleChange}
+                value={profileData.name}
+              />
+              <br />
+
               <Input
                 name="username"
                 label="Enter Username"
                 handleChange={handleChange}
+                value={profileData.username}
               />
               <br />
 
@@ -88,6 +226,7 @@ const Profile = () => {
                   label="Mobile Phone"
                   onChange={handleChange}
                   type="tel"
+                  value={profileData.phone}
                 />
                 <br />
               </>
@@ -97,6 +236,7 @@ const Profile = () => {
                 rows={4}
                 handleChange={handleChange}
                 multiline
+                value={profileData.bio}
               />
               <br />
 
@@ -106,19 +246,91 @@ const Profile = () => {
                 handleChange={handleChange}
                 type={showPassword ? "text" : "password"}
                 handleShowPassword={handleShowPassword}
-                required={true}
+                value={profileData.password}
               />
-            </Grid>
-            <Grid py={2}>
-              <Grid className="bold">Social Media Connections</Grid>
-              <span style={{ display: "block" }}>
-                {" "}
-                Help buyers verify your account by connecting Twitter
-              </span>
-
               <br />
 
-              <Grid container justifyContent="space-between">
+              <Input
+                name="company"
+                label="Enter real Estate Company (if any)"
+                handleChange={handleChange}
+                value={profileData.company}
+              />
+              <br />
+
+              <Input
+                name="address"
+                label="Full Company/Home Address"
+                handleChange={handleChange}
+                value={profileData.address}
+              />
+            </Grid>
+
+            <Grid container spacing={2} py={2}>
+              <Grid item md={6} sm={6} xs={6}>
+                <FormControl fullWidth>
+                  <InputLabel
+                    id="demo-simple-select-label"
+                    className="inputLabel"
+                    style={{ color: "wheat" }}
+                  >
+                    Choose primary city
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    className="sortInput"
+                    value={profileData.location}
+                    label="Choose primary city "
+                    name="location"
+                    style={{ borderColor: "gray !important" }}
+                    onChange={handleLocationChange}
+                  >
+                    <MenuItem value="abuja">
+                      <SiteText>Abuja</SiteText>
+                    </MenuItem>
+                    <MenuItem value="lagos">
+                      <SiteText>Lagos</SiteText>
+                    </MenuItem>
+                    <MenuItem value="ibadan">
+                      {" "}
+                      <SiteText>Ibadan</SiteText>
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item md={6} sm={6} xs={6}>
+                <FormControl
+                  disabled={profileData.location ? false : true}
+                  fullWidth
+                >
+                  <InputLabel className="inputLabel" style={{ color: "wheat" }}>
+                    {" "}
+                    Primary Area of interest
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    className="sortInput"
+                    value={profileData.area}
+                    label="Primary Area of interest"
+                    name="area"
+                    style={{ borderColor: "gray !important" }}
+                    onChange={handleAreaChange}
+                  >
+                    {selectedCity?.areas?.map((city, index) => (
+                      <MenuItem value={city.area}>
+                        <SiteText>{city.label}</SiteText>
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+
+            <Grid py={2}>
+              <Grid className="bold">Social Media Connections</Grid>
+
+              {/* <Grid container justifyContent="space-between">
                 <Grid xs={6} container alignItems="center">
                   <TwitterIcon /> &nbsp; twitter
                 </Grid>
@@ -127,59 +339,41 @@ const Profile = () => {
                     Connect
                   </Button>
                 </Grid>
-              </Grid>
+              </Grid> */}
             </Grid>
-            <Grid py={2}>
-              <Grid className="bold">Links</Grid>
+            <Grid py={1}>
               {/* <span style={{display:'block'}}> Help buyers verify your account by connecting Twitter</span> */}
-
-              <br />
 
               <Grid container alignItems="center">
                 <Input
-                  name="social"
+                  name="twitter"
+                  label="Twitter Handle"
+                  handleChange={handleChange}
+                  value={profileData.socialHandle.twitter}
+                />
+              </Grid>
+              <Grid py={1} container alignItems="center">
+                <Input
+                  name="instagram"
                   label="Instagram Handle"
                   handleChange={handleChange}
+                  value={profileData.socialHandle.instagram}
+                />
+              </Grid>
+              <Grid py={1} container alignItems="center">
+                <Input
+                  name="facebook"
+                  label="Facebook Handle"
+                  handleChange={handleChange}
+                  value={profileData.socialHandle.facebook}
                 />
               </Grid>
               <Grid py={1}>
                 <Input
                   name="website"
-                  label="Website"
+                  label="Your Website (if any)"
                   handleChange={handleChange}
-                />
-              </Grid>
-            </Grid>
-            <Grid pb={2}>
-              <Grid className="bold">Wallet Address</Grid>
-              {/* <span style={{display:'block'}}> Help buyers verify your account by connecting Twitter</span> */}
-
-              <br />
-
-              <Grid
-                container
-                alignItems="center"
-                style={{ cursor: "pointer !Important" }}
-              >
-                <TextField
-                  name="wallet"
-                  id="standard-read-only-input"
-                  type="button"
-                  variant="outlined"
-                  onClick={handleWalletCopy}
-                  className="wallet"
-                  defaultValue="0x..."
-                  style={{ cursor: "pointer !Important" }}
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <ContentCopyIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                  //   onClick={handleCopy}
+                  value={profileData.socialHandle.website}
                 />
               </Grid>
             </Grid>
@@ -200,8 +394,47 @@ const Profile = () => {
               onMouseEnter={handleShowOverlay}
               onMouseLeave={handleHideOverlay}
             >
-              <FileUpload />
-              {show}
+              {/* <FileUpload /> */}
+
+              <Dropzone
+                maxFileSize={1024000}
+                maxFiles={2}
+                // maxFiles={
+                //   product ? 5 - Number(product?.campaignFiles?.length) : 5
+                // }
+                onChange={updateBannerFiles}
+                value={profileData.profileBanner}
+                onClean
+                accept={"image/jpeg,.ts, video/*"}
+                className="profileBanner"
+                disableScroll
+              >
+                {user?.profileBanner && bannerFiles?.length === 0 ? (
+                  <img
+                    style={{ width: "100%", padding:'8px', height:'100%',borderRadius:'15px', pointerEvents: "none" }}
+                    src={user?.profileBanner.secure_url}
+                  />
+                ) : (
+                  <>
+                    {" "}
+                    {bannerFiles?.length > 0 &&
+                      profileData?.profileBanner?.map((file) => (
+                        <Grid>
+                          <FileItem
+                            {...file}
+                            key={file.id}
+                            onDelete={onDelete}
+                            alwaysActive
+                            preview
+                            info
+                            resultOnTooltip
+                          />
+                        </Grid>
+                      ))}
+                  </>
+                )}
+              </Dropzone>
+
               {show && <Overlay />}
             </Grid>
             <Grid>
@@ -219,16 +452,48 @@ const Profile = () => {
                 onMouseEnter={handlePhotoShowOverlay}
                 onMouseLeave={handlePhotoHideOverlay}
               >
-                <FileUpload />
+                <Dropzone
+                  maxFileSize={1024000}
+                  maxFiles={2}
+                  // maxFiles={
+                  //   product ? 5 - Number(product?.campaignFiles?.length) : 5
+                  // }
+                  onChange={updateFiles}
+                  value={profileData.profilePhoto}
+                  onClean
+                  accept={"image/jpeg,.ts, video/*"}
+                  className="profilePhoto"
+                  disableScroll
+                >
+                        {user?.profilePhoto && files?.length === 0 ? (
+                  <img
+                    style={{ width: "100%",height:'100%', padding:'5px', pointerEvents: "none", borderRadius:'50%'}}
+                    src={user?.profilePhoto.secure_url}
+                  />
+                ) : (
+                  <>
+                  {files?.length > 0 &&
+                    profileData?.profilePhoto?.map((file) => (
+                      <Grid>
+                        <FileItem
+                          {...file}
+                          key={file.id}
+                          onDelete={onDelete}
+                          alwaysActive
+                          preview
+                          info
+                          resultOnTooltip
+                        />
+                      </Grid>
+                    ))}</>)}
+                </Dropzone>
                 {altShow && <Overlay />}
               </Grid>
             </Grid>
           </Grid>
         </Grid>
-        <Grid pt={3} mt={3}>
-          <Button type="submit" variant="contained" color="primary">
-            Save
-          </Button>
+        <Grid container justifyContent="flex-end">
+          <Button variant="contained">Submit</Button>
         </Grid>
 
         <Grid

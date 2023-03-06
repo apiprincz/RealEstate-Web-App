@@ -18,6 +18,9 @@ const FileUpload = ({ children }) => {
     triggerInput,
   } = useApp({ inputRef })
 
+
+  console.log("fileUpload", files)
+
   return (
     <form className="form" onSubmit={onSubmit}>
       <FileUploader
