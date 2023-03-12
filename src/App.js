@@ -22,10 +22,12 @@ import { ThemeHero } from "./components/Styles/PageContent.styled";
 import { useDispatch } from "react-redux";
 import { getProperties } from "./actions/properties";
 import { useFilterContext } from "./Contexts/FilterContext";
-import { propertyData } from "./constants/data";
+import { propertiesData } from "./constants/data";
 import PropertiesPage from "./Pages/PropertiesPage";
 import AgentPage from "./Pages/AgentPage";
 import ProfilePage from "./Pages/ProfilePage";
+import AddNewProperty from "./components/SettingsList/AddNewProperty";
+import CreatePropertyPage from "./Pages/CreatePropertyPage";
 
 const App = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
@@ -49,6 +51,14 @@ const App = () => {
           <Route path="/account" element={<ProfilePage />}>
             <Route index element={<ProfilePage />} />
             <Route path=":id" element={<ProfilePage />} />
+          </Route>
+          <Route path="/property" element={<CreatePropertyPage />}>
+          <Route path="edit" element={<CreatePropertyPage />}>
+            <Route path=":id" element={<CreatePropertyPage />} />
+            </Route>
+          <Route path="add" element={<CreatePropertyPage />}>
+            {/* <Route path=":id" element={<CreatePropertyPage />} /> */}
+            </Route>
           </Route>
         </Routes>
       </Router>

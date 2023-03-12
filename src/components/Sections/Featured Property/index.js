@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import { useRef } from "react";
-import { propertyData } from "../../../constants/data";
+import { propertiesData } from "../../../constants/data";
 import PropertyCard from "../../PropertyCard";
 import {
   SectionHero,
@@ -42,7 +42,7 @@ const FeaturedProperty = () => {
           alignItems="center"
           justifyContent="space-between"
         >
-          <SiteTextColored><a href="/properties">See All {propertyData.length} Listings <CallMadeOutlinedIcon/></a></SiteTextColored>
+          <SiteTextColored><a href="/properties">See All {propertiesData.length} Listings <CallMadeOutlinedIcon/></a></SiteTextColored>
         </Grid>
 
         <Grid sm={12} xs={6} pt={2} container alignItems="flex-end" justifyContent="flex-end">
@@ -86,7 +86,7 @@ const FeaturedProperty = () => {
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
         >
-          {propertyData.map((property, index) => (
+          {propertiesData.map((property, index) => (
             <SwiperSlide style={{ width: "100%" }}>
               <PropertyCard
                 property={property}

@@ -12,9 +12,10 @@ import {
 import React, { useState } from "react";
 import NumberFormat, { InputAttributes } from "react-number-format";
 import PropTypes from "prop-types";
-import { propertyData } from "../../../constants/data";
+import { propertiesData } from "../../../constants/data";
 
 import "./styles.css";
+import { SiteText } from "../../Styles/PageContent.styled";
 
 const initialState = {
   name: "",
@@ -75,10 +76,12 @@ const Verifications = () => {
   console.log("values", values);
   return (
     <Grid className="verification">
-      <h1>Verifications</h1>
+      {/* <h1>Verifications</h1> */}
       <br />
-      Complete the verification steps below to increase your agent score on
-      IleNla platform
+      <SiteText>
+      Complete the verification steps below to boost customer confidence and complete deals faster on the platform
+      
+      </SiteText>
       <Grid>
         <Grid spacing={2} py={5} mb={3}>
           <Grid>
@@ -89,35 +92,47 @@ const Verifications = () => {
               alignItems="center"
               py={2}
             >
-              <Grid md={10} container alignItems="center" flexWrap='nowrap'>
+              <Grid md={9} >
+              <Grid md={12} container alignItems="center" flexWrap='nowrap'>
                 <Grid className="verificationCircle"> 1 </Grid>
                 <Grid pl={4}>
-                  <h5>Basic Verification</h5>
+                 <SiteText>
+                 <h5>Basic Verification</h5>
+                  </SiteText> 
                   <Grid pt={1}>
+                  <SiteText>
                     Buy or Sell Property upto 10,000,000.00{" "}
                     <h5 style={{ display: "inline-block" }}> NGN </h5> Nigerian
                     Naira
+                  </SiteText> 
+
                   </Grid>
                 </Grid>
               </Grid>
+              <br/>
+              <ul>
+            
+            <li> Name </li>
+            <li>Date of birth</li>
+            <li>Residence</li>
+          </ul>
+              </Grid>
 
-              <Grid textAlign="right" md={2} xs={12} justifyContent='right' className='verifyBtn'>
+              <Grid textAlign="right" md={3} xs={12} justifyContent='right' className='verifyBtn'>
                 <Button
                   type="submit"
                   size="large"
                   variant="contained"
                   style={{ textTransform: "Capitalize", fontFamily: "Poppins" }}
+                  as='a'
+                  href='/account?tab=profile'
                 >
-                  Begin
+                  Update Your Profile
                 </Button>
               </Grid>
             </Grid>
 
-            <ul>
-              <li> Name</li>
-              <li>Date of birth</li>
-              <li>Residence</li>
-            </ul>
+        
           </Grid>
           <Grid>
             <Grid
@@ -127,7 +142,8 @@ const Verifications = () => {
               alignItems="center"
               py={5}
             >
-              <Grid sm={10} container alignItems="center" flexWrap='nowrap'>
+              <Grid sm={9} >
+              <Grid sm={12} container alignItems="center" flexWrap='nowrap'>
                 <Grid className="verificationCircle"> 2 </Grid>
                 <Grid pl={4} >
                   <h5>Advanced Verification</h5>
@@ -136,24 +152,28 @@ const Verifications = () => {
                   </Grid>
                 </Grid>
               </Grid>
+              <br/>
+                 <ul>
+              <li> Advanced customer verification</li>
+              <li>ID Verification</li>
+            </ul>
+              </Grid>
 
-              <Grid textAlign="right" md={2} xs={12} justifyContent='right' className='verifyBtn'>
-                <Button
+              <Grid textAlign="right" md={3} xs={12} justifyContent='right' className='verifyBtn'>
+                {/* <Button
                   type="submit"
                   variant="contained"
                   size="large"
                   disabled
                   style={{ textTransform: "Capitalize", fontFamily: "Poppins" }}
                 >
-                  Begin
-                </Button>
+                  Coming Soon
+                </Button> */}
+                Coming Soon!
               </Grid>
             </Grid>
 
-            <ul>
-              <li> Advanced customer verification</li>
-              <li>ID Verification</li>
-            </ul>
+         
           </Grid>
         </Grid>
       </Grid>

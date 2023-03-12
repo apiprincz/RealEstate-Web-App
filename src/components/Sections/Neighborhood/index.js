@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import { useRef } from "react";
-import { propertyData, propertyTypes } from "../../../constants/data";
+import { propertiesData, propertyTypes } from "../../../constants/data";
 import PropertyCard from "../../PropertyCard";
 import {
   SectionHero,

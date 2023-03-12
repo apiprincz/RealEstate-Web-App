@@ -122,5 +122,15 @@ white-space:nowrap
 label{
   color:gray !important
 }
+th { 
+  color:wheat !important;
+  font-weight:600 !important
+}
+.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar { 
+  color:wheat !important
+}
+.css-10by3a5-MuiButtonBase-root-MuiMenuItem-root-MuiTablePagination-menuItem {
+  color:white !important
+}
 `;
 

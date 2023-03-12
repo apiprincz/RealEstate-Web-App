@@ -51,7 +51,7 @@ NumberFormatCustom.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-const Notifications = () => {
+const Favorites = () => {
   const handleSubmit = () => {};
   const [values, setValues] = useState({
     numberformat: "1320000",
@@ -71,7 +71,7 @@ const Notifications = () => {
   };
   return (
     <Grid>
-      {/* <h1>Notifications</h1> */}
+      {/* <h1>Favorites</h1> */}
       <Grid
         container
         justifyContent="center"
@@ -79,7 +79,7 @@ const Notifications = () => {
         style={{ minHeight: "50vh" }}
         pt={5}
       >
-        Deals alerts and notification feature coming Soon
+        Coming Soon
       </Grid>
 
       {/* <Grid container  justifyContent="space-between" alignItems="center">
@@ -236,4 +236,4 @@ const Notifications = () => {
   );
 };
 
-export default Notifications;
+export default Favorites;

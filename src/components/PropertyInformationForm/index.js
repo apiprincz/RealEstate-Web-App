@@ -3,13 +3,13 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import InfoIcon from "@mui/icons-material/Info";
+
 import Input from "../CustomInput";
 
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import NumberFormat, { NumericFormat } from "react-number-format";
+import { useNavigate, useParams } from "react-router-dom";
+
 
 import {
   Button,
@@ -22,6 +22,8 @@ import {
   TextField,
 } from "@mui/material";
 import { SiteText } from "../Styles/PageContent.styled";
+import { useEffect } from "react";
+import { propertiesData } from "../../constants/data";
 
 const PropertyInformationForm = ({ propertyData, setPropertyData }) => {
   const handleChange = (e) => {
@@ -124,6 +126,23 @@ const PropertyInformationForm = ({ propertyData, setPropertyData }) => {
     }
   };
   const handleSubmit = () => {};
+
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    if(id){
+
+      const property = propertiesData.filter(property => property.id === id)
+      console.log('filterproperty', property)
+      setPropertyData({
+        ...property[0]
+      });
+    }
+  
+    
+  }, [id])
+  
 
   console.log("propertyData", propertyData);
   return (
@@ -247,7 +266,7 @@ const PropertyInformationForm = ({ propertyData, setPropertyData }) => {
                   prefix={"NGN"}
                   inputmode="numeric"
                   name="price"
-           
+                  value={propertyData.price}
              
                   renderText={(value, props) => (
                     <div {...props} style={{ paddingLeft: "10px" }}>
@@ -419,6 +438,8 @@ const PropertyInformationForm = ({ propertyData, setPropertyData }) => {
                 }}
                 suffix={"SQFT"}
                 inputmode="numeric"
+                value={propertyData.propertyFeatures[0].area}
+
                 name="area"
                 renderText={(value, props) => (
                   <div {...props} style={{ paddingLeft: "10px" }}>

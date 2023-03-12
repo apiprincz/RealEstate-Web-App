@@ -1,7 +1,7 @@
 import { Button, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { propertyData } from "../../constants/data";
+import { propertiesData } from "../../constants/data";
 import { clearAll, useFilterContext } from "../../Contexts/FilterContext";
 import { useSortContext } from "../../Contexts/SortContext";
 import Paginate from "../Pagination";

@@ -184,7 +184,7 @@ const Profile = () => {
 
   return (
     <Grid>
-      <h1>Profile</h1>
+      {/* <h1>Profile</h1> */}
 
       <form onSubmit={handleSubmit}>
         <Grid

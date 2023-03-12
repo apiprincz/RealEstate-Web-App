@@ -27,7 +27,9 @@ import TooltipWrapper from "../../Tooltip";
 import PropertyInformationForm from "../../PropertyInformationForm";
 import PropertyImageForm from "../../PropertyImageForm";
 import PropertyAmenitiesForm from "../../PropertyAmenitiesForm";
-import { agent } from "../../../constants/data";
+import { agent, propertiesData } from "../../../constants/data";
+import { useNavigate, useParams } from "react-router-dom";
+
 
 const initialState = {
   title: "",
@@ -76,8 +78,26 @@ const AddNewProperty = () => {
   
     
   }, [user])
+
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    if(id){
+
+      const property = propertiesData.filter(property => property.id === id)
+      console.log('filterproperty', property)
+      setPropertyData({
+        ...property[0]
+      });
+    }
+  
+    
+  }, [])
   
   console.log("test", propertyData)
+
+  
 
   return (
     <Grid>

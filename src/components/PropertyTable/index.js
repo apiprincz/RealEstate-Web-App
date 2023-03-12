@@ -4,17 +4,17 @@ import MUIDataTable from "mui-datatables";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Button, Grid } from "@mui/material";
-
+import { Button, Chip, Grid } from "@mui/material";
 
 import moment from "moment";
 import Switch from "react-switch";
 
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import SweetAlert from "react-bootstrap-sweetalert";
 
 import { useEffect } from "react";
-import { propertyData } from "../../constants/data";
+import { propertiesData } from "../../constants/data";
 import { SiteIcon, SiteText } from "../Styles/PageContent.styled";
 
 const columns = [
@@ -53,7 +53,6 @@ const columns = [
   },
 ];
 
-
 const PropertyTable = ({ value, handleOpen }) => {
   const [responsive, setResponsive] = useState("standard");
   const [alert, setAlert] = useState(false);
@@ -88,14 +87,13 @@ const PropertyTable = ({ value, handleOpen }) => {
     responsive,
     selectableRows: "multiple",
     rowsSelected: rowsSelected,
-    print:false,
-    filter:false,
-    download:false,
-    search:false,
-    isRowSelectable:false,
-    selectableRowsHideCheckboxes:true,
-    
-
+    print: false,
+    filter: false,
+    download: false,
+    search: false,
+    viewColumns: false,
+    isRowSelectable: false,
+    selectableRowsHideCheckboxes: true,
 
     onRowSelectionChange: (rowsSelectedData, allRows, rowsSelected) => {
       console.log("crows", rowsSelectedData, allRows, rowsSelected);
@@ -131,30 +129,44 @@ const PropertyTable = ({ value, handleOpen }) => {
     Navigate(`/campaign/edit/${id}`);
   };
 
-  const handleAlert = () => {
+  const handleAlert = (event, item) => {
+    setSelectedRow(item);
     setAlert(true);
+  };
+
+  const handleEditItem = (item) => {
+    Navigate(`/property/edit/${item.id}`);
   };
 
   const rows = val?.map((item, index) => {
     return {
       property: <SiteText>{item.title}</SiteText>,
       date: <SiteText>{moment(item.createdAt).format("MMM Do YYYY")}</SiteText>,
-      status: <SiteText>{item.status}</SiteText>,
+      status: (
+        <SiteText>
+          {item.active ? (
+            <Chip label={<SiteText>Active</SiteText>} color="success" />
+          ) : (
+            <Chip label={<SiteText>Inactive</SiteText>} color="error" />
+          )}
+        </SiteText>
+      ),
       action: (
-        <Grid container alignItems='center'>
+        <Grid container alignItems="center">
           <SiteIcon>
-          <EditIcon />
-            
-          </SiteIcon>&nbsp;&nbsp;
+            <a href={`/property/edit/${item.id}`} style={{ color: "inherit" }}>
+              {" "}
+              <EditIcon onClick={() => handleEditItem(item)} />
+            </a>
+          </SiteIcon>
+          &nbsp;&nbsp;
           <SiteIcon>
-          <DeleteIcon />
-
-          </SiteIcon>&nbsp;&nbsp;
-
+            <DeleteIcon onClick={(event) => handleAlert(event, item)} />
+          </SiteIcon>
+          &nbsp;&nbsp;
           <Switch
             // onChange={() => handleChange(item.status, item._id)}
-          
-         
+
             checked={item.status}
           />
         </Grid>
@@ -181,24 +193,34 @@ const PropertyTable = ({ value, handleOpen }) => {
   const handleDelete = (id) => {};
 
   useEffect(() => {
-    if (propertyData) {
-      setVal([...propertyData]);
+    if (propertiesData) {
+      setVal([...propertiesData]);
     }
-  }, [propertyData]);
+  }, [propertiesData]);
 
   return (
     <>
-      <Grid container spacing={4}>
+      {/* <h1>My Properties</h1> */}
+
+      <Grid container spacing={4} pt={5}>
         <Grid item xs={12}>
-          <MUIDataTable style={{background:'transparent !important'}} data={rows} columns={columns} options={options} />
+          <MUIDataTable
+            style={{ background: "transparent !important" }}
+            data={rows}
+            columns={columns}
+            options={options}
+          />
         </Grid>
-        {/* {alert && (
+        {alert && (
           <SweetAlert
             warning
             title={
               <>
-                <h4>{selectedRow.teamId}</h4>
-                <p>Delete this Team, Are You Sure??</p>{" "}
+                <h4 style={{ color: "black" }}>{selectedRow?.id}</h4>
+                <p style={{ color: "black", fontSize: "12px" }}>
+                  {" "}
+                  Delete this Property, Are You Sure??
+                </p>{" "}
               </>
             }
             showCancel
@@ -207,11 +229,11 @@ const PropertyTable = ({ value, handleOpen }) => {
             }
             confirmBtnBsStyle="danger"
             Name={<Button style={{ color: "black" }}>Delete Campaign?</Button>}
-            onConfirm={() => handleDelete(selectedRow._id)}
+            onConfirm={() => handleDelete(selectedRow?.id)}
             onCancel={onCancel}
             focusCancelBtn
           ></SweetAlert>
-        )} */}
+        )}
       </Grid>
     </>
   );

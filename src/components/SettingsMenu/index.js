@@ -34,6 +34,9 @@ import { SectionHero, SiteIcon, SiteText } from "../Styles/PageContent.styled";
 import BreadCrumbs from "../BreadCrumbs";
 import AddNewProperty from "../SettingsList/AddNewProperty";
 import PropertyTable from "../PropertyTable";
+import Favorites from "../SettingsList/Favourites";
+import ChangePassword from "../SettingsList/ChangePassword";
+import getWindowDimensions from "../../Hooks/screen";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -51,33 +54,26 @@ const SettingsMenu = () => {
   const [path, setPath] = useState();
   const navigate = useNavigate();
   const { id } = useParams();
+  const { width } = getWindowDimensions();
 
   const query = useQuery();
   const getTab = query.get("tab");
-  const [tab , setTab] = useState(getTab)
-
+  const [tab, setTab] = useState(getTab);
 
   useEffect(() => {
-    
-  
-   setTab(getTab)
-
-  }, [getTab])
+    setTab(getTab);
+  }, [getTab]);
   useEffect(() => {
-    
-if(tab) {
-  return
-}else {
-  setTab("profile")
+    if (tab) {
+      return;
+    } else {
+      setTab("profile");
+    }
 
-}
-    
-  // navigate("/profile?tab=profile")
-  // window.location.href("/profile?tab=profile")
-  // window.location.reload()
-
-   }, [])
-
+    // navigate("/profile?tab=profile")
+    // window.location.href("/profile?tab=profile")
+    // window.location.reload()
+  }, []);
 
   interface TabPanelProps {
     children?: React.ReactNode;
@@ -151,24 +147,28 @@ if(tab) {
         case "profile":
           setValue(2);
           break;
-
-        case "notifications":
+        case "my-properties":
           setValue(3);
           break;
-
-        case "offers":
+        case "notifications":
           setValue(4);
           break;
 
-        case "verifications":
+        case "my-favorites":
           setValue(5);
           break;
-
-        case "account-support":
+        case "change-password":
           setValue(6);
           break;
-        case "earnings":
+        case "verifications":
           setValue(7);
+          break;
+        case "account-support":
+          setValue(8);
+          break;
+
+        case "log-out":
+          setValue(9);
           break;
 
         default:
@@ -180,140 +180,349 @@ if(tab) {
   console.log("tab", tab);
   return (
     <>
-      <Grid pt={2} style={{ position: "sticky", top: "100px" }}>
-        {/* <SectionHero>Profile</SectionHero> */}
-        <SectionHero>
-          {tab?.split("-")[0]} {tab?.split("-")[1]} {tab?.split("-")[2]}{" "}
-        </SectionHero>
+      <Grid
+        style={{
+          position: "sticky",
+          top: "68px",
+          zIndex: "100",
+          background: "hsl(0deg 0% 25%)",
+        }}
+        
+      >
+        <Grid pt={2} px={2}>
+          {/* style={{ position: "sticky", top: "100px" }} */}
+          {/* <SectionHero>Profile</SectionHero> */}
+          <SectionHero>
+            {tab?.split("-")[0]} {tab?.split("-")[1]} {tab?.split("-")[2]}{" "}
+          </SectionHero>
+        </Grid>
+        <Grid pt={2} pb={4} px={2}>
+          {/* style={{ position: "sticky", top: "190px" }} */}
+          {/* <BreadCrumbs></BreadCrumbs> */}
+          <CustomizedBreadcrumbs
+            tab={tab}
+            path={path}
+            setPath={setPath}
+            value={value}
+            setValue={setValue}
+            style={{ position: "sticky", top: "190px" }}
+          />
+        </Grid>
+        <Grid style={{
+         
+          background: "hsl(0deg 0% 25%)",
+        }}>
+        {width < 900 && (
+              <Grid className="settingsMobile"  style={{
+         
+                background: "hsl(0deg 0% 25%)",
+              }}>
+                <Tabs
+                  value={value}
+                  onChange={handleChange}
+                  variant="scrollable"
+                  aria-label="nav tabs example"
+                  className="settingsMenuTabContainer"
+                  style={{
+         
+                    background: "hsl(0deg 0% 25%)",
+                  }}
+                >
+                  <LinkTab
+                    label="SETTINGS"
+                    disabled
+                    style={{ fontWeight: "bold", color: "white" }}
+                    {...a11yProps(0)}
+                  >
+                    <SiteText>SETTINGS</SiteText>
+                  </LinkTab>
+
+                  <LinkTab
+                    icon={
+                      <SiteIcon style={{ display: "inline-block" }}>
+                        <AddCircleOutlineIcon
+                          style={{ verticalAlign: "sub" }}
+                        />
+                      </SiteIcon>
+                    }
+                    iconPosition="start"
+                    label="Add New"
+                    href="tab=add-new-property"
+                    {...a11yProps(1)}
+                  ></LinkTab>
+                  <LinkTab
+                    icon={
+                      <SiteIcon style={{ display: "inline-block" }}>
+                        <AccountCircleIcon style={{ verticalAlign: "sub" }} />
+                      </SiteIcon>
+                    }
+                    iconPosition="start"
+                    label="Profile"
+                    href="tab=profile"
+                    {...a11yProps(2)}
+                  ></LinkTab>
+                  <LinkTab
+                    icon={
+                      <SiteIcon style={{ display: "inline-block" }}>
+                        <HomeIcon style={{ verticalAlign: "sub" }} />
+                      </SiteIcon>
+                    }
+                    iconPosition="start"
+                    label="My Properties"
+                    href="tab=my-properties"
+                    {...a11yProps(3)}
+                  ></LinkTab>
+                  <LinkTab
+                    icon={
+                      <SiteIcon style={{ display: "inline-block" }}>
+                        <NotificationsActiveIcon
+                          style={{ verticalAlign: "sub" }}
+                        />
+                      </SiteIcon>
+                    }
+                    iconPosition="start"
+                    label="Notifications"
+                    href="tab=notifications"
+                    {...a11yProps(4)}
+                  ></LinkTab>
+                  <LinkTab
+                    icon={
+                      <SiteIcon style={{ display: "inline-block" }}>
+                        <FavoriteBorderIcon style={{ verticalAlign: "sub" }} />
+                      </SiteIcon>
+                    }
+                    iconPosition="start"
+                    label="My Favorites"
+                    href="tab=my-favorites"
+                    {...a11yProps(5)}
+                  ></LinkTab>
+                  <LinkTab
+                    icon={
+                      <SiteIcon style={{ display: "inline-block" }}>
+                        <LockIcon style={{ verticalAlign: "sub" }} />
+                      </SiteIcon>
+                    }
+                    iconPosition="start"
+                    label="Change Password"
+                    href="tab=change-password"
+                    {...a11yProps(6)}
+                  ></LinkTab>
+                  <LinkTab
+                    icon={
+                      <SiteIcon style={{ display: "inline-block" }}>
+                        <CreditCardIcon style={{ verticalAlign: "sub" }} />
+                      </SiteIcon>
+                    }
+                    iconPosition="start"
+                    label="Verifications"
+                    href="tab=verifications"
+                    {...a11yProps(7)}
+                  />
+                  <LinkTab
+                    icon={
+                      <SiteIcon style={{ display: "inline-block" }}>
+                        <SecurityIcon style={{ verticalAlign: "sub" }} />
+                      </SiteIcon>
+                    }
+                    iconPosition="start"
+                    label="Account Support"
+                    href="tab=account-support"
+                    {...a11yProps(8)}
+                  />
+
+                  <LinkTab
+                    icon={
+                      <SiteIcon style={{ display: "inline-block" }}>
+                        <PowerSettingsNewIcon
+                          style={{ verticalAlign: "sub" }}
+                        />
+                      </SiteIcon>
+                    }
+                    iconPosition="start"
+                    label="Log Out"
+                    href="tab=log-out"
+                    {...a11yProps(9)}
+                  ></LinkTab>
+
+                  {/* <LinkTab
+       icon={
+         <NotificationsActiveIcon style={{ verticalAlign: "sub" }} />
+       }
+       iconPosition="start"
+       label="Notifications"
+       href="tab=notifications"
+       {...a11yProps(3)}
+     />
+     <LinkTab
+       icon={<LocalOfferIcon style={{ verticalAlign: "sub" }} />}
+       iconPosition="start"
+       label="Offers"
+       href="tab=offers"
+       {...a11yProps(4)}
+     />
+     <LinkTab
+       icon={<CreditCardIcon style={{ verticalAlign: "sub" }} />}
+       iconPosition="start"
+       label="Verifications"
+       href="tab=verifications"
+       {...a11yProps(5)}
+     />
+     <LinkTab
+       icon={<SecurityIcon style={{ verticalAlign: "sub" }} />}
+       iconPosition="start"
+       label="Account Support"
+       href="tab=account-support"
+       {...a11yProps(6)}
+     />
+     <LinkTab
+       icon={<AttachMoneyIcon style={{ verticalAlign: "sub" }} />}
+       iconPosition="start"
+       label="Earnings"
+       href="tab=earnings"
+       {...a11yProps(7)}
+     /> */}
+                </Tabs>
+              </Grid>
+            )}
+        </Grid>
       </Grid>
-      <Grid pt={1} style={{ position: "sticky", top: "190px" }}>
-        {/* <BreadCrumbs></BreadCrumbs> */}
-        <CustomizedBreadcrumbs
-          tab={tab}
-          path={path}
-          setPath={setPath}
-          value={value}
-          setValue={setValue}
-        />
-      </Grid>
-      <Grid container pt={5}>
+
+      <Grid container  >
         <Grid
-          sm={12}
           container
           className="settingsMenu"
           sx={{ display: "flex" }}
+          sm={12}
         >
-          <Grid className="settingsMenuContainer" container sm={2}>
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              orientation="vertical"
-              variant="scrollable"
-              aria-label="nav tabs example"
-              className="settingsMenuTabContainer"
-            >
-              <LinkTab
-                label="SETTINGS"
-                disabled
-                style={{ fontWeight: "bold", color: "white" }}
-                {...a11yProps(0)}
+          <Grid
+            className="settingsMenuContainer"
+            container
+            xs={12}
+            sm={12}
+            md={2}
+          >
+            {width > 900 && (
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                orientation="vertical"
+                variant="scrollable"
+                aria-label="nav tabs example"
+                className="settingsMenuTabContainer"
               >
-                <SiteText>SETTINGS</SiteText>
-              </LinkTab>
+                <LinkTab
+                  label="SETTINGS"
+                  disabled
+                  style={{ fontWeight: "bold", color: "white" }}
+                  {...a11yProps(0)}
+                >
+                  <SiteText>SETTINGS</SiteText>
+                </LinkTab>
 
-              <LinkTab
-                icon={
-                  <SiteIcon style={{ display: "inline-block" }}>
-                    <AddCircleOutlineIcon style={{ verticalAlign: "sub" }} />
-                  </SiteIcon>
-                }
-                iconPosition="start"
-                label="Add New"
-                href="tab=add-new-property"
-                {...a11yProps(1)}
-              ></LinkTab>
-              <LinkTab
-                icon={
-                  <SiteIcon style={{ display: "inline-block" }}>
-                    <AccountCircleIcon style={{ verticalAlign: "sub" }} />
-                  </SiteIcon>
-                }
-                iconPosition="start"
-                label="Profile"
-                href="tab=profile"
-                {...a11yProps(2)}
-              ></LinkTab>
-              <LinkTab
-                icon={
-                  <SiteIcon style={{ display: "inline-block" }}>
-                    <HomeIcon style={{ verticalAlign: "sub" }} />
-                  </SiteIcon>
-                }
-                iconPosition="start"
-                label="My Properties"
-                href="tab=my-properties"
-                {...a11yProps(3)}
-              ></LinkTab>
-              <LinkTab
-                icon={
-                  <SiteIcon style={{ display: "inline-block" }}>
-                    <NotificationsActiveIcon style={{ verticalAlign: "sub" }} />
-                  </SiteIcon>
-                }
-                iconPosition="start"
-                label="Notifications"
-                href="tab=notifications"
-                {...a11yProps(4)}
-              ></LinkTab>
-              <LinkTab
-                icon={
-                  <SiteIcon style={{ display: "inline-block" }}>
-                    <FavoriteBorderIcon style={{ verticalAlign: "sub" }} />
-                  </SiteIcon>
-                }
-                iconPosition="start"
-                label="My Favorites"
-                href="tab=my-favorites"
-                {...a11yProps(5)}
-              ></LinkTab>
-              <LinkTab
-                icon={
-                  <SiteIcon style={{ display: "inline-block" }}>
-                    <LockIcon style={{ verticalAlign: "sub" }} />
-                  </SiteIcon>
-                }
-                iconPosition="start"
-                label="Change Password"
-                href="tab=change-password"
-                {...a11yProps(6)}
-              ></LinkTab>
-                    <LinkTab
-                icon={   <SiteIcon style={{ display: "inline-block" }}><SecurityIcon style={{ verticalAlign: "sub" }} /></SiteIcon>}
-                iconPosition="start"
-                label="Account Support"
-                href="tab=account-support"
-                {...a11yProps(8)}
-              />
-              <LinkTab
-                icon={<CreditCardIcon style={{ verticalAlign: "sub" }} />}
-                iconPosition="start"
-                label="Verifications"
-                href="tab=verifications"
-                {...a11yProps(5)}
-              />
-              <LinkTab
-                icon={
-                  <SiteIcon style={{ display: "inline-block" }}>
-                    <PowerSettingsNewIcon style={{ verticalAlign: "sub" }} />
-                  </SiteIcon>
-                }
-                iconPosition="start"
-                label="Log Out"
-                href="tab=log-out"
-                {...a11yProps(7)}
-              ></LinkTab>
+                <LinkTab
+                  icon={
+                    <SiteIcon style={{ display: "inline-block" }}>
+                      <AddCircleOutlineIcon style={{ verticalAlign: "sub" }} />
+                    </SiteIcon>
+                  }
+                  iconPosition="start"
+                  label="Add New"
+                  href="tab=add-new-property"
+                  {...a11yProps(1)}
+                ></LinkTab>
+                <LinkTab
+                  icon={
+                    <SiteIcon style={{ display: "inline-block" }}>
+                      <AccountCircleIcon style={{ verticalAlign: "sub" }} />
+                    </SiteIcon>
+                  }
+                  iconPosition="start"
+                  label="Profile"
+                  href="tab=profile"
+                  {...a11yProps(2)}
+                ></LinkTab>
+                <LinkTab
+                  icon={
+                    <SiteIcon style={{ display: "inline-block" }}>
+                      <HomeIcon style={{ verticalAlign: "sub" }} />
+                    </SiteIcon>
+                  }
+                  iconPosition="start"
+                  label="My Properties"
+                  href="tab=my-properties"
+                  {...a11yProps(3)}
+                ></LinkTab>
+                <LinkTab
+                  icon={
+                    <SiteIcon style={{ display: "inline-block" }}>
+                      <NotificationsActiveIcon
+                        style={{ verticalAlign: "sub" }}
+                      />
+                    </SiteIcon>
+                  }
+                  iconPosition="start"
+                  label="Notifications"
+                  href="tab=notifications"
+                  {...a11yProps(4)}
+                ></LinkTab>
+                <LinkTab
+                  icon={
+                    <SiteIcon style={{ display: "inline-block" }}>
+                      <FavoriteBorderIcon style={{ verticalAlign: "sub" }} />
+                    </SiteIcon>
+                  }
+                  iconPosition="start"
+                  label="My Favorites"
+                  href="tab=my-favorites"
+                  {...a11yProps(5)}
+                ></LinkTab>
+                <LinkTab
+                  icon={
+                    <SiteIcon style={{ display: "inline-block" }}>
+                      <LockIcon style={{ verticalAlign: "sub" }} />
+                    </SiteIcon>
+                  }
+                  iconPosition="start"
+                  label="Change Password"
+                  href="tab=change-password"
+                  {...a11yProps(6)}
+                ></LinkTab>
+                <LinkTab
+                  icon={
+                    <SiteIcon style={{ display: "inline-block" }}>
+                      <CreditCardIcon style={{ verticalAlign: "sub" }} />
+                    </SiteIcon>
+                  }
+                  iconPosition="start"
+                  label="Verifications"
+                  href="tab=verifications"
+                  {...a11yProps(7)}
+                />
+                <LinkTab
+                  icon={
+                    <SiteIcon style={{ display: "inline-block" }}>
+                      <SecurityIcon style={{ verticalAlign: "sub" }} />
+                    </SiteIcon>
+                  }
+                  iconPosition="start"
+                  label="Account Support"
+                  href="tab=account-support"
+                  {...a11yProps(8)}
+                />
 
-              {/* <LinkTab
+                <LinkTab
+                  icon={
+                    <SiteIcon style={{ display: "inline-block" }}>
+                      <PowerSettingsNewIcon style={{ verticalAlign: "sub" }} />
+                    </SiteIcon>
+                  }
+                  iconPosition="start"
+                  label="Log Out"
+                  href="tab=log-out"
+                  {...a11yProps(9)}
+                ></LinkTab>
+
+                {/* <LinkTab
                 icon={
                   <NotificationsActiveIcon style={{ verticalAlign: "sub" }} />
                 }
@@ -350,17 +559,10 @@ if(tab) {
                 href="tab=earnings"
                 {...a11yProps(7)}
               /> */}
-            </Tabs>
+              </Tabs>
+            ) }
           </Grid>
-          <Grid md={9} sm={12} className="settingsContent" py={2}>
-            {/* <CustomizedBreadcrumbs
-              tab={tab}
-              path={path}
-              setPath={setPath}
-              value={value}
-              setValue={setValue}
-            /> */}
-
+          <Grid md={9} sm={12} className="settingsContent" py={2} pt={5}>
             <TabPanel value={value} index={0}></TabPanel>
             <TabPanel value={value} index={1}>
               <AddNewProperty />
@@ -369,21 +571,24 @@ if(tab) {
               <Profile />
             </TabPanel>
             <TabPanel value={value} index={3}>
-        <PropertyTable/>
+              <PropertyTable />
             </TabPanel>
             <TabPanel value={value} index={4}>
               <Notifications />
             </TabPanel>
-            <TabPanel value={value} index={4}>
-              <Offers />
-            </TabPanel>
             <TabPanel value={value} index={5}>
-              <Verifications />
+              <Favorites />
             </TabPanel>
             <TabPanel value={value} index={6}>
-              <Supports />
+              <ChangePassword />
             </TabPanel>
             <TabPanel value={value} index={7}>
+              <Verifications />
+            </TabPanel>
+            <TabPanel value={value} index={8}>
+              <Supports />
+            </TabPanel>
+            <TabPanel value={value} index={9}>
               <Earnings />
             </TabPanel>
           </Grid>

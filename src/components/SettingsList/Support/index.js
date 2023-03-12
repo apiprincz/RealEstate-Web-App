@@ -17,7 +17,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { propertyData } from "../../../constants/data";
+import { propertiesData } from "../../../constants/data";
 
 import "./styles.css";
 
@@ -85,7 +85,7 @@ const Supports = () => {
   return (
     <Grid >
       <Grid className="support" >
-        <h1>Account Support</h1>
+        {/* <h1>Account Support</h1> */}
         <br />
         We are here if you need any help
         <Grid sm={9}>
@@ -102,7 +102,7 @@ const Supports = () => {
               >
                 <h5>General Help</h5>
               </AccordionSummary>
-              <AccordionDetails>
+              <AccordionDetails className='supportDetail' >
                 <Grid py={3}>
                   Visit our <a href="#">help center</a> to learn how to get
                   started with buying and selling of property.
@@ -116,13 +116,16 @@ const Supports = () => {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <h5>Contact IleNla Support </h5>
+                <h5>Contact Support </h5>
               </AccordionSummary>
-              <AccordionDetails>
-                <Typography>
+              <AccordionDetails className='supportDetail'>
+              <Grid py={3}>
+
                   Can't find the answers you’re looking for? <br />
                   You can <a href="#">submit a request</a> here.
-                </Typography>
+               
+                </Grid>
+
               </AccordionDetails>
             </Accordion>
           </Grid>

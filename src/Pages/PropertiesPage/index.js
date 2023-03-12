@@ -24,7 +24,7 @@ import {
   setPropertyType,
   useFilterContext,
 } from "../../Contexts/FilterContext";
-import { propertyData } from "../../constants/data";
+import { propertiesData } from "../../constants/data";
 import FilterMenu from "../../components/FilterMenu";
 import BreadCrumbs from "../../components/BreadCrumbs";
 import SidebarMenu from "../../components/SidebarMenu";
@@ -62,14 +62,14 @@ const PropertiesPage = () => {
     dispatch(setPropertyType(tab));
   };
   useEffect(() => {
-    setFilterProperties([...propertyData]);
+    setFilterProperties([...propertiesData]);
   }, []);
   useEffect(() => {
-    if (propertyData) {
+    if (propertiesData) {
       const listing = "rent";
       // const propertyType = "land";
       const propertyType = ["land", "apartments"];
-      let newFilterProperties = [...propertyData];
+      let newFilterProperties = [...propertiesData];
       console.log("teywyeuui", filterProperties, filterItems);
 
       if (filterItems.propertyType.length > 0) {

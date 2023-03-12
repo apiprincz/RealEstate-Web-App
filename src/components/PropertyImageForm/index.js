@@ -13,7 +13,7 @@ import {
 import { SiteText } from "../Styles/PageContent.styled";
 import { Dropzone, FileItem } from "@dropzone-ui/react";
 import { useParams } from "react-router-dom";
-import { city } from "../../constants/data";
+import { city, propertiesData } from "../../constants/data";
 
 const PropertyImageForm = ({ propertyData, setPropertyData }) => {
   const [files, setFiles] = useState([]);
@@ -76,6 +76,21 @@ const PropertyImageForm = ({ propertyData, setPropertyData }) => {
       setSelectedCity(selectedCity[0]);
     }
   }, [propertyData]);
+
+ 
+
+  useEffect(() => {
+    if(id){
+
+      const property = propertiesData.filter(property => property.id === id)
+      console.log('filterproperty', property)
+      setPropertyData({
+        ...property[0]
+      });
+    }
+  
+    
+  }, [id])
 
   console.log("ieitiitr",propertyData);
   return (

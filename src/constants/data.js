@@ -71,13 +71,14 @@ export const city = [{
 },
 ]
 
-export const propertyData = [
+export const propertiesData = [
   {
-    id: "1",
+    id: "100",
     title: "2 Bedroom flat",
     didNo: "e0eo21",
     price: 10000000,
-    priceTicker: "month",
+    priceTicker: "year",
+    active:true,
     propertyFeatures: [
       {
         room: 2,
@@ -90,14 +91,11 @@ export const propertyData = [
       },
     ],
     propertyAmenities: [
-      "Water Heater",
-      "Air Condition",
-      "Gym",
-      "Microwave",
-      "Laundry",
-      "Parking",
-      "Power Plant",
-      "Water Front",
+      "air_condition",
+      "gym",
+      "microwave",
+      "laundry",
+      "parking",
     ],
     location: "ibadan",
     address: "No 12, Ikate Street, Command bus-stop, Ibadan",
@@ -116,6 +114,8 @@ export const propertyData = [
     ],
     listing: "sale",
     propertyType: "apartments",
+    description: "I love apartments",
+    cityArea:'bodija',
     currency: "NGN",
     realtor: [{ name: "Ade", phone: "0980890090", email: "dummy@gmail.com" }],
     verifiedOwner: [
@@ -163,6 +163,8 @@ export const propertyData = [
     title: "3 Plot of Land",
     didNo: "50eo21",
     price: 5000000,
+    active:false,
+
     priceTicker: "",
     propertyFeatures: [
       {
@@ -232,6 +234,8 @@ export const propertyData = [
     price: 12000000,
     didNo: "ioe324",
     priceTicker: "year",
+    active:true,
+
     propertyFeatures: [
       {
         room: 3,
@@ -316,6 +320,8 @@ export const propertyData = [
     title: "3 Bedroom flat",
     price: 950000,
     didNo: "ioe324",
+    active:true,
+
     priceTicker: "year",
     propertyFeatures: [
       {
@@ -394,10 +400,12 @@ export const propertyData = [
     ],
   },
   {
-    id: "1",
+    id: "8",
     title: "2 Bedroom flat",
     didNo: "e0eo21",
     price: 7000000,
+    active:false,
+
     priceTicker: "month",
     propertyFeatures: [
       {
@@ -486,6 +494,8 @@ export const propertyData = [
     id: "2",
     title: "3 Plot of Land",
     didNo: "50eo21",
+    active:true,
+
     price: 8500000,
     priceTicker: "",
     propertyFeatures: [
@@ -564,6 +574,8 @@ export const propertyData = [
   {
     id: "3",
     title: "3 Bedroom flat",
+    active:true,
+
     price: 3500000,
     didNo: "ioe324",
     priceTicker: "year",
@@ -644,6 +656,8 @@ export const propertyData = [
     id: "4",
     title: "3 Bedroom flat",
     price: 1700000,
+    active:false,
+
     didNo: "ioe324",
     priceTicker: "year",
     propertyFeatures: [
@@ -727,6 +741,8 @@ export const propertyData = [
     id: "1",
     title: "2 Bedroom flat",
     didNo: "e0eo21",
+    active:true,
+
     price: 1300000,
     priceTicker: "month",
     propertyFeatures: [
@@ -821,6 +837,8 @@ export const propertyData = [
     id: "2",
     title: "3 Plot of Land",
     didNo: "50eo21",
+    active:true,
+
     price: 4600000,
     priceTicker: "",
     propertyFeatures: [
@@ -894,6 +912,8 @@ export const propertyData = [
     id: "3",
     title: "3 Bedroom flat",
     price: 9000000,
+    active:true,
+
     didNo: "ioe324",
     priceTicker: "year",
     propertyFeatures: [
@@ -976,6 +996,8 @@ export const propertyData = [
     price: 34000000,
     didNo: "ioe324",
     priceTicker: "year",
+    active:false,
+
     propertyFeatures: [
       {
         room: 4,

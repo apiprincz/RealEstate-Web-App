@@ -13,7 +13,7 @@ import {
 import React, { useState } from "react";
 import NumberFormat, { InputAttributes } from "react-number-format";
 import PropTypes from "prop-types";
-import { propertyData } from "../../../constants/data";
+import { propertiesData } from "../../../constants/data";
 
 import "./styles.css";
 
@@ -99,7 +99,7 @@ const Offers = () => {
       <Grid >
         <form onSubmit={handleSubmit}>
           <Grid spacing={2} py={5} mb={3}>
-            {propertyData.map((property, index) => (
+            {propertiesData.map((property, index) => (
               <Grid
                 container
                

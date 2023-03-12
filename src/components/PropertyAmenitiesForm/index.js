@@ -31,7 +31,7 @@ import {
   setLocationSingle,
   useFilterContext,
 } from "../../Contexts/FilterContext";
-import { city } from "../../constants/data";
+import { city, propertiesData } from "../../constants/data";
 
 const PropertyAmenitiesForm = ({ propertyData, setPropertyData }) => {
   // const { products } = useSelector((state) => state.stores.products);
@@ -57,18 +57,16 @@ const PropertyAmenitiesForm = ({ propertyData, setPropertyData }) => {
     }
   };
   const handleReset = (e) => {
-
-      setPropertyData({
-        ...propertyData,
-        propertyAmenities: [],
-      });
-    
+    setPropertyData({
+      ...propertyData,
+      propertyAmenities: [],
+    });
   };
   const handleSelectAll = (e) => {
-
-      setPropertyData({
-        ...propertyData,
-        propertyAmenities: ["gym",
+    setPropertyData({
+      ...propertyData,
+      propertyAmenities: [
+        "gym",
         "refrigerator",
         "air_condition",
         "stunning_views",
@@ -81,15 +79,23 @@ const PropertyAmenitiesForm = ({ propertyData, setPropertyData }) => {
         "24_hours_electricity",
         "surveillance_system",
         "dish_washer",
-"pop_ceiling",
-"prepaid_meter",
-"wardrobe",
-"wi_fi"
-      
+        "pop_ceiling",
+        "prepaid_meter",
+        "wardrobe",
+        "wi_fi",
       ],
-      });
-    
+    });
   };
+
+  useEffect(() => {
+    if (id) {
+      const property = propertiesData.filter((property) => property.id === id);
+      console.log("filterproperty", property);
+      setPropertyData({
+        ...property[0]
+      });
+    }
+  }, [id]);
 
   console.log("ieitiitr", propertyData);
   return (
@@ -345,9 +351,14 @@ const PropertyAmenitiesForm = ({ propertyData, setPropertyData }) => {
             />
           </Grid>
         </Grid>
-        <Grid container justifyContent='flex-end'>
-          <SiteBtn variant='outlined' onClick={handleSelectAll} small alt>Select All</SiteBtn>&nbsp;
-          <SiteBtn variant='outlined' onClick={handleReset} small>Reset</SiteBtn>
+        <Grid container justifyContent="flex-end">
+          <SiteBtn variant="outlined" onClick={handleSelectAll} small alt>
+            Select All
+          </SiteBtn>
+          &nbsp;
+          <SiteBtn variant="outlined" onClick={handleReset} small>
+            Reset
+          </SiteBtn>
         </Grid>
       </FormGroup>
     </FormControl>
