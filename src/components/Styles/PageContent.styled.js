@@ -56,6 +56,21 @@ export const SiteText = styled.p`
   
 
 `;
+export const SiteTextLarge = styled.p`
+  color: ${({ theme }) => theme.colors.text} ;
+  cursor: ${(props) => (props.cursorEnabled ? "pointer" : "")};
+  line-height: ${(props) => (props.xlineHeight ? "2rem" : "")};
+  font-size: 1.7em;
+  font-family: "Jost", sans-serif;
+  text-transform:capitalize;
+  &:hover {
+    color: ${(props) => (props.cursorEnabled ? "hsl(0, 0%, 80%)" : "")};
+  }
+ 
+  color: ${(props) => (props.gray ? "gray " : "")};
+  
+
+`;
 
 export const SiteTextSmall = styled.p`
   color: ${({ theme }) => theme.colors.textAlt2};

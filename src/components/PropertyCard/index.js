@@ -57,7 +57,7 @@ const PropertyCard = ({ property, index, section }) => {
             }
           ></Grid>
         )}
-        <a href={`/property/`}>
+        <a href={`property/view/${property.id}`}>
           <img src={property.files[0].secure_url} alt="property image" />
         </a>
       </Grid>

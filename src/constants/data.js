@@ -159,7 +159,7 @@ export const propertiesData = [
     ],
   },
   {
-    id: "2",
+    id: "200",
     title: "3 Plot of Land",
     didNo: "50eo21",
     price: 5000000,

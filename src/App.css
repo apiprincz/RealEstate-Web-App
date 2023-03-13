@@ -13,9 +13,16 @@
 /* .activeBtn {
   color: hsl(169, 82%, 60%) !important;
 } */
-
+.rmdp-time-picker div input , .rmdp-input{
+  color: black !important;
+}
 .css-1a1fmpi-MuiInputBase-root-MuiInput-root:after {
   border-bottom: 1px solid hsl(169, 82%, 60%) !important;
+}
+
+.react-tel-input .form-control {
+  height: 53px !important;
+  width: 100% !important;
 }
 
 .about {

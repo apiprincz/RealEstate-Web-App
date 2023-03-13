@@ -28,6 +28,7 @@ import AgentPage from "./Pages/AgentPage";
 import ProfilePage from "./Pages/ProfilePage";
 import AddNewProperty from "./components/SettingsList/AddNewProperty";
 import CreatePropertyPage from "./Pages/CreatePropertyPage";
+import PropertyDetails from "./Pages/PropertyDetails";
 
 const App = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
@@ -52,12 +53,16 @@ const App = () => {
             <Route index element={<ProfilePage />} />
             <Route path=":id" element={<ProfilePage />} />
           </Route>
-          <Route path="/property" element={<CreatePropertyPage />}>
-          <Route path="edit" element={<CreatePropertyPage />}>
-            <Route path=":id" element={<CreatePropertyPage />} />
+
+          <Route path="/property" >
+            <Route path="view" element={<PropertyDetails />}>
+              <Route path=":id" element={<PropertyDetails />} />
             </Route>
-          <Route path="add" element={<CreatePropertyPage />}>
-            {/* <Route path=":id" element={<CreatePropertyPage />} /> */}
+            <Route path="edit" element={<CreatePropertyPage />}>
+              <Route path=":id" element={<CreatePropertyPage />} />
+            </Route>
+            <Route path="add" element={<CreatePropertyPage />}>
+              {/* <Route path=":id" element={<CreatePropertyPage />} /> */}
             </Route>
           </Route>
         </Routes>

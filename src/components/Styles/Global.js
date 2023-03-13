@@ -101,6 +101,14 @@ li {
   font-size: 0.9rem !important;
 
 }
+.textColored {
+  color: ${({ theme }) => theme.colors.textColored2} !important;
+  
+}
+.textColored:hover {
+  text-decoration: underline;
+}
+
 .inputLabel {
   font-family: "Jost", sans-serif !important;
 
