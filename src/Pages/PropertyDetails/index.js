@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { propertiesData } from "../../constants/data";
+import { propertiesData, agentData } from "../../constants/data";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import SingleBedIcon from "@mui/icons-material/SingleBed";
@@ -22,6 +22,10 @@ import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 // import TooltipWrapper from "../../Components/Tooltip";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import Avatar from "../../images/avatar1.png";
+import CallIcon from '@mui/icons-material/Call';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+
 import moment from "moment";
 import "./styles.css";
 // import PropertyAmenities from "../../Components/Amenities/Property";
@@ -29,16 +33,19 @@ import "./styles.css";
 // import Property from "../../Components/Property";
 
 import Layout from "../../components/Layout";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
   Hr,
   SectionHero,
+  SectionHeroSmall,
   SiteIcon,
   SiteText,
   SiteTextLarge,
+  SiteTextSmall,
 } from "../../components/Styles/PageContent.styled";
 import InspectionDate from "../../components/InspectionDate";
+import { getAgent } from "../../actions/agent";
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -46,6 +53,8 @@ const PropertyDetails = () => {
   const [activeIndex, setActiveIndex] = useState([0, 1]);
   const [activeAmenitiesIndex, setActiveAmenitiesIndex] = useState([0, 1]);
   const [values, setValues] = useState([]);
+  const [agentDetail, setAgentDetail] = useState();
+  const [propertyDetail, setPropertyDetail] = useState();
 
   const [booking, setBooking] = useState({
     properties: [],
@@ -61,22 +70,24 @@ const PropertyDetails = () => {
     amount_due: null,
     payment_method: null,
     payment_status: "pending",
-    paystack_details:[],
+    paystack_details: [],
     appointmentDays: [],
   });
   // const [similarProperty, setSimilarProperty] = useState();
 
-  // const {deals} = useSelector(state => state.deals)
-  console.log("similarProp");
+  const { properties } = useSelector((state) => state.properties);
+  const {agent} = useSelector((state) => state.agents);
 
-  const propertyDetail = propertiesData?.find((property) => property.id === id);
-  const similarProperty = propertiesData?.filter(
-    (property) =>
-      property.price >= propertyDetail?.price - 200000 &&
-      property.price <= propertyDetail?.price + 200000 &&
-      property.id !== propertyDetail?.id
-  );
+  console.log("similarProp", id);
 
+  // const f = properties?.properties?.filter(
+  //   (property) =>
+  //     property.price >= propertyDetail?.price - 200000 &&
+  //     property.price <= propertyDetail?.price + 200000 &&
+  //     property._id !== propertyDetail?._id
+  // );
+
+  console.log("jdfjhhf", propertyDetail);
   var nf = Intl.NumberFormat();
 
   // console.log("similarProp", deals);
@@ -120,14 +131,40 @@ const PropertyDetails = () => {
   const [amenities, setAmenities] = useState();
   const [features, setFeatures] = useState();
 
-  useEffect(() => {
-    let amenities = [propertyDetail?.amenities];
-    let features = [propertyDetail?.features];
-    setAmenities(amenities);
-    setFeatures(features);
-  }, [propertyDetail]);
+  // useEffect(() => {
+  //   let amenities = [propertyDetail?.amenities];
+  //   let features = [propertyDetail?.features];
+  //   setAmenities(amenities);
+  //   setFeatures(features);
+  // }, [propertyDetail]);
 
   console.log("activeIndex", features);
+
+  useEffect(() => {
+    if (properties?.properties) {
+      const property = properties?.properties?.filter(
+        (property) => property._id === id
+      );
+      console.log("shhdsdf", property, properties?.properties);
+      setPropertyDetail(property);
+    }
+  }, [properties]);
+
+  const dispatchRedux = useDispatch();
+
+  useEffect(() => {
+    if ( propertyDetail?.[0].agentId)
+      console.log("jjfdkkf", propertyDetail, propertyDetail?.[0].agentId);
+    dispatchRedux(getAgent(propertyDetail?.[0].agentId));
+  }, [propertyDetail]);
+  useEffect(() => {
+    if (agent?.agent) {
+      console.log("foioooer", agent);
+      setAgentDetail(agent?.agent);
+    }
+  }, [agent]);
+
+  console.log("agenthdij", agentDetail, agent);
 
   return (
     <Layout>
@@ -135,14 +172,14 @@ const PropertyDetails = () => {
         <Grid container spacing={3}>
           <Grid item sm={8}>
             <div className="propertyImage">
-              <img src={propertyDetail?.files[0].secure_url} />
+              <img src={propertyDetail?.[0].files[0]?.secure_url} />
             </div>
             <Grid container py={3} px={2} justifyContent="space-between">
               <Grid style={{ textTransform: "capitalize" }}>
                 <SiteText>
                   Reserved For{" "}
                   <span className="propertyListing">
-                    {propertyDetail?.listing}
+                    {propertyDetail?.[0]?.listing}
                   </span>
                 </SiteText>
               </Grid>
@@ -150,14 +187,14 @@ const PropertyDetails = () => {
                 <a href="#">
                   <SiteIcon>
                     <FavoriteBorderIcon fontSize="16px" />
-                    &nbsp;{propertyDetail?.favoriteCount?.length}{" "}
+                    &nbsp;{propertyDetail?.[0]?.favoriteCount?.length}{" "}
                   </SiteIcon>
                 </a>
               </Grid>
             </Grid>
             <Grid item pt={5} sm={12}>
               <Grid>
-                <SectionHero>{propertyDetail?.title}</SectionHero>
+                <SectionHero>{propertyDetail?.[0]?.title}</SectionHero>
               </Grid>
               <Grid
                 my={1}
@@ -170,7 +207,7 @@ const PropertyDetails = () => {
                   <SiteIcon>
                     <a
                       target="_blank"
-                      href={`/properties/${propertyDetail?.location}`}
+                      href={`/properties/${propertyDetail?.[0]?.location}`}
                       className="propLocationIcon"
                     >
                       <AlternateEmailIcon />
@@ -179,7 +216,8 @@ const PropertyDetails = () => {
                 </Grid>
                 <Grid item xs={10} lg={11} sm={10} className="propLocation">
                   <SiteText>
-                    {propertyDetail?.address} {propertyDetail?.location}
+                    {propertyDetail?.[0]?.address}{" "}
+                    {propertyDetail?.[0]?.location}
                   </SiteText>
                 </Grid>
               </Grid>
@@ -192,9 +230,9 @@ const PropertyDetails = () => {
               >
                 <Grid item xs={10} lg={11} sm={10} className="propLocation">
                   <SiteTextLarge>
-                    NGN{nf.format(propertyDetail?.price)}
-                    {propertyDetail?.priceTicker && <>/</>}
-                    &nbsp;{propertyDetail?.priceTicker}
+                    NGN{nf.format(propertyDetail?.[0]?.price)}
+                    {propertyDetail?.[0]?.priceTicker && <>/</>}
+                    &nbsp;{propertyDetail?.[0]?.priceTicker}
                   </SiteTextLarge>
                 </Grid>
               </Grid>
@@ -241,15 +279,15 @@ const PropertyDetails = () => {
                     className="propFeatureDetail"
                   >
                     <SingleBedIcon className="propFeatureIcon" /> &nbsp;&nbsp;
-                    &nbsp; {propertyDetail?.propertyFeatures[0]?.room}{" "}
+                    &nbsp; {propertyDetail?.[0]?.propertyFeatures[0]?.room}{" "}
                     &nbsp;&nbsp;
-                    {propertyDetail?.propertyFeatures[0]?.master && (
+                    {propertyDetail?.[0]?.propertyFeatures[0]?.master && (
                       // <TooltipWrapper value="Master">
                       <Chip label="M" size="small" className="propSubIcon" />
                       // </TooltipWrapper>
                     )}
                     &nbsp;&nbsp;
-                    {propertyDetail?.propertyFeatures?.ensuite && (
+                    {propertyDetail?.[0]?.propertyFeatures?.ensuite && (
                       // <TooltipWrapper value="En-suite">
                       <Chip label="E" size="small" className="propSubIcon" />
                       // </TooltipWrapper>
@@ -282,9 +320,9 @@ const PropertyDetails = () => {
                     className="propFeatureDetail"
                   >
                     <ShowerIcon className="propFeatureIcon" /> &nbsp;&nbsp;
-                    &nbsp; {propertyDetail?.propertyFeatures[0]?.bathroom}{" "}
+                    &nbsp; {propertyDetail?.[0]?.propertyFeatures[0]?.bathroom}{" "}
                     &nbsp;&nbsp;
-                    {propertyDetail?.propertyAmenities?.includes(
+                    {propertyDetail?.[0]?.propertyAmenities?.includes(
                       "waterheater"
                     ) && (
                       // <TooltipWrapper value="Water Heater">
@@ -320,7 +358,7 @@ const PropertyDetails = () => {
                   >
                     <FitScreenIcon className="propFeatureIcon" /> &nbsp;&nbsp;
                     &nbsp;
-                    {propertyDetail?.propertyFeatures[0]?.area} SQFT
+                    {propertyDetail?.[0]?.propertyFeatures[0]?.area} SQFT
                   </Grid>
                 </Grid>
                 <Grid
@@ -349,17 +387,17 @@ const PropertyDetails = () => {
                     className="propFeatureDetail"
                   >
                     <KitchenIcon className="propFeatureIcon" /> &nbsp;&nbsp;
-                    &nbsp; {propertyDetail?.propertyFeatures[0]?.kitchen}
+                    &nbsp; {propertyDetail?.[0]?.propertyFeatures[0]?.kitchen}
                   </Grid>
                 </Grid>
               </Grid>
               {/* <Grid container px={3} mt={3} className="propSale" py={2}>
-              {propertyDetail?.listing === "rent" ? (
+              {propertyDetail?.[0]?.listing === "rent" ? (
                 <Grid container justifyContent="space-between">
                   <Grid>Pay &amp; Pack-In Offer </Grid>
                   <Grid>
                     <span className="propertyListing">
-                      For {propertyDetail?.listing}
+                      For {propertyDetail?.[0]?.listing}
                     </span>
                   </Grid>
                 </Grid>
@@ -368,7 +406,7 @@ const PropertyDetails = () => {
                   <Grid>Sales Ends On </Grid>
                   <Grid>
                     <span className="propertyListing">
-                      For {propertyDetail?.listing}
+                      For {propertyDetail?.[0]?.listing}
                     </span>
                   </Grid>
                 </Grid>
@@ -377,7 +415,7 @@ const PropertyDetails = () => {
 
               <Grid style={{ width: "100%" }}>
                 <Grid className="propHero">
-                  {propertyDetail?.listing === "rent"
+                  {propertyDetail?.[0]?.listing === "rent"
                     ? "Rent Per Annum (Avg.)"
                     : "Price"}
                 </Grid>
@@ -387,11 +425,11 @@ const PropertyDetails = () => {
                   container
                   alignItems="baseline"
                 >
-                  <h1>{propertyDetail?.price && (format(propertyDetail?.price))}</h1>
-                  <span className="propHero">{propertyDetail?.currency[0]}</span>
+                  <h1>{propertyDetail?.[0]?.price && (format(propertyDetail?.[0]?.price))}</h1>
+                  <span className="propHero">{propertyDetail?.[0]?.currency[0]}</span>
                 </Grid>
                 <Grid>
-                  {propertyDetail?.listing === "auction" ? (
+                  {propertyDetail?.[0]?.listing === "auction" ? (
                     <Grid mt={2} md={6} xs={12}>
                       <Button
                         className="buyDealBtn"
@@ -415,7 +453,7 @@ const PropertyDetails = () => {
                           </Button>
                         </Grid>
                         <Grid item md={6} sm={12} xs={12}>
-                          {propertyDetail?.inviteOffers && (
+                          {propertyDetail?.[0]?.inviteOffers && (
                             <Button
                               className="buyDealBtn"
                               variant="outlined"
@@ -470,7 +508,7 @@ const PropertyDetails = () => {
                 {activeIndex?.includes(0) && (
                   <Grid className="filterOptionContainer" py={3} px={3}>
                     <Grid>
-                      <p>{propertyDetail?.description}.</p>
+                      <p>{propertyDetail?.[0]?.description}.</p>
                     </Grid>
                   </Grid>
                 )}
@@ -501,26 +539,32 @@ const PropertyDetails = () => {
                       <FormControl fullWidth>
                         <FormGroup>
                           <Grid container sm={12}>
-                          {propertyDetail?.propertyAmenities.length > 0 ?
-                            <>{propertyDetail?.propertyAmenities.map(
-                              (amenities) => (
-                                <Grid sm={4} md={3}>
-                                  <FormControlLabel
-                                    control={
-                                      <Checkbox
-                                        checked
-                                        value={amenities}
-                                        name={amenities}
+                            {propertyDetail?.[0]?.propertyAmenities.length >
+                            0 ? (
+                              <>
+                                {propertyDetail?.[0]?.propertyAmenities.map(
+                                  (amenities) => (
+                                    <Grid sm={4} md={3}>
+                                      <FormControlLabel
+                                        control={
+                                          <Checkbox
+                                            checked
+                                            value={amenities}
+                                            name={amenities}
+                                          />
+                                        }
+                                        label={`${amenities.split("_")[0]} ${
+                                          amenities.split("_")[1] || ""
+                                        } ${amenities.split("_")[2] || ""}`}
+                                        className="siteText checkboxLabel"
                                       />
-                                    }
-                                    label={`${amenities.split("_")[0]} ${
-                                      amenities.split("_")[1] || ""
-                                    } ${amenities.split("_")[2] || ""}`}
-                                    className="siteText checkboxLabel"
-                                  />
-                                </Grid>
-                              )
-                            )} </> :  <>No Amenities</>}
+                                    </Grid>
+                                  )
+                                )}{" "}
+                              </>
+                            ) : (
+                              <>No Amenities</>
+                            )}
                           </Grid>
                         </FormGroup>
                       </FormControl>
@@ -551,261 +595,104 @@ const PropertyDetails = () => {
                 {activeIndex?.includes(2) && (
                   <Grid className="filterOptionContainer" py={3} px={3}>
                     <Grid>
-                    <InspectionDate booking={booking} setBooking={setBooking} values={values} setValues={setValues}/>
+                      <InspectionDate
+                        booking={booking}
+                        setBooking={setBooking}
+                        values={values}
+                        setValues={setValues}
+                      />
                     </Grid>
                   </Grid>
                 )}
               </Grid>
-
-           
             </Grid>
           </Grid>
-          <Grid item sm={4}>
-            <Grid>
-              <h2 className="propTitle">{propertyDetail?.title}</h2>
-            </Grid>
-            <Grid
-              my={3}
-              container
-              alignItems="center"
-              justifyContent="space-between"
-              spacing={2}
-            >
-              <Grid item xs={2} lg={1} sm={2}>
-                <a
-                  target="_blank"
-                  href={`/properties/${propertyDetail?.location}`}
-                  className="propLocationIcon"
-                >
-                  <AlternateEmailIcon />
-                </a>{" "}
+          <Grid item p={4} sm={4}>
+            <Grid item p={2} className="agentInfo">
+              <Grid>
+                <SiteTextLarge>Agent Information</SiteTextLarge>
               </Grid>
-              <Grid item xs={10} lg={11} sm={10} className="propLocation">
-                {propertyDetail?.address} {propertyDetail?.location}
-              </Grid>
-            </Grid>
-            <Grid
-              container
-              justifyContent="space-between"
-              px={3}
-              className="propFeatures"
-              py={2}
-            >
-              <Grid
-                item
-                xs={5.8}
-                lg={2.7}
-                md={5.5}
-                p={1}
-                container
-                flexDirection="column"
-                className="propFeatureItem"
-              >
-                <span className="propFeatureTitle">Bedrooms</span>
-                <hr
-                  style={{
-                    width: "100%",
-                    margin: "2px 0px 5px",
-                    color: "black",
-                  }}
-                />
-
-                <Grid
-                  container
-                  mt={1}
-                  alignItems="center"
-                  className="propFeatureDetail"
-                >
-                  <SingleBedIcon className="propFeatureIcon" /> &nbsp;&nbsp;
-                  &nbsp; {propertyDetail?.propertyFeatures[0]?.room}{" "}
-                  &nbsp;&nbsp;
-                  {propertyDetail?.propertyFeatures[0]?.master && (
-                    // <TooltipWrapper value="Master">
-                    <Chip label="M" size="small" className="propSubIcon" />
-                    // </TooltipWrapper>
-                  )}
-                  &nbsp;&nbsp;
-                  {propertyDetail?.propertyFeatures?.ensuite && (
-                    // <TooltipWrapper value="En-suite">
-                    <Chip label="E" size="small" className="propSubIcon" />
-                    // </TooltipWrapper>
-                  )}
-                </Grid>
+              <Grid py={3}>
+                <SiteTextSmall>Posted By </SiteTextSmall>
               </Grid>
               <Grid
-                item
-                xs={5.8}
-                lg={2.7}
-                md={5.5}
-                p={1}
                 container
-                flexDirection="column"
-                className="propFeatureItem"
+                alignItems="center"
+                justifyContent="space-between"
+                spacing={2}
               >
-                <span className="propFeatureTitle">Bathrooms</span>
-                <hr
-                  style={{
-                    width: "100%",
-                    margin: "2px 0px 5px",
-                    color: "black",
-                  }}
-                />
-
-                <Grid
-                  container
-                  mt={1}
-                  alignItems="center"
-                  className="propFeatureDetail"
-                >
-                  <ShowerIcon className="propFeatureIcon" /> &nbsp;&nbsp; &nbsp;{" "}
-                  {propertyDetail?.propertyFeatures[0]?.bathroom} &nbsp;&nbsp;
-                  {propertyDetail?.propertyAmenities?.includes(
-                    "waterheater"
-                  ) && (
-                    // <TooltipWrapper value="Water Heater">
-                    <Chip label="WH" size="small" className="propSubIcon" />
-                    // </TooltipWrapper>
-                  )}
+                <Grid item xs={2} lg={4} sm={4}>
+                  <a
+                    target="_blank"
+                    href={`/agent/${agentDetail?._id}`}
+                    className="agentImage"
+                  >
+                    <img
+                      style={{ display: "block", width: "100%" }}
+                      src={
+                        agentDetail?.profilePhoto?.secure_url.secure_url ||
+                        Avatar
+                      }
+                      alt="agent image"
+                    />
+                  </a>
                 </Grid>
-              </Grid>
-              <Grid
-                item
-                xs={5.8}
-                lg={2.7}
-                md={5.5}
-                p={1}
-                container
-                flexDirection="column"
-                className="propFeatureItem"
-              >
-                <span className="propFeatureTitle">Area</span>
-                <hr
-                  style={{
-                    width: "100%",
-                    margin: "2px 0px 5px",
-                    color: "black",
-                  }}
-                />
-
-                <Grid
-                  container
-                  mt={1}
-                  alignItems="center"
-                  className="propFeatureDetail"
-                >
-                  <FitScreenIcon className="propFeatureIcon" /> &nbsp;&nbsp;
-                  &nbsp;
-                  {propertyDetail?.propertyFeatures[0]?.area} ACRE
-                </Grid>
-              </Grid>
-              <Grid
-                item
-                xs={5.8}
-                lg={2.7}
-                md={5.5}
-                p={1}
-                container
-                flexDirection="column"
-                className="propFeatureItem"
-              >
-                <span className="propFeatureTitle">Kitchen</span>
-                <hr
-                  style={{
-                    width: "100%",
-                    margin: "2px 0px 5px",
-                    color: "black",
-                  }}
-                />
-
-                <Grid
-                  container
-                  mt={1}
-                  alignItems="center"
-                  className="propFeatureDetail"
-                >
-                  <KitchenIcon className="propFeatureIcon" /> &nbsp;&nbsp;
-                  &nbsp; {propertyDetail?.propertyFeatures[0]?.kitchen}
-                </Grid>
-              </Grid>
-            </Grid>
-            {/* <Grid container px={3} mt={3} className="propSale" py={2}>
-              {propertyDetail?.listing === "rent" ? (
-                <Grid container justifyContent="space-between">
-                  <Grid>Pay &amp; Pack-In Offer </Grid>
+                {/* agentInfo */}
+                <Grid item xs={10} lg={8} sm={8} className="agentDetails">
                   <Grid>
-                    <span className="propertyListing">
-                      For {propertyDetail?.listing}
-                    </span>
+                    {agentDetail?.name && (
+                      <SectionHeroSmall>{agentDetail?.name}</SectionHeroSmall>
+                    )}
                   </Grid>
+                  <Grid>{agentDetail?.phone && <>{agentDetail?.phone}</>}</Grid>
+                  <Grid>
+                    <SiteText>
+                      <a
+                        href={`/agent/${agentDetail?._id}`}
+                        className="textColored"
+                      >
+                        See More Listings
+                      </a>
+                    </SiteText>
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              {
+              propertyDetail?.[0]?.agentInfo?.agentNo ||
+              propertyDetail?.[0]?.agentInfo?.agentWhatsappNo ? (
+                <Grid>
+                  <Grid py={3}>
+                    <Hr />
+                  </Grid>
+
+                  <Grid py={3}>
+                    <SiteTextSmall>Agent Info </SiteTextSmall>
+                  </Grid>
+                 {propertyDetail?.[0]?.agentInfo?.agentName && <Grid container alignItems='center' pb={2}>
+                    {/* <SiteIcon><CallIcon/></SiteIcon>  &nbsp; &nbsp; */}
+                    
+                     <SiteText>
+                    {propertyDetail?.[0]?.agentInfo?.agentName}
+                      </SiteText> 
+                  </Grid>}
+                 {propertyDetail?.[0]?.agentInfo?.agentNo && <Grid container alignItems='center'  pb={2}>
+                    <SiteIcon><CallIcon/></SiteIcon>  &nbsp; &nbsp; <SiteText>
+                    {propertyDetail?.[0]?.agentInfo?.agentNo}
+                      </SiteText> 
+                  </Grid>}
+                  {propertyDetail?.[0]?.agentInfo?.agentWhatsappNo &&<Grid container alignItems='center' pb={2} >
+                    <SiteIcon><WhatsAppIcon/></SiteIcon> &nbsp; &nbsp;<SiteText>
+                    {propertyDetail?.[0]?.agentInfo?.agentWhatsappNo}
+                      </SiteText> 
+                  </Grid>}
                 </Grid>
               ) : (
-                <Grid container justifyContent="space-between">
-                  <Grid>Sales Ends On </Grid>
-                  <Grid>
-                    <span className="propertyListing">
-                      For {propertyDetail?.listing}
-                    </span>
-                  </Grid>
+                <Grid>
+
                 </Grid>
               )}
-              <hr style={{ width: "100%" }} />
-
-              <Grid style={{ width: "100%" }}>
-                <Grid className="propHero">
-                  {propertyDetail?.listing === "rent"
-                    ? "Rent Per Annum (Avg.)"
-                    : "Price"}
-                </Grid>
-                <Grid
-                  className="propPrice"
-                  mt={1}
-                  container
-                  alignItems="baseline"
-                >
-                  <h1>{propertyDetail?.price && (format(propertyDetail?.price))}</h1>
-                  <span className="propHero">{propertyDetail?.currency[0]}</span>
-                </Grid>
-                <Grid>
-                  {propertyDetail?.listing === "auction" ? (
-                    <Grid mt={2} md={6} xs={12}>
-                      <Button
-                        className="buyDealBtn"
-                        variant="contained"
-                        size="large"
-                      >
-                        <LocalOfferIcon /> &nbsp;Place Bid
-                      </Button>
-                    </Grid>
-                  ) : (
-                    <Grid mt={2}>
-                      <Grid container spacing={3}>
-                        <Grid item md={6} sm={12} xs={12}>
-                          <Button
-                            className="buyDealBtn"
-                            variant="contained"
-                            size="large"
-                          >
-                            <AccountBalanceWalletIcon className="buyDealIcon" />
-                            &nbsp; Buy Deal
-                          </Button>
-                        </Grid>
-                        <Grid item md={6} sm={12} xs={12}>
-                          {propertyDetail?.inviteOffers && (
-                            <Button
-                              className="buyDealBtn"
-                              variant="outlined"
-                              size="large"
-                            >
-                              <LocalOfferIcon /> &nbsp;Place Offer
-                            </Button>
-                          )}
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  )}
-                </Grid>
-              </Grid>
-            </Grid> */}
+            </Grid>
           </Grid>
         </Grid>
 
@@ -813,13 +700,13 @@ const PropertyDetails = () => {
           <h4>Similar Properties You May Like</h4>
 
           <Grid className="propertyAlike" mt={2}>
-            <Grid px={1} py={3} className="similarPropContainer">
+            {/* <Grid px={1} py={3} className="similarPropContainer">
               {similarProperty?.map((item) => (
                 <Grid md={4} sm={6} xs={12} mr={2} className="similarPropItem">
-                  {/* <Property item={item}></Property> */}
+                   <Property item={item}></Property> 
                 </Grid>
               ))}
-            </Grid>
+            </Grid> */}
           </Grid>
         </Grid>
       </Grid>

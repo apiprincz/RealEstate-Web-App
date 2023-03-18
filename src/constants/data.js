@@ -117,7 +117,7 @@ export const propertiesData = [
     description: "I love apartments",
     cityArea:'bodija',
     currency: "NGN",
-    realtor: [{ name: "Ade", phone: "0980890090", email: "dummy@gmail.com" }],
+    agentId:100,
     verifiedOwner: [
       { id: "1", name: "Ade", phone: "0980890090", email: "dummy@gmail.com" },
     ],
@@ -1290,7 +1290,7 @@ export const agentData = [
   username: "kenny",
   location:"lagos",
   area:'ago_palace',
-  
+  verified:false,
   viewerCount: [
  
     { id: "1", viewedDate: "2022-06-08T22:57:19.024+00:00" },
@@ -1386,7 +1386,7 @@ export const agentData = [
 },
 {
   name:'add23 shsn',
-
+  verified:false,
   id: "1",
   email: "kennyg@gmail.com",
   username: "kenny",
@@ -1490,7 +1490,7 @@ export const agentData = [
 },
 {
   name:'add2 shsn',
-
+  verified:false,
   id: "1",
   email: "kennyg@gmail.com",
   username: "kenny",
@@ -1591,7 +1591,7 @@ export const agentData = [
 },
 {
   name:'add1 shsn',
-
+  verified:false,
   id: "1",
   email: "kennyg@gmail.com",
   username: "kenny",
@@ -1696,7 +1696,7 @@ export const agentData = [
 },
 {
   name:'add23 shsn',
-
+  verified:false,
   id: "1",
   email: "kennyg@gmail.com",
   username: "kenny",
@@ -1788,7 +1788,7 @@ export const agentData = [
 },
 {
   name:'add23 shsn',
-
+  verified:false,
   id: "1",
   email: "kennyg@gmail.com",
   username: "kenny",
@@ -1882,7 +1882,7 @@ export const agentData = [
   name:'add23 shsn',
   id: "1",
   area:'ketu',
-
+  verified:false,
   email: "kennyg@gmail.com",
   username: "kenny",
   location:"lagos",
@@ -1974,7 +1974,7 @@ export const agentData = [
   name:'kenny g',
   id: "1",
   area:'maitama',
-
+  verified:false,
   email: "kennyg@gmail.com",
   username: "kenny",
   role:'agent',

@@ -32,6 +32,7 @@ import Properties from "../../components/Properties";
 import FilterModal from "../../components/SidebarMenu/FilterModal";
 import useWindowDimensions from "../../Hooks/screen";
 import Agents from "../../components/Agents";
+import { useSelector } from "react-redux";
 
 // Initial state
 const initialItems = {
@@ -54,7 +55,8 @@ const AgentPage = () => {
   // console.log("filterItems", filterItems)
   const [tab, setTab] = useState("sale");
   const [filterAgents, setFilterAgents] = useState();
-  const { width } = useWindowDimensions();
+  const {agents} = useSelector((state) => state.agents);
+
 
   const handleTab = (tab) => {
     setTab(tab);
@@ -62,14 +64,17 @@ const AgentPage = () => {
     dispatch(setPropertyType(tab));
   };
   useEffect(() => {
-    setFilterAgents([...agentData]);
-  }, []);
+    if(agents?.agents){
+      setFilterAgents([...agents?.agents]);
+
+    }
+  }, [agents]);
   useEffect(() => {
-    if (agentData) {
+    if (agents?.agents) {
       const listing = "rent";
       // const propertyType = "land";
       const propertyType = ["land", "apartments"];
-      let newFilterAgents = [...agentData];
+      let newFilterAgents = [...agents?.agents];
       console.log("teywyeuui", filterAgents, filterItems,newFilterAgents);
 
       if (filterItems.propertyType.length > 0) {
@@ -158,7 +163,7 @@ const AgentPage = () => {
   }, [filterItems]);
 
   console.log("filterItems", filterItems);
-  console.log("filterAgents345566", filterAgents);
+  console.log("filterAgents345566", filterAgents, agents);
 
   return (
     <Layout>

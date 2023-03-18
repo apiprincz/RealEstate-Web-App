@@ -57,7 +57,7 @@ const PropertyCard = ({ property, index, section }) => {
             }
           ></Grid>
         )}
-        <a href={`property/view/${property.id}`}>
+        <a href={`property/view/${property._id}`}>
           <img src={property.files[0].secure_url} alt="property image" />
         </a>
       </Grid>
@@ -66,7 +66,7 @@ const PropertyCard = ({ property, index, section }) => {
         <Grid p={2} >
           <Grid>
             <PropertyTitle>
-              <a href={`/property/`}>{property.title}</a>
+              <a href={`property/view/${property._id}`}>{property.title}</a>
             </PropertyTitle>
           </Grid>
           <Grid py={2}>

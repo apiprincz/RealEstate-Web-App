@@ -31,6 +31,7 @@ import SidebarMenu from "../../components/SidebarMenu";
 import Properties from "../../components/Properties";
 import FilterModal from "../../components/SidebarMenu/FilterModal";
 import useWindowDimensions from "../../Hooks/screen";
+import { useSelector } from "react-redux";
 
 // Initial state
 const initialItems = {
@@ -50,26 +51,22 @@ const PropertiesPage = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
   const { filterItems, dispatch } = useFilterContext();
 
-  // console.log("filterItems", filterItems)
-  const [tab, setTab] = useState("sale");
   const [filterProperties, setFilterProperties] = useState();
   const { width } = useWindowDimensions();
+  const {properties} = useSelector(state => state.properties)
 
+  console.log("r7rure", properties)
 
-  const handleTab = (tab) => {
-    setTab(tab);
-    dispatch(setListing(tab));
-    dispatch(setPropertyType(tab));
-  };
   useEffect(() => {
-    setFilterProperties([...propertiesData]);
+    if(properties?.properties){
+      setFilterProperties([...properties?.properties]);
+
+    }
   }, []);
   useEffect(() => {
-    if (propertiesData) {
-      const listing = "rent";
-      // const propertyType = "land";
-      const propertyType = ["land", "apartments"];
-      let newFilterProperties = [...propertiesData];
+    if (properties?.properties) {
+
+      let newFilterProperties = [...properties?.properties];
       console.log("teywyeuui", filterProperties, filterItems);
 
       if (filterItems.propertyType.length > 0) {
@@ -140,7 +137,7 @@ const PropertiesPage = () => {
       }
       setFilterProperties(newFilterProperties);
     }
-  }, [filterItems]);
+  }, [filterItems, properties]);
 
   console.log("filterItems", filterItems);
   console.log("filterProperties", filterProperties);

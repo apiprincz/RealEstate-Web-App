@@ -12,6 +12,11 @@ API.interceptors.request.use((req)=> {
 
 
 
+//ilenla API
+export const createProperty = (property) => API.post("/property", property)
+export const fetchProperties = (page) => API.get(`/property`);
+export const fetchAgent = (id) => API.get(`/user/${id}`)
+export const fetchAgents = () => API.get(`/user`)
 
 
 

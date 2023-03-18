@@ -33,6 +33,8 @@ const AgentCard = ({ agent, index, section }) => {
     console.log("index", index);
     setActiveIndex("");
   };
+
+  console.log("kdjfkkf", agent);
   return (
     <Grid
       item
@@ -55,9 +57,9 @@ const AgentCard = ({ agent, index, section }) => {
       >
         {index === activeIndex && (
           <Grid
-          container
-          alignItems='center'
-          justifyContent='center'
+            container
+            alignItems="center"
+            justifyContent="center"
             className={index === activeIndex && `activeAgentCardImageOverlay`}
           >
             {agent?.name?.split("")[0]}
@@ -65,10 +67,13 @@ const AgentCard = ({ agent, index, section }) => {
             {agent?.name?.split(" ")[1]?.split("")[0]}
           </Grid>
         )}
-        <a href={`/agent/`} style={{ display: "block", width: "100%" }}>
+        <a
+          href={`/agent/${agent?._id}`}
+          style={{ display: "block", width: "100%" }}
+        >
           <img
             style={{ display: "block", width: "100%" }}
-            src={agent.profilePhoto.secure_url || Avatar}
+            src={agent?.profilePhoto.secure_url || Avatar}
             alt="agent image"
           />
         </a>
@@ -85,18 +90,21 @@ const AgentCard = ({ agent, index, section }) => {
           >
             <Grid>
               <PropertyTitle>
-                <a href={`/agent/`}>{agent.name}</a>
+                <a 
+          href={`/agent/${agent?._id}`}
+               
+                >{agent?.name}</a>
               </PropertyTitle>
             </Grid>
             <Grid py={2}>
               <PropertyTextSmall capitalize>
-                {agent.role}{" "}
+                Agent &nbsp;
                 <>
-                  {agent.company && (
+                  {agent?.company && (
                     <>
                       @{" "}
                       <span style={{ color: "lightblue" }}>
-                        {agent.company}
+                        {agent?.company}
                       </span>
                     </>
                   )}
@@ -104,18 +112,18 @@ const AgentCard = ({ agent, index, section }) => {
               </PropertyTextSmall>
             </Grid>
             <Grid py={1}>
-              <PropertyTextSmall>{agent.email}</PropertyTextSmall>
+              <PropertyTextSmall>{agent?.email}</PropertyTextSmall>
             </Grid>
-            {agent.phone && (
+            {agent?.phone && (
               <Grid py={1}>
-                <PropertyTextSmall>{agent.phone}</PropertyTextSmall>
+                <PropertyTextSmall>{agent?.phone}</PropertyTextSmall>
               </Grid>
             )}
 
             <Hr />
             <Grid py={2}>
               <Grid container>
-                {agent.socialHandle.facebook && (
+                {agent?.socialHandle?.facebook && (
                   <Grid container xs={4} alignItems="center">
                     <Grid>
                       <SiteIcon>
@@ -125,7 +133,7 @@ const AgentCard = ({ agent, index, section }) => {
                     &nbsp;
                   </Grid>
                 )}
-                {agent.socialHandle.twitter && (
+                {agent?.socialHandle?.twitter && (
                   <Grid container xs={4} alignItems="center">
                     <Grid>
                       <SiteIcon>
@@ -135,7 +143,7 @@ const AgentCard = ({ agent, index, section }) => {
                     &nbsp;
                   </Grid>
                 )}
-                {agent.socialHandle.instagram && (
+                {agent?.socialHandle?.instagram && (
                   <Grid container xs={4} alignItems="center">
                     <Grid>
                       <SiteIcon>

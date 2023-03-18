@@ -19,7 +19,7 @@ import { ThemeContext } from "./Contexts/ThemeContext";
 import { light, dark } from "./components/Styles/Theme.styled";
 import { GlobalStyles } from "./components/Styles/Global";
 import { ThemeHero } from "./components/Styles/PageContent.styled";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getProperties } from "./actions/properties";
 import { useFilterContext } from "./Contexts/FilterContext";
 import { propertiesData } from "./constants/data";
@@ -29,16 +29,25 @@ import ProfilePage from "./Pages/ProfilePage";
 import AddNewProperty from "./components/SettingsList/AddNewProperty";
 import CreatePropertyPage from "./Pages/CreatePropertyPage";
 import PropertyDetails from "./Pages/PropertyDetails";
+import AgentDetails from "./Pages/AgentDetails";
+import { getAgents } from "./actions/agent";
 
 const App = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
   const [selectedTheme, setSelectedTheme] = useState(light);
   const { filterItems, dispatch } = useFilterContext();
 
+  const { properties } = useSelector((state) => state.properties);
+
   const dispatchRedux = useDispatch();
   useEffect(() => {
     dispatchRedux(getProperties());
   }, []);
+  useEffect(() => {
+    dispatchRedux(getAgents());
+  }, []);
+
+  console.log("data", properties);
 
   return (
     <ThemeProvider theme={darkMode}>
@@ -54,16 +63,21 @@ const App = () => {
             <Route path=":id" element={<ProfilePage />} />
           </Route>
 
-          <Route path="/property" >
+          <Route path="/property">
             <Route path="view" element={<PropertyDetails />}>
               <Route path=":id" element={<PropertyDetails />} />
             </Route>
             <Route path="edit" element={<CreatePropertyPage />}>
               <Route path=":id" element={<CreatePropertyPage />} />
             </Route>
-            <Route path="add" element={<CreatePropertyPage />}>
-              {/* <Route path=":id" element={<CreatePropertyPage />} /> */}
+            <Route path="add" element={<CreatePropertyPage />}></Route>
+          </Route>
+          <Route path="/agent">
+            <Route path="view" element={<AgentDetails />}>
+              <Route path=":id" element={<AgentDetails />} />
             </Route>
+
+            <Route path=":id" element={<AgentDetails />} />
           </Route>
         </Routes>
       </Router>

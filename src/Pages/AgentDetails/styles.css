@@ -11,16 +11,16 @@
 .agentInfo {
   border: 1px solid gray;
 }
-.propertyImage {
-  width: 100%;
-  height: 480px;
+.agentImage {
+  width: 400px;
+  height: 400px;
 }
-.propertyImage img {
+.agentImage img {
   width: 100%;
   height: 100%;
   border-radius: 10px;
 }
-.propertyListing {
+.agentListing {
   background-color: #d77a19;
   padding: 5px;
   border-radius: 5px;
@@ -104,17 +104,17 @@
   font-size: 12px;
   /* background-color: blue; */
 }
-.propertyTitle {
+.agentTitle {
   font-size: 13px;
 }
 .videoContainer > div {
   width: 100%;
   text-align: center;
 }
-.propertySectionContainer {
+.agentSectionContainer {
   padding: 0px 40px;
 }
-.propertyAlike {
+.agentAlike {
   padding: 0px 20px;
   overflow-y: auto;
   background: #40808bb5;
@@ -141,10 +141,10 @@
   }
 }
 @media only screen and (max-width: 600px) {
-  .propertySectionContainer {
+  .agentSectionContainer {
     padding: 20px 0px;
   }
-  .propertyAlike {
+  .agentAlike {
     padding: 0;
   }
 }
